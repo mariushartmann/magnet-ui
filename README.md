@@ -1,1 +1,1 @@
-# magnet-ui
+# Magnet UI
