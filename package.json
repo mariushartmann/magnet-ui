@@ -6,10 +6,12 @@
   "module": "build/index.esm.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "dev": "start-storybook -p 6006",
     "build": "webpack",
     "build:sass": "sass --style compressed src",
     "css": "sass --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css/",
-    "css-watch": "sass --watch --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css/"
+    "css-watch": "sass --watch --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css/",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,17 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.1",
     "@open-wc/eslint-config": "^8.0.2",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/html": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/testing-library": "0.0.13",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
