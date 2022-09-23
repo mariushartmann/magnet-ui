@@ -1,1 +1,0 @@
-(()=>{"use strict";class t extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML='\n            <style>.magnet-button{background:red}</style>\n            <button class="magnet-button"><slot/></button>\n        '}}customElements.define("magnet-button",t)})();
