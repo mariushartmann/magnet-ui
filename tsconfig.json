@@ -1,31 +1,18 @@
 {
-    "compilerOptions": {
-        "allowUnreachableCode": false,
-        "baseUrl": ".",
-        "declaration": true,
-        "declarationMap": false,
-        "downlevelIteration": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "module": "es2015",
-        "moduleResolution": "node",
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noUnusedLocals": true,
-        "paths": {
-            "@magnet/web/*": ["./dist/*"]
-        },
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "inlineSources": true,
-        "strict": true,
-        "strictNullChecks": false,
-        "target": "es2020",
-        "outDir": "dist/types"
-    }
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "lib": ["dom", "es2017"],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
+    "jsxFactory": "h"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.stories.*"]
 }
