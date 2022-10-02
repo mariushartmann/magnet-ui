@@ -1,0 +1,39 @@
+@use "../lib/typography";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap");
+
+h1 {
+    @include typography.Typography("h1");
+}
+
+h2 {
+    @include typography.Typography("h2");
+}
+
+h3 {
+    @include typography.Typography("h3");
+}
+
+h4 {
+    @include typography.Typography("h4");
+}
+
+h5 {
+    @include typography.Typography("h5");
+}
+
+h6 {
+    @include typography.Typography("h6");
+}
+
+@include typography.CreateTypographyClass("h1");
+@include typography.CreateTypographyClass("h2");
+@include typography.CreateTypographyClass("h3");
+@include typography.CreateTypographyClass("h4");
+@include typography.CreateTypographyClass("h5");
+@include typography.CreateTypographyClass("h6");
+@include typography.CreateTypographyClass("body1");
+@include typography.CreateTypographyClass("body2");
+@include typography.CreateTypographyClass("button");
+@include typography.CreateTypographyClass("caption");
+@include typography.CreateTypographyClass("overline");

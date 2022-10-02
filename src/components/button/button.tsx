@@ -1,0 +1,142 @@
+// system imports
+import React, { useCallback, useContext, useRef } from "react";
+import clsx from "clsx";
+
+// internal imports
+import { ThemeContext } from "../app";
+
+// component imports
+import { IButtonProps } from "./button.types";
+import { useRipple } from "../../utils/useRipple";
+import { useCombinedRefs } from "../../utils/useCombinedRefs";
+
+export const Button = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  React.PropsWithChildren<IButtonProps>
+>(
+  (
+    {
+      appendIcon = undefined,
+      block = false,
+      children = undefined,
+      className = undefined,
+      color = "primary",
+      disabled = false,
+      href = undefined,
+      icon = false,
+      id = undefined,
+      loading = false,
+      onClick = undefined,
+      prependIcon = undefined,
+      small = false,
+      style = undefined,
+      theme = "auto",
+      type = "button",
+      variant = "filled",
+    }: React.PropsWithChildren<IButtonProps>,
+    forwardRef
+  ) => {
+    // Vars & States - START
+    const tag = href ? "a" : "button";
+    const globalTheme = useContext(ThemeContext);
+    const innerRef = useRef(null);
+    const combinedRefs = useCombinedRefs(forwardRef, innerRef);
+    // Vars & States - END
+
+    // Methods & Handler - START
+    const handleClick = useCallback(
+      (ev: React.MouseEvent<HTMLElement, MouseEvent>) => {
+        if (!disabled && !loading && onClick) {
+          onClick(ev);
+        }
+      },
+      [disabled, loading, onClick]
+    );
+    // Methods & Handler - END
+
+    // ClassNames & Styles - START
+    const getClasses = useCallback(() => {
+      const classes = {
+        "magnet-button": true,
+        "magnet-button--elevated": variant === "elevated",
+        "magnet-button--outlined": variant === "outlined",
+        "magnet-button--text": variant === "text",
+        "magnet-button--icon": icon,
+        "magnet-button--block": block,
+        "magnet-button--small": small,
+        "magnet-button--disabled": disabled,
+        "magnet-button--loading": loading,
+        "magnet-button--primary": color && color === "primary",
+        "magnet-button--secondary": color && color === "secondary",
+        "magnet-button--success": color && color === "success",
+        "magnet-button--warning": color && color === "warning",
+        "magnet-button--error": color && color === "error",
+        "theme-light":
+          theme === "light" || (theme === "auto" && globalTheme === "light"),
+        "theme-dark":
+          theme === "dark" || (theme === "auto" && globalTheme === "dark"),
+      };
+
+      return clsx([classes, className]);
+    }, [
+      block,
+      className,
+      color,
+      disabled,
+      globalTheme,
+      icon,
+      loading,
+      small,
+      theme,
+      variant,
+    ]);
+
+    const getStyles = useCallback((): React.CSSProperties => {
+      const styleList: React.CSSProperties = {};
+
+      return { ...styleList, ...style };
+    }, [style]);
+    // ClassNames & Styles - END
+
+    // Life Cycle Hooks - START
+    useRipple(innerRef);
+    // Life Cycle Hooks - END
+
+    // Render - START
+    const renderInner = useCallback(() => {
+      return (
+        <span className="e-btn--inner">
+          {/* {prependIcon && <EIcon icon={prependIcon} className="mr-2" />} */}
+          {children}
+          {/* {appendIcon && <EIcon icon={appendIcon} className="ml-2" />} */}
+        </span>
+      );
+    }, [appendIcon, children, prependIcon]);
+
+    return React.createElement(
+      tag,
+      {
+        id: id,
+        className: getClasses(),
+        style: getStyles(),
+        onClick: handleClick,
+        disabled: disabled,
+        href: href,
+        ref: combinedRefs,
+        type: tag === "button" ? type : undefined,
+      },
+      <>
+        {renderInner()}
+        {/* {loading && <EProgressSpinner />} */}
+      </>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+const MagnetButton = React.memo(Button);
+
+MagnetButton.displayName = "MagnetButton";
+
+export { MagnetButton };

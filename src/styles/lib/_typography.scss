@@ -1,0 +1,22 @@
+@use "../variables/typography" as variables;
+
+@mixin Typography($name) {
+    font-family: map-get(map-get(variables.$typography, $name), "font-family");
+    font-size: map-get(map-get(variables.$typography, $name), "font-size");
+    font-weight: map-get(map-get(variables.$typography, $name), "font-weight");
+    line-height: map-get(map-get(variables.$typography, $name), "line-height");
+    letter-spacing: map-get(
+        map-get(variables.$typography, $name),
+        "letter-spacing"
+    );
+    text-transform: map-get(
+        map-get(variables.$typography, $name),
+        "text-transform"
+    );
+}
+
+@mixin CreateTypographyClass($typographyName) {
+    .display-#{$typographyName} {
+        @include Typography($typographyName);
+    }
+}

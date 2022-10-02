@@ -1,0 +1,20 @@
+@use "sass:map";
+
+@use "../../lib/spacing";
+
+@use "./variables";
+
+.magnet-button {
+    height: map-get(variables.$height, "md");
+    @include spacing.PaddingHorizontal(4);
+}
+
+.theme-light.magnet-button {
+    background-color: var(--primary-10);
+    color: var(--primary-40);
+}
+
+.theme-dark.magnet-button {
+    background-color: var(--primary-90);
+    color: var(--primary-60);
+}

@@ -1,0 +1,13 @@
+@use "../lib/_colors.scss" as colors;
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    @include colors.createColor(primary, #27359b);
+    @include colors.createColor(secondary, #625b71);
+    @include colors.createColor(success, #22aa26);
+    @include colors.createColor(warning, #fb8c00);
+    @include colors.createColor(error, #ff3e3b);
+    @include colors.createColor(neutral, #ffffff);
+    @include colors.createColor(neutral-variant, #79747e);
+}

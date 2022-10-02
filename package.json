@@ -1,49 +1,47 @@
 {
-  "name": "magnet-ui",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/magnet-ui/magnet-ui.esm.js",
+  "name": "@magnet-ui/magnet-ui",
+  "version": "0.0.3",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist/",
-    "loader/"
+    "dist",
+    "README.md"
   ],
   "scripts": {
-    "dev": "npm run build:watch & npm run storybook",
-    "build": "stencil build --docs",
-    "build:watch": "stencil build --watch",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
-    "storybook": "start-storybook -p 6006 --disable-telemetry",
-    "build-storybook": "build-storybook"
+    "dev": "npm run storybook:start",
+    "css:build": "sass --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
+    "css:watch": "sass --watch --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
+    "js:build": "webpack",
+    "js:watch": "webpack --watch",
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook"
   },
+  "author": "Marius Hartmann",
+  "license": "MIT",
   "dependencies": {
-    "@stencil/core": "^2.13.0",
-    "@stencil/sass": "^2.0.0"
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.1",
+    "@babel/core": "^7.19.3",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-webpack4": "^6.5.12",
-    "@storybook/html": "^6.5.12",
-    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "0.0.13",
-    "@types/jest": "^27.0.3",
+    "@types/react": "^18.0.21",
     "babel-loader": "^8.2.5",
-    "jest": "^27.4.5",
-    "jest-cli": "^27.4.5",
-    "puppeteer": "^10.0.0"
-  },
-  "license": "MIT"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.0.2",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
 }

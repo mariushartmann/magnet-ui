@@ -1,0 +1,9 @@
+@use "./spacing";
+
+$shapes: (
+    "xs": #{spacing.$spacing * 1},
+    "sm": #{spacing.$spacing * 2},
+    "md": #{spacing.$spacing * 3},
+    "lg": #{spacing.$spacing * 4},
+    "xl": #{spacing.$spacing * 5}
+);

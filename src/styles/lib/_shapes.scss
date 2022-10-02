@@ -1,0 +1,15 @@
+@use "sass:map";
+
+@use "../variables/shapes";
+
+@mixin createShapes() {
+    @each $key, $value in shapes.$shapes {
+        .shape-#{$key} {
+            border-radius: #{$value};
+        }
+    }
+}
+
+@function shape($size) {
+    @return map.get(shapes.$shapes, $size);
+}

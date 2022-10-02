@@ -1,0 +1,66 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+
+@mixin createColor($prefix, $color) {
+    @each $key, $value in color-to-tone-map($color) {
+        --#{$prefix}-#{$key}: #{$value};
+    }
+}
+
+@function color-to-tone-map($color) {
+    $hue: hue($color);
+    $saturation: saturation($color);
+
+    $tones: ();
+    @for $i from 0 through 9 {
+        $tmpHSL: hsl($hue, $saturation, ($i * 10) * 1%);
+        $map: (
+            "#{$i * 10}": hsl-to-hex($tmpHSL)
+        );
+        $tones: map.merge($tones, $map);
+    }
+
+    // adding 99% and 100%
+    @for $i from 99 through 100 {
+        $tmpHSL: hsl($hue, $saturation, $i * 1%);
+        $map: (
+            "#{$i}": hsl-to-hex($tmpHSL)
+        );
+        $tones: map.merge($tones, $map);
+    }
+
+    @return $tones;
+}
+
+@function hsl-to-hex($hsl) {
+    $red: color.red($hsl);
+    $green: color.green($hsl);
+    $blue: color.blue($hsl);
+
+    @return "##{dec-to-hex($red)}#{dec-to-hex($green)}#{dec-to-hex($blue)}";
+}
+
+@function dec-to-hex($d) {
+    $hexVals: "A" "B" "C" "D" "E" "F";
+    $base: 16;
+    $quotient: $d;
+    $result: "";
+    @if $d == 0 {
+        $result: "00";
+    }
+    @while $quotient != 0 {
+        $mod: $quotient % $base;
+        $quotient: floor(math.div($quotient, $base));
+        @if $mod > 9 {
+            $mod: nth($hexVals, $mod - 9);
+        }
+        @if $d < $base {
+            $result: "0" + $mod;
+        } @else {
+            $result: $mod + $result;
+        }
+    }
+    @return $result;
+}

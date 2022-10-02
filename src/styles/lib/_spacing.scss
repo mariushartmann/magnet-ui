@@ -1,0 +1,37 @@
+@use "sass:map";
+
+@use "../variables/spacing";
+
+@function spacing($size) {
+    @return #{spacing.$spacing * $size};
+}
+
+@mixin Padding($size) {
+    padding: spacing($size);
+}
+
+@mixin PaddingTop($size) {
+    padding-top: spacing($size);
+}
+
+@mixin PaddingBottom($size) {
+    padding-bottom: spacing($size);
+}
+
+@mixin PaddingLeft($size) {
+    padding-left: spacing($size);
+}
+
+@mixin PaddingRight($size) {
+    padding-right: spacing($size);
+}
+
+@mixin PaddingHorizontal($size) {
+    padding-left: spacing($size);
+    padding-right: spacing($size);
+}
+
+@mixin PaddingVertical($size) {
+    padding-top: spacing($size);
+    padding-bottom: spacing($size);
+}
