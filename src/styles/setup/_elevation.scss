@@ -1,0 +1,22 @@
+@use "../lib/elevation";
+
+@for $elevation from 0 through 5 {
+    .theme-light {
+        .elevation-#{$elevation} {
+            @include elevation.Elevation($elevation, light);
+        }
+
+        .elevation-inset-#{$elevation} {
+            @include elevation.ElevationInset($elevation, light);
+        }
+    }
+    .theme-dark {
+        .elevation-#{$elevation} {
+            @include elevation.Elevation($elevation, dark);
+        }
+
+        .elevation-inset-#{$elevation} {
+            @include elevation.ElevationInset($elevation, dark);
+        }
+    }
+}

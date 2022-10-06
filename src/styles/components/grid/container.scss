@@ -1,0 +1,14 @@
+@use "../../lib/breakpoints";
+
+@use './variables';
+@use './mixins';
+
+.magnet-container {
+    @include mixins.Container();
+
+    @each $bpItem in "sm", "md", "lg", "xl" {
+        @include breakpoints.Breakpoint($bpItem) {
+            @include mixins.BreakpointContainer($bpItem);
+        }
+    }
+}

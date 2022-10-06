@@ -14,7 +14,7 @@ const App = ({
   className = undefined,
   id = "magnet-app",
   style = undefined,
-  theme = "auto",
+  theme = "auto"
 }: React.PropsWithChildren<IAppProps>) => {
   // Vars & States - START
   const [internalTheme, setInternalTheme] = useState<"light" | "dark">("light");
@@ -28,7 +28,7 @@ const App = ({
     const classes = {
       "magnet-app": true,
       "theme-light": internalTheme === "light",
-      "theme-dark": internalTheme === "dark",
+      "theme-dark": internalTheme === "dark"
     };
 
     return clsx([classes, className]);

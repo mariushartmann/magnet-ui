@@ -1,0 +1,7 @@
+@use "sass:map";
+
+@use "../variables/design-tokens";
+
+@function getTokenColor($token, $theme) {
+    @return map.get(map.get(design-tokens.$design-tokens, $token), $theme);
+}

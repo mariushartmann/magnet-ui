@@ -1,0 +1,9 @@
+@use './mixins';
+
+.magnet-image {
+    @include mixins.Image();
+
+    &.magnet-image--contain * {
+        @include mixins.ImageContain();
+    }
+}

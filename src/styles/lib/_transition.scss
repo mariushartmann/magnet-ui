@@ -1,0 +1,30 @@
+@mixin Transition(
+    $prop,
+    $time: 200ms,
+    $easing: cubic-bezier(0.4, 0, 0.2, 1),
+    $delay: 0s
+) {
+    $willChange: ();
+    $transition: ();
+    @for $i from 1 through length($prop) {
+        @for $j from 0 to (length($prop)) - (length($time)) {
+            $time: join($time, nth($time, -1));
+        }
+        @for $j from 0 to (length($prop)) - (length($easing)) {
+            $easing: join($easing, nth($easing, -1));
+        }
+        @for $j from 0 to (length($prop)) - (length($delay)) {
+            $delay: join($delay, nth($delay, -1));
+        }
+
+        $transition: append(
+            $transition,
+            (nth($prop, $i) nth($time, $i) nth($easing, $i) nth($delay, $i)),
+            $separator: comma
+        );
+
+        $willChange: append($willChange, nth($prop, $i), $separator: comma);
+    }
+    transition: $transition;
+    will-change: $willChange;
+}

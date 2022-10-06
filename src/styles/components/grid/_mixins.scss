@@ -1,0 +1,54 @@
+@use "sass:math";
+
+@use "../../lib/spacing";
+@use "../../variables/breakpoints" as breakpointVariables;
+
+@use "./variables";
+
+@mixin Container() {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    @include spacing.Padding(variables.$container-spacing-side);
+
+    &.magnet-container--fluid {
+        max-width: 100%;
+    }
+}
+
+@mixin BreakpointContainer($bpItem) {
+    max-width: map-get(breakpointVariables.$breakpoints, $bpItem) -
+        spacing.spacing(variables.$container-spacing-side);
+}
+
+@mixin Row() {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    @include spacing.Margin(-2);
+
+    & + .magnet-row {
+        @include spacing.MarginTop(2);
+    }
+
+    &.magnet-row--no-gutters {
+        margin: 0;
+    }
+}
+
+@mixin Column() {
+    width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    @include spacing.Padding(2);
+}
+
+@mixin BreakpointColumn($size) {
+    flex: 0 0 percentage(math.div($size, 12));
+    max-width: percentage(math.div($size, 12));
+
+    @if ($size == 0) {
+        @include spacing.Padding(0);
+    }
+}

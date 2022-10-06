@@ -1,0 +1,59 @@
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+@use "../../lib/typography";
+
+@use "./variables";
+
+@mixin Card() {
+    position: relative;
+    border-width: thin;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    text-decoration: none;
+    overflow-wrap: break-word;
+    white-space: normal;
+    @include shapes.Shape(lg);
+    @include transition.Transition((width, height));
+
+    &.magnet-card--outlined {
+        background-color: transparent;
+        border: 1px solid;
+    }
+
+    &.magnet-card--disabled {
+        cursor: default;
+    }
+}
+
+@mixin CardTitle() {
+    display: flex;
+    align-items: flex-start;
+    @include spacing.PaddingTop(variables.$card-title-padding-top);
+    @include spacing.PaddingBottom(variables.$card-title-padding-bottom);
+    @include spacing.PaddingHorizontal(
+        variables.$card-title-padding-horizontal
+    );
+    @include typography.Typography(variables.$card-title-typography);
+}
+
+@mixin CardBody() {
+    @include spacing.Padding(variables.$card-body-padding);
+}
+
+@mixin CardActions() {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include spacing.PaddingHorizontal(
+        variables.$card-actions-padding-horizontal
+    );
+    @include spacing.PaddingVertical(variables.$card-actions-padding-vertical);
+
+    > .magnet-button {
+        @include spacing.MarginLeft(2);
+    }
+}

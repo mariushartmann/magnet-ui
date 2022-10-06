@@ -1,7 +1,3 @@
 @use "./variables/typography";
 
 @import "./setup/index";
-
-body {
-    font-family: typography.$font-family;
-}

@@ -1,92 +1,58 @@
 $font-family: "Noto sans", sans-serif;
 
 $typography-h1: (
-    "font-family": inherit,
-    "font-size": 52px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "font-size": 45px,
+    "line-height": 52px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 $typography-h2: (
-    "font-family": inherit,
-    "font-size": 40px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "font-size": 36px,
+    "line-height": 44px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 $typography-h3: (
-    "font-family": inherit,
-    "font-size": 30px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "font-size": 32px,
+    "line-height": 40px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 $typography-h4: (
-    "font-family": inherit,
     "font-size": 24px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "line-height": 32px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 $typography-h5: (
-    "font-family": inherit,
-    "font-size": 20px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "font-size": 22px,
+    "line-height": 28px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 $typography-h6: (
-    "font-family": inherit,
     "font-size": 16px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "line-height": 24px,
+    "font-weight": 500,
+    "letter-spacing": 0
 );
-$typography-body1: (
-    "font-family": inherit,
+$typography-body: (
     "font-size": 16px,
+    "line-height": 24px,
     "font-weight": 400,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "letter-spacing": 0
 );
-$typography-body2: (
-    "font-family": inherit,
-    "font-size": 16px,
-    "font-weight": 300,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
-);
-$typography-button: (
-    "font-family": inherit,
-    "font-size": 16px,
-    "font-weight": 400,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+$typography-label: (
+    "font-size-": 12px,
+    "line-height": 16px,
+    "font-weight": 500,
+    "letter-spacing": 0
 );
 $typography-caption: (
-    "font-family": inherit,
     "font-size-": 12px,
-    "font-weight": 300,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
-);
-$typography-overline: (
-    "font-family": inherit,
-    "font-size": 12px,
-    "font-weight": 600,
-    "line-height": 1.45,
-    "letter-spacing": 0,
-    "text-transform": inherit
+    "line-height": 16px,
+    "font-weight": 400,
+    "letter-spacing": 0
 );
 
 $typography: (
@@ -96,9 +62,7 @@ $typography: (
     h4: $typography-h4,
     h5: $typography-h5,
     h6: $typography-h6,
-    body1: $typography-body1,
-    body2: $typography-body2,
-    button: $typography-button,
-    caption: $typography-caption,
-    overline: $typography-overline
+    body: $typography-body,
+    label: $typography-label,
+    caption: $typography-caption
 );

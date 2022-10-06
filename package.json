@@ -11,37 +11,44 @@
   ],
   "scripts": {
     "dev": "npm run storybook:start",
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "lint:fix": "eslint --fix ./src --ext .ts,.tsx",
     "css:build": "sass --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
     "css:watch": "sass --watch --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
-    "js:build": "webpack",
-    "js:watch": "webpack --watch",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
   "author": "Marius Hartmann",
   "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
   "dependencies": {
-    "clsx": "^1.2.1"
+    "clsx": "1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.3",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-interactions": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-webpack5": "^6.5.12",
-    "@storybook/manager-webpack5": "^6.5.12",
-    "@storybook/react": "^6.5.12",
-    "@storybook/testing-library": "0.0.13",
-    "@types/react": "^18.0.21",
-    "babel-loader": "^8.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.55.0",
-    "sass-loader": "^13.0.2",
-    "ts-loader": "^9.4.1",
-    "typescript": "^4.8.3",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "@babel/core": "7.13.8",
+    "@storybook/addon-controls": "6.5.9",
+    "@storybook/addon-essentials": "6.5.9",
+    "@storybook/addons": "6.5.9",
+    "@storybook/react": "6.5.9",
+    "@storybook/theming": "6.5.9",
+    "@types/react": "17.0.47",
+    "@types/react-dom": "17.0.17",
+    "@typescript-eslint/eslint-plugin": "4.16.1",
+    "@typescript-eslint/parser": "4.16.1",
+    "babel-loader": "8.2.2",
+    "babel-preset-react-app": "10.0.0",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-storybook": "0.6.1",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "1.39.0",
+    "sass-loader": "10.1.1",
+    "typescript": "4.2.2"
   }
 }

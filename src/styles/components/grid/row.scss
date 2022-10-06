@@ -1,0 +1,6 @@
+@use './variables';
+@use './mixins';
+
+.magnet-row {
+    @include mixins.Row();
+}

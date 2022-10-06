@@ -1,0 +1,144 @@
+@use "sass:map";
+
+@use "../../lib/design-tokens";
+@use "../../lib/elevation";
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+@use "../../lib/typography";
+
+@use "./variables";
+
+@mixin Button() {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    @include shapes.Shape(full);
+    @include transition.Transition((box-shadow));
+    @include typography.Typography(body);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: inherit;
+        background-color: currentColor;
+        opacity: 0;
+        @include transition.Transition((opacity));
+    }
+
+    &:hover:before {
+        opacity: 0.1;
+    }
+
+    &:active:before {
+        opacity: 0.2;
+    }
+
+    .magnet-button--inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@mixin ButtonOutlined() {
+    border: 1px solid;
+}
+
+@mixin ButtonBlock() {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+@mixin ButtonIcon() {
+    justify-content: center;
+    padding: 0;
+
+    &.magnet-button--sm {
+        min-width: map-get(variables.$height, sm);
+        max-width: map-get(variables.$height, sm);
+    }
+
+    &.magnet-button--md {
+        min-width: map-get(variables.$height, md);
+        max-width: map-get(variables.$height, md);
+    }
+
+    &.magnet-button--lg {
+        min-width: map-get(variables.$height, lg);
+        max-width: map-get(variables.$height, lg);
+    }
+}
+
+@mixin ButtonSmall() {
+    min-height: map-get(variables.$height, sm);
+    max-height: map-get(variables.$height, sm);
+    @include spacing.PaddingHorizontal(3);
+}
+
+@mixin ButtonMedium() {
+    min-height: map-get(variables.$height, md);
+    max-height: map-get(variables.$height, md);
+    @include spacing.PaddingHorizontal(4);
+}
+
+@mixin ButtonLarge() {
+    min-height: map-get(variables.$height, lg);
+    max-height: map-get(variables.$height, lg);
+    @include spacing.PaddingHorizontal(5);
+}
+
+@mixin ButtonDisabled() {
+    cursor: not-allowed;
+
+    &:before {
+        content: none;
+    }
+}
+
+@mixin ButtonLoading() {
+    cursor: default;
+
+    &:before {
+        content: none;
+    }
+
+    .magnet-button--inner {
+        opacity: 0;
+    }
+
+    .magnet-progress-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+@mixin ColoredButtonElevated($design-token, $color-mode) {
+    background-color: design-tokens.getTokenColor(surface, $color-mode);
+    color: design-tokens.getTokenColor($design-token, $color-mode);
+}
+
+@mixin ColoredButtonFilled($design-token, $color-mode) {
+    background-color: design-tokens.getTokenColor($design-token, $color-mode);
+    color: design-tokens.getTokenColor(on-#{$design-token}, $color-mode);
+}
+
+@mixin ColoredButtonOutlined($design-token, $color-mode) {
+    color: design-tokens.getTokenColor($design-token, $color-mode);
+    border-color: design-tokens.getTokenColor($design-token, $color-mode);
+}
+
+@mixin ColoredButtonText($design-token, $color-mode) {
+    color: design-tokens.getTokenColor($design-token, $color-mode);
+}

@@ -1,0 +1,32 @@
+@use "../lib/design-tokens";
+@use "../lib/typography";
+
+@use "../variables/typography" as typographyVariables;
+
+body {
+    position: relative;
+    font-family: typographyVariables.$font-family;
+    @include typography.Typography("body");
+}
+
+a {
+    text-decoration: none;
+}
+
+code {
+    border-radius: 3px;
+    font-size: 85%;
+    padding: 0.2em 0.4em;
+}
+
+.theme-light {
+    a {
+        color: design-tokens.getTokenColor(primary, light);
+    }
+}
+
+.theme-dark {
+    a {
+        color: design-tokens.getTokenColor(primary, dark);
+    }
+}

@@ -1,0 +1,11 @@
+@use 'variables';
+@use 'mixins';
+
+.magnet-card-actions {
+    @include mixins.CardActions();
+}
+
+.magnet-card-title + .magnet-card-actions,
+.magnet-card-body + .magnet-card-actions {
+    padding-top: 0;
+}

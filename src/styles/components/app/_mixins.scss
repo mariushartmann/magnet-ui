@@ -1,0 +1,23 @@
+@use "../../lib/transition";
+
+@mixin App() {
+    position: relative;
+    display: flex;
+    transform-origin: center top 0px;
+}
+
+@mixin AppWrapper() {
+    flex: 1 1 auto;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100%;
+    position: relative;
+}
+
+@mixin AppMain() {
+    flex: 1 1 auto;
+    max-width: 100%;
+    @include transition.Transition((width, height));
+}

@@ -1,0 +1,14 @@
+@use "../lib/breakpoints";
+
+$displayTypes: none, inline, inline-block, block, table, table-cell, table-row,
+    flex, inline-flex;
+
+@each $bpItem in "xs", "sm", "md", "lg", "xl" {
+    @include breakpoints.Breakpoint($bpItem) {
+        @each $displayType in $displayTypes {
+            .d-#{$displayType}-#{$bpItem} {
+                display: #{$displayType};
+            }
+        }
+    }
+}

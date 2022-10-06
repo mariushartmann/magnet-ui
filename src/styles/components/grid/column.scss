@@ -1,0 +1,25 @@
+@use "../../lib/breakpoints" as breakpoints;
+@use "../../lib/spacing" as spacing;
+
+@use './variables';
+@use './mixins';
+
+.magnet-column {
+    @include mixins.Column();
+
+    @each $bpItem in "xs", "sm", "md", "lg", "xl" {
+        @include breakpoints.Breakpoint($bpItem) {
+            @for $i from 0 through 12 {
+                &.magnet-column--#{$bpItem}-#{$i} {
+                    @include mixins.BreakpointColumn($i);
+                }
+            }
+        }
+    }
+}
+
+.magnet-row.magnet-row--no-gutters {
+    .magnet-column {
+        @include spacing.Padding(0);
+    }
+}

@@ -1,0 +1,110 @@
+$design-tokens: (
+    primary: (
+        light: var(--primary-40),
+        dark: var(--primary-80)
+    ),
+    on-primary: (
+        light: var(--primary-100),
+        dark: var(--primary-20)
+    ),
+    primary-container: (
+        light: var(--primary-90),
+        dark: var(--primary-30)
+    ),
+    on-primary-container: (
+        light: var(--primary-10),
+        dark: var(--primary-90)
+    ),
+    secondary: (
+        light: var(--secondary-40),
+        dark: var(--secondary-80)
+    ),
+    on-secondary: (
+        light: var(--secondary-100),
+        dark: var(--secondary-20)
+    ),
+    secondary-container: (
+        light: var(--secondary-90),
+        dark: var(--secondary-30)
+    ),
+    on-secondary-container: (
+        light: var(--secondary-10),
+        dark: var(--secondary-90)
+    ),
+    surface: (
+        light: var(--neutral-99),
+        dark: var(--neutral-20)
+    ),
+    on-surface: (
+        light: var(--neutral-30),
+        dark: var(--neutral-80)
+    ),
+    background: (
+        light: var(--neutral-99),
+        dark: var(--neutral-10)
+    ),
+    on-background: (
+        light: var(--neutral-10),
+        dark: var(--neutral-90)
+    ),
+    success: (
+        light: var(--success-40),
+        dark: var(--success-80)
+    ),
+    on-success: (
+        light: var(--success-100),
+        dark: var(--success-20)
+    ),
+    success-container: (
+        light: var(--success-90),
+        dark: var(--success-30)
+    ),
+    on-success-container: (
+        light: var(--success-10),
+        dark: var(--success-80)
+    ),
+    warning: (
+        light: var(--warning-40),
+        dark: var(--warning-80)
+    ),
+    on-warning: (
+        light: var(--warning-100),
+        dark: var(--warning-20)
+    ),
+    warning-container: (
+        light: var(--warning-90),
+        dark: var(--warning-30)
+    ),
+    on-warning-container: (
+        light: var(--warning-10),
+        dark: var(--warning-80)
+    ),
+    error: (
+        light: var(--error-40),
+        dark: var(--error-80)
+    ),
+    on-error: (
+        light: var(--error-100),
+        dark: var(--error-20)
+    ),
+    error-container: (
+        light: var(--error-90),
+        dark: var(--error-30)
+    ),
+    on-error-container: (
+        light: var(--error-10),
+        dark: var(--error-80)
+    ),
+    disabled: (
+        light: var(--neutral-80),
+        dark: var(--neutral-30)
+    ),
+    on-disabled: (
+        light: var(--neutral-60),
+        dark: var(--neutral-50)
+    ),
+    border: (
+        light: var(--neutral-60),
+        dark: var(--neutral-40)
+    )
+);

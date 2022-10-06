@@ -2,14 +2,32 @@
 
 @use "../variables/shapes";
 
-@mixin createShapes() {
-    @each $key, $value in shapes.$shapes {
-        .shape-#{$key} {
-            border-radius: #{$value};
-        }
+@function shape($size) {
+    @return map.get(shapes.$shape-sizes, $size);
+}
+
+@mixin Shape($size) {
+    @if ($size == "none") {
+        border-radius: 0;
+    } @else if ($size == "full") {
+        border-radius: 999px;
+    } @else {
+        border-radius: shape($size) shape($size) shape($size) shape($size);
     }
 }
 
-@function shape($size) {
-    @return map.get(shapes.$shapes, $size);
+@mixin ShapeTop($size) {
+    border-radius: shape($size) shape($size) 0 0;
+}
+
+@mixin ShapeBottom($size) {
+    border-radius: 0 0 shape($size) shape($size);
+}
+
+@mixin ShapeLeft($size) {
+    border-radius: shape($size) 0 0 shape($size);
+}
+
+@mixin ShapeRight($size) {
+    border-radius: 0 shape($size) shape($size) 0;
 }

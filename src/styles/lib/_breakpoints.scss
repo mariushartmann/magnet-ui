@@ -1,0 +1,23 @@
+@use "sass:map";
+
+@use "../variables/breakpoints";
+
+@mixin Breakpoint($breakpoint, $direction: "min") {
+    @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+        $bp: if(
+            $direction == "min",
+            map-get(breakpoints.$breakpoints, $breakpoint),
+            map-get(breakpoints.$breakpoints, $breakpoint) - 1
+        );
+
+        @media (#{$direction}-width: #{$bp}) {
+            @content;
+        }
+    } @else if unitless($breakpoint) {
+        $breakpoint: $breakpoint + 0px;
+
+        @media (#{$direction}-width: $breakpoint) {
+            @content;
+        }
+    }
+}

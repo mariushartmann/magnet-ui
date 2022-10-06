@@ -1,0 +1,10 @@
+@use 'variables';
+@use 'mixins';
+
+.magnet-card-body {
+    @include mixins.CardBody();
+}
+
+.magnet-card-title + .magnet-card-body {
+    padding-top: 0;
+}

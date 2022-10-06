@@ -3,7 +3,40 @@
 @use "../variables/spacing";
 
 @function spacing($size) {
-    @return #{spacing.$spacing * $size};
+    @if ($size == "auto") {
+        @return auto;
+    }
+    @return spacing.$spacing * $size;
+}
+
+@mixin Margin($size) {
+    margin: spacing($size);
+}
+
+@mixin MarginTop($size) {
+    margin-top: spacing($size);
+}
+
+@mixin MarginBottom($size) {
+    margin-bottom: spacing($size);
+}
+
+@mixin MarginLeft($size) {
+    margin-left: spacing($size);
+}
+
+@mixin MarginRight($size) {
+    margin-right: spacing($size);
+}
+
+@mixin MarginHorizontal($size) {
+    margin-left: spacing($size);
+    margin-right: spacing($size);
+}
+
+@mixin MarginVertical($size) {
+    margin-top: spacing($size);
+    margin-bottom: spacing($size);
 }
 
 @mixin Padding($size) {

@@ -1,5 +1,16 @@
-$button-height: (
+@use "sass:map";
+@use "sass:math";
+
+$height: (
     sm: 36px,
     md: 40px,
     lg: 44px
 );
+
+$border-radius: (
+    sm: math.div(map.get($height, sm), 2),
+    md: math.div(map.get($height, md), 2),
+    lg: math.div(map.get($height, lg), 2)
+);
+
+$available-colors: primary, secondary, success, warning, error;

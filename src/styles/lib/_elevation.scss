@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "./design-tokens";
+
+@use "../variables/design-tokens" as designTokenVariable;
+@use "../variables/elevation";
+
+@mixin Elevation($elevation, $color-mode) {
+    $color: elevation.$color-light;
+
+    @if ($color-mode == dark) {
+        $color: elevation.$color-dark;
+    }
+
+    @if ($elevation < 1) {
+        box-shadow: none;
+    } @else {
+        box-shadow: map-get(elevation.$elevation-key-map, $elevation)
+                rgba($color, elevation.$elevation-key-opacity),
+            map-get(elevation.$elevation-ambient-map, $elevation)
+                rgba($color, elevation.$elevation-key-opacity);
+    }
+}
+
+@mixin ElevationInset($elevation, $color-mode) {
+    $color: elevation.$color-light;
+
+    @if ($color-mode == dark) {
+        $color: elevation.$color-dark;
+    }
+
+    @if ($elevation < 1) {
+        box-shadow: none;
+    } @else {
+        box-shadow: inset
+                map-get(elevation.$elevation-key-map, $elevation)
+                rgba($color, elevation.$elevation-key-opacity),
+            inset
+                map-get(elevation.$elevation-ambient-map, $elevation)
+                rgba($color, elevation.$elevation-key-opacity);
+    }
+}

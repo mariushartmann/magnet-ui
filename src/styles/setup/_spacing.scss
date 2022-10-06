@@ -1,0 +1,55 @@
+@use "../lib/spacing";
+
+// #### SPACINGS ###
+
+// Margins
+$margin-utilities: auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+@each $i in $margin-utilities {
+    .m-#{$i} {
+        @include spacing.Margin($i);
+    }
+    .my-#{$i} {
+        @include spacing.MarginVertical($i);
+    }
+    .mx-#{$i} {
+        @include spacing.MarginHorizontal($i);
+    }
+    .mt-#{$i} {
+        @include spacing.MarginTop($i);
+    }
+    .mb-#{$i} {
+        @include spacing.MarginBottom($i);
+    }
+    .ml-#{$i} {
+        @include spacing.MarginLeft($i);
+    }
+    .mr-#{$i} {
+        @include spacing.MarginRight($i);
+    }
+}
+
+// Paddings
+$padding-utilities: auto, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+@each $i in $padding-utilities {
+    .p-#{$i} {
+        @include spacing.Padding($i);
+    }
+    .py-#{$i} {
+        @include spacing.PaddingVertical($i);
+    }
+    .px-#{$i} {
+        @include spacing.PaddingHorizontal($i);
+    }
+    .pt-#{$i} {
+        @include spacing.PaddingTop($i);
+    }
+    .pb-#{$i} {
+        @include spacing.PaddingBottom($i);
+    }
+    .pl-#{$i} {
+        @include spacing.PaddingLeft($i);
+    }
+    .pr-#{$i} {
+        @include spacing.PaddingRight($i);
+    }
+}

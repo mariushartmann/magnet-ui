@@ -2,7 +2,7 @@
  * The base interface for clickable components
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface IClickable<T extends any = any> {
+export interface IClickable<T> {
     /**
      * Set the component to disabled
      *

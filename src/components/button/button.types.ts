@@ -1,89 +1,92 @@
 import { IClickable, IComponentProps, ILinkable, IThemable } from "../../types";
 
 export interface IButtonProps
-  extends IComponentProps,
-    IThemable,
-    ILinkable,
-    IClickable<React.MouseEvent<HTMLElement>> {
-  /**
-   * The icon appended to the right of the btn content
-   *
-   * @docType string
-   * @defaultValue `undefined`
-   */
-  appendIcon?: string;
+    extends IComponentProps,
+        IThemable,
+        ILinkable,
+        IClickable<React.MouseEvent<HTMLElement>> {
+    /**
+     * The icon appended to the right of the btn content
+     *
+     * @docType string
+     * @defaultValue `undefined`
+     */
+    appendIcon?: string;
 
-  /**
-   * Make the btn takes the whole width
-   *
-   * @docType boolean
-   * @defaultValue `false`
-   */
-  block?: boolean;
+    /**
+     * Make the btn takes the whole width
+     *
+     * @docType boolean
+     * @defaultValue `false`
+     */
+    block?: boolean;
 
-  /**
-   * The btn color
-   *
-   * @docType string
-   * @defaultValue `default`
-   */
-  color?: BtnColor;
+    /**
+     * The btn color
+     *
+     * @docType string
+     * @defaultValue `default`
+     */
+    color?: BtnColor;
 
-  /**
-   * Change the button style to fixed width/height
-   *
-   * @docType boolean
-   * @defaultValue `false`
-   */
-  icon?: boolean;
+    /**
+     * Change the button style to fixed width/height
+     *
+     * @docType boolean
+     * @defaultValue `false`
+     */
+    icon?: boolean;
 
-  /**
-   * Adds a loading spinner and disable the click event
-   *
-   * @docType boolean
-   * @defaultValue `undefined`
-   */
-  loading?: boolean;
+    /**
+     * Adds a loading spinner and disable the click event
+     *
+     * @docType boolean
+     * @defaultValue `undefined`
+     */
+    loading?: boolean;
 
-  /**
-   * The icon prepended to the left of the btn content
-   *
-   * @docType string
-   * @defaultValue `undefined`
-   */
-  prependIcon?: string;
+    /**
+     * The icon prepended to the left of the btn content
+     *
+     * @docType string
+     * @defaultValue `undefined`
+     */
+    prependIcon?: string;
 
-  /**
-   * Make the btn smaller
-   *
-   * @docType boolean
-   * @defaultValue `undefined`
-   */
-  small?: boolean;
+    /**
+     * The button size
+     *
+     * @docType string
+     * @values small | medium | large
+     * @defaultValue `medium`
+     */
+    size?: BtnSize;
 
-  /**
-   * Button type
-   *
-   * @docType string
-   * @values button | submit
-   * @defaultValue `undefined`
-   */
-  type?: "button" | "submit";
+    /**
+     * Button type
+     *
+     * @docType string
+     * @values button | submit
+     * @defaultValue `undefined`
+     */
+    type?: "button" | "submit";
 
-  /**
-   * The display style of the component
-   *
-   * @docType string
-   * @defaultValue `"default"`
-   */
-  variant?: BtnVariant;
+    /**
+     * The display style of the component
+     *
+     * @docType string
+     * @defaultValue `"default"`
+     */
+    variant?: BtnVariant;
 }
 
 export type BtnColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "error";
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "error";
+
+export type BtnSize = "small" | "medium" | "large";
 
 export type BtnVariant = "filled" | "elevated" | "outlined" | "text";

@@ -1,3 +1,28 @@
 @use "../lib/shapes";
 
-@include shapes.createShapes();
+$shape-utilities: xs, sm, md, lg, xl;
+@each $shape in $shape-utilities {
+    .shape-#{$shape} {
+        @include shapes.Shape($shape);
+    }
+    .shape-top-#{$shape} {
+        @include shapes.ShapeTop($shape);
+    }
+    .shape-bottom-#{$shape} {
+        @include shapes.ShapeBottom($shape);
+    }
+    .shape-left-#{$shape} {
+        @include shapes.ShapeLeft($shape);
+    }
+    .shape-right-#{$shape} {
+        @include shapes.ShapeRight($shape);
+    }
+}
+
+.shape-none {
+    border-radius: 0;
+}
+
+.shape-full {
+    border-radius: 999px;
+}
