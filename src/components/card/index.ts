@@ -1,6 +1,6 @@
-export * from "./ECard";
-export * from "./ECardTitle";
-export * from "./ECardBody";
-export * from "./ECardActions";
+export * from "./card";
+export * from "./cardTitle";
+export * from "./cardBody";
+export * from "./cardActions";
 
-export * from "./ECard.types";
+export * from "./card.types";

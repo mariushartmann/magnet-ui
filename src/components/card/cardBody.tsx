@@ -5,14 +5,14 @@ import clsx from "clsx";
 // internal imports
 
 // component imports
-import { ICardTitleProps } from "./ECard.types";
+import { ICardBodyProps } from "./card.types";
 
-export const CardTitle = ({
+export const CardBody = ({
     children = undefined,
     className = undefined,
     id = undefined,
     style = undefined
-}: React.PropsWithChildren<ICardTitleProps>): JSX.Element => {
+}: React.PropsWithChildren<ICardBodyProps>): JSX.Element => {
     // Vars & States - START
     // Vars & States - END
 
@@ -20,13 +20,13 @@ export const CardTitle = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = () => {
+    const getClasses = useCallback(() => {
         const classes = {
-            "magnet-card-title": true
+            "magnet-card-body": true
         };
 
         return clsx([classes, className]);
-    };
+    }, [className]);
 
     const getStyles = useCallback((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
@@ -46,10 +46,10 @@ export const CardTitle = ({
     );
 };
 
-CardTitle.displayName = "CardTitle";
+CardBody.displayName = "CardBody";
 
-const MagnetCardTitle = React.memo(CardTitle);
+const MagnetCardBody = React.memo(CardBody);
 
-MagnetCardTitle.displayName = "MagnetCardTitle";
+MagnetCardBody.displayName = "MagnetCardBody";
 
-export { MagnetCardTitle };
+export { MagnetCardBody };

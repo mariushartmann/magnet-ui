@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { ThemeContext } from "../app";
 
 // component imports
-import { ICardProps } from "./ECard.types";
+import { ICardProps } from "./card.types";
 
 export const Card = React.forwardRef<
     HTMLAnchorElement,

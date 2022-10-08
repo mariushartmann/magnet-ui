@@ -1,0 +1,37 @@
+@use "../../lib/elevation";
+@use "../../lib/spacing";
+
+@use "./variables";
+
+@mixin Banner() {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+@mixin BannerContent() {
+    display: flex;
+    @include spacing.PaddingVertical(
+        variables.$banner-content-padding-vertical
+    );
+    @include spacing.PaddingHorizontal(
+        variables.$banner-content-padding-horizontal
+    );
+}
+
+@mixin BannerIcon() {
+    display: inline-flex;
+    @include spacing.MarginTop(1);
+    @include spacing.MarginRight(4);
+}
+
+@mixin BannerActions() {
+    display: flex;
+    flex-direction: row-reverse;
+    @include spacing.MarginTop(variables.$banner-actions-padding-top);
+    @include spacing.PaddingBottom(variables.$banner-actions-padding-bottom);
+    @include spacing.PaddingHorizontal(
+        variables.$banner-actions-padding-horizontal
+    );
+}
