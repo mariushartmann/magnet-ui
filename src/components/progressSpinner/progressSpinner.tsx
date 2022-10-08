@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { MagnetIcon } from "../icon";
 
 // component imports
-import { IProgressSpinnerProps } from "./progress-spinner.types";
+import { IProgressSpinnerProps } from "./progressSpinner.types";
 
 const ProgressSpinner = ({
     className = undefined,

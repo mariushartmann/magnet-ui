@@ -1,0 +1,21 @@
+@use "../../lib/design-tokens";
+
+@use "./mixins";
+@use "./variables";
+
+// Basic styles
+.magnet-nav-bar {
+    @include mixins.NavBar();
+}
+
+// Light Theme
+.theme-light.magnet-nav-bar {
+    background-color: design-tokens.getTokenColor(surface, light);
+    color: design-tokens.getTokenColor(on-surface, light);
+}
+
+// Dark theme
+.theme-dark.magnet-nav-bar {
+    background-color: design-tokens.getTokenColor(surface, dark);
+    color: design-tokens.getTokenColor(on-surface, dark);
+}

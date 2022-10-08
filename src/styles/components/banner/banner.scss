@@ -28,9 +28,8 @@
 
 // Light Theme
 .theme-light.magnet-banner {
-    &.magnet-banner--elevated {
-        @include elevation.Elevation(1, light);
-    }
+    background-color: design-tokens.getTokenColor(surface, light);
+    color: design-tokens.getTokenColor(on-surface, light);
 
     &.magnet-banner--info {
         .magnet-banner--icon {
@@ -70,9 +69,8 @@
 
 // Dark theme
 .theme-dark.magnet-banner {
-    &.magnet-banner--elevated {
-        @include elevation.Elevation(1, dark);
-    }
+    background-color: design-tokens.getTokenColor(surface, dark);
+    color: design-tokens.getTokenColor(on-surface, dark);
 
     &.magnet-banner--info {
         .magnet-banner--icon {

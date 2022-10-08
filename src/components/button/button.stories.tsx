@@ -5,10 +5,10 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 // internal imports
 import { MagnetMain } from "../app";
 import { MagnetContainer } from "../grid";
+import { MagnetIcon } from "../icon";
 
 // component imports
 import { MagnetButton, IButtonProps } from ".";
-import { MagnetIcon } from "../icon";
 
 export default {
     title: "Buttons",

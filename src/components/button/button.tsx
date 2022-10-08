@@ -5,7 +5,7 @@ import clsx from "clsx";
 // internal imports
 import { ThemeContext } from "../app";
 import { MagnetIcon } from "../icon";
-import { MagnetProgressSpinner } from "../progress-spinner";
+import { MagnetProgressSpinner } from "../progressSpinner";
 
 // component imports
 import { IButtonProps } from "./button.types";

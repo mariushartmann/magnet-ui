@@ -4,4 +4,5 @@ export * from "./card";
 export * from "./grid";
 export * from "./icon";
 export * from "./image";
-export * from "./progress-spinner";
+export * from "./navBar";
+export * from "./progressSpinner";

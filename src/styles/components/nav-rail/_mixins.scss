@@ -1,0 +1,63 @@
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+@use "../../lib/typography";
+
+@use "./variables";
+
+@mixin NavRail() {
+    display: flex;
+    flex-direction: column;
+    width: variables.$nav-rail-width;
+    height: 100%;
+    @include spacing.PaddingVertical(variables.$nav-rail-padding-vertical);
+    @include spacing.PaddingHorizontal(variables.$nav-rail-padding-horizontal);
+}
+
+@mixin NavRailLink() {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    min-height: variables.$nav-rail-link-size;
+    min-width: variables.$nav-rail-link-size;
+    max-width: variables.$nav-rail-link-size;
+    @include shapes.Shape(md);
+    @include typography.Typography(label);
+    @include spacing.MarginVertical(1);
+    @include spacing.PaddingHorizontal(
+        variables.$nav-rail-link-padding-horizontal
+    );
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: inherit;
+        background-color: currentColor;
+        opacity: 0;
+        @include transition.Transition((opacity));
+    }
+
+    &:hover:before {
+        opacity: 0.1;
+    }
+
+    &:active:before {
+        opacity: 0.2;
+    }
+}
+
+@mixin NavRailLinkDisabled() {
+    cursor: not-allowed;
+
+    &:before {
+        content: none;
+    }
+}

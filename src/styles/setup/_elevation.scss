@@ -19,4 +19,22 @@
             @include elevation.ElevationInset($elevation, dark);
         }
     }
+    .theme-light {
+        &.elevation-#{$elevation} {
+            @include elevation.Elevation($elevation, light);
+        }
+
+        &.elevation-inset-#{$elevation} {
+            @include elevation.ElevationInset($elevation, light);
+        }
+    }
+    .theme-dark {
+        &.elevation-#{$elevation} {
+            @include elevation.Elevation($elevation, dark);
+        }
+
+        &.elevation-inset-#{$elevation} {
+            @include elevation.ElevationInset($elevation, dark);
+        }
+    }
 }

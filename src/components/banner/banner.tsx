@@ -41,12 +41,13 @@ export const Banner = ({
     const getClasses = useCallback(() => {
         const classes = {
             "magnet-banner": true,
-            "magnet-banner--elevated": variant && variant === "elevated",
-            "magnet-banner--filled": variant && variant === "filled",
-            "magnet-banner--info": severity && severity === "info",
-            "magnet-banner--success": severity && severity === "success",
-            "magnet-banner--warning": severity && severity === "warning",
-            "magnet-banner--error": severity && severity === "error",
+            "elevation-1": variant === "elevated",
+            "magnet-banner--elevated": variant === "elevated",
+            "magnet-banner--filled": variant === "filled",
+            "magnet-banner--info": severity === "info",
+            "magnet-banner--success": severity === "success",
+            "magnet-banner--warning": severity === "warning",
+            "magnet-banner--error": severity === "error",
             "theme-light":
                 theme === "light" ||
                 (theme === "auto" && globalTheme === "light"),
@@ -89,7 +90,7 @@ export const Banner = ({
         }
 
         return (
-            <MagnetIcon className="magnet-banner--icon mt-1" size={28}>
+            <MagnetIcon className="magnet-banner--icon mt-1" size={25}>
                 {finalIcon}
             </MagnetIcon>
         );

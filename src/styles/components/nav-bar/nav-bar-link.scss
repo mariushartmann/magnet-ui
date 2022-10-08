@@ -1,0 +1,41 @@
+@use "../../lib/design-tokens";
+
+@use "./mixins";
+@use "./variables";
+
+// Basic styles
+.magnet-nav-bar-link {
+    @include mixins.NavBarLink();
+
+    &.magnet-nav-bar-link--disabled {
+        @include mixins.NavBarLinkDisabled();
+    }
+}
+
+// Light Theme
+.theme-light.magnet-nav-bar .magnet-nav-bar-link {
+    color: design-tokens.getTokenColor(primary, light);
+
+    &.magnet-nav-bar-link--active {
+        background-color: design-tokens.getTokenColor(primary-container, light);
+        color: design-tokens.getTokenColor(on-primary-container, light);
+    }
+
+    &.magnet-nav-bar-link--disabled {
+        color: design-tokens.getTokenColor(disabled, light);
+    }
+}
+
+// Dark theme
+.theme-dark.magnet-nav-bar .magnet-nav-bar-link {
+    color: design-tokens.getTokenColor(primary, dark);
+
+    &.magnet-nav-bar-link--active {
+        background-color: design-tokens.getTokenColor(primary-container, dark);
+        color: design-tokens.getTokenColor(on-primary-container, dark);
+    }
+
+    &.magnet-nav-bar-link--disabled {
+        color: design-tokens.getTokenColor(disabled, dark);
+    }
+}

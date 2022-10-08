@@ -1,0 +1,21 @@
+@use "../../lib/design-tokens";
+
+@use "./mixins";
+@use "./variables";
+
+// Basic styles
+.magnet-nav-rail {
+    @include mixins.NavRail();
+}
+
+// Light Theme
+.theme-light.magnet-nav-rail {
+    background-color: design-tokens.getTokenColor(surface, light);
+    color: design-tokens.getTokenColor(on-surface, light);
+}
+
+// Dark theme
+.theme-dark.magnet-nav-rail {
+    background-color: design-tokens.getTokenColor(surface, dark);
+    color: design-tokens.getTokenColor(on-surface, dark);
+}
