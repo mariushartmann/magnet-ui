@@ -43,7 +43,7 @@ const ProgressSpinner = ({
 
     // Render - START
     return (
-        <MagnetIcon id={id} className={getClasses()} style={getStyles()} spin>
+        <MagnetIcon id={id} className={getClasses()} style={getStyles()}>
             autorenew
         </MagnetIcon>
     );

@@ -1,19 +1,7 @@
-.magnet-icon {
-    &.spin {
-        .material-symbols-rounded {
-            animation-name: iconSpin;
-            animation-duration: 2000ms;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-    }
-}
+@use "./mixins";
 
-@keyframes iconSpin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+.magnet-icon {
+    &.magnet-icon--link {
+        @include mixins.IconLink();
     }
 }

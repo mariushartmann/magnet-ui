@@ -1,0 +1,52 @@
+@use "../../lib/design-tokens";
+
+@use './mixins';
+@use './variables';
+
+// Basic Styles
+.magnet-checkbox {
+    @include mixins.Checkbox();
+
+    .magnet-checkbox--input {
+        @include mixins.CheckboxInput();
+    }
+
+    .magnet-checkbox--label {
+        @include mixins.CheckboxLabel();
+    }
+
+    .magnet-checkbox--checkmark {
+        @include mixins.CheckboxCheckmark();
+    }
+}
+
+// Light Theme
+.theme-light.magnet-checkbox {
+    &:not(.magnet-checkbox--has-value) {
+        .magnet-checkbox--label:before {
+            border-color: design-tokens.getTokenColor(border, light);
+            background-color: transparent;
+        }
+    }
+    &.magnet-checkbox--has-value {
+        .magnet-checkbox--label:before {
+            border-color: design-tokens.getTokenColor(primary, light);
+            background-color: design-tokens.getTokenColor(primary, light);
+        }
+    }
+
+    .magnet-checkbox--checkmark {
+        color: design-tokens.getTokenColor(on-primary, light);
+    }
+}
+
+// Dark Theme
+.theme-dark.magnet-checkbox {
+    .magnet-checkbox--label:before {
+        border-color: design-tokens.getTokenColor(border, dark);
+    }
+
+    .magnet-checkbox--checkmark {
+        color: design-tokens.getTokenColor(on-primary, dark);
+    }
+}

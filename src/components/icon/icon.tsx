@@ -10,7 +10,9 @@ import { IIconProps } from "./icon.types";
 const Icon = ({
     children = undefined,
     className = undefined,
+    disabled = false,
     id = undefined,
+    onClick = undefined,
     size = 20,
     spin = false,
     style = undefined
@@ -19,13 +21,21 @@ const Icon = ({
     // Vars & States - END
 
     // Methods & Handler - START
+    const handleClick = useCallback(
+        (ev: React.MouseEvent<HTMLElement, MouseEvent>) => {
+            if (!disabled && onClick) {
+                onClick(ev);
+            }
+        },
+        [disabled, onClick]
+    );
     // Methods & Handler - END
 
     // ClassNames & Styles - START
     const getClasses = useCallback(() => {
         const classes = {
             "magnet-icon": true,
-            "spin": spin
+            "magnet-icon--link": onClick !== undefined
         };
 
         return clsx([classes, className]);
@@ -56,7 +66,12 @@ const Icon = ({
 
     // Render - START
     return (
-        <span id={id} className={getClasses()} style={getStyles()}>
+        <span
+            id={id}
+            className={getClasses()}
+            style={getStyles()}
+            onClick={handleClick}
+        >
             <span className="material-symbols-rounded" style={getIconStyles()}>
                 {children}
             </span>

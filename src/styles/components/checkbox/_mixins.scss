@@ -1,0 +1,45 @@
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+
+@use "./variables";
+
+@mixin Checkbox() {
+    position: relative;
+    padding-left: #{variables.$checkbox-size + variables.$checkbox-space};
+    @include spacing.MarginBottom(4);
+}
+
+@mixin CheckboxInput() {
+    display: none;
+}
+
+@mixin CheckboxLabel() {
+    cursor: pointer;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: variables.$checkbox-size;
+        width: variables.$checkbox-size;
+        border: 2px solid;
+        @include shapes.Shape(xs);
+        @include transition.Transition((border-color, background-color));
+    }
+}
+
+@mixin CheckboxCheckmark() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: scale(0.5) rotate(-90deg);
+    @include transition.Transition((transform, opacity));
+
+    &.magnet-checkbox--checkmark-show {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
