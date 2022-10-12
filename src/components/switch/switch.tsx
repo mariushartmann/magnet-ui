@@ -16,10 +16,10 @@ import { MagnetIcon } from "../icon";
 import { useValidation } from "../../utils/useValidation";
 
 // component imports
-import { ICheckboxProps } from "./checkbox.types";
+import { ISwitchProps } from "./switch.types";
 import { MagnetHint } from "../hint";
 
-export const Checkbox = ({
+export const Switch = ({
     className = undefined,
     disabled = false,
     error = false,
@@ -35,11 +35,11 @@ export const Checkbox = ({
     style = undefined,
     theme = "auto",
     value = false
-}: ICheckboxProps): JSX.Element => {
+}: ISwitchProps): JSX.Element => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
-    const [internalId, setLazyId] = useState(id ?? uniqid("checkbox-"));
+    const [internalId, setLazyId] = useState(id ?? uniqid("switch-"));
     const [internalValue, setLazyValue] = useState(value);
     const [isDirty, setIsDirty] = useState(false);
     const [isValid, validationErrors] = useValidation(internalValue, rules);
@@ -63,10 +63,10 @@ export const Checkbox = ({
     // ClassNames & Styles - START
     const classes = useMemo(() => {
         const classes = {
-            "magnet-checkbox": true,
-            "magnet-checkbox--has-value": internalValue,
-            "magnet-checkbox--disabled": disabled,
-            "magnet-checkbox--error": error || (isDirty && !isValid),
+            "magnet-switch": true,
+            "magnet-switch--has-value": internalValue,
+            "magnet-switch--disabled": disabled,
+            "magnet-switch--error": error || (isDirty && !isValid),
             "theme-light":
                 theme === "light" ||
                 (theme === "auto" && globalTheme === "light"),
@@ -87,8 +87,8 @@ export const Checkbox = ({
 
     const checkmarkClasses = useMemo(() => {
         return clsx({
-            "magnet-checkbox--checkmark": true,
-            "magnet-checkbox--checkmark-show": internalValue
+            "magnet-switch--checkmark": true,
+            "magnet-switch--checkmark-show": internalValue
         });
     }, [internalValue]);
 
@@ -114,7 +114,7 @@ export const Checkbox = ({
     }, [formContext, mode]);
 
     useEffect(() => {
-        setLazyId(id ?? uniqid("checkbox-"));
+        setLazyId(id ?? uniqid("switch-"));
     }, [id]);
 
     useEffect(() => {
@@ -161,11 +161,8 @@ export const Checkbox = ({
 
     return (
         <div className={classes} style={styles} onClick={onClick}>
-            <div className="magnet-checkbox--inner">
-                <div
-                    className={"magnet-checkbox--input"}
-                    onClick={handleChange}
-                >
+            <div className="magnet-switch--inner">
+                <div className={"magnet-switch--input"} onClick={handleChange}>
                     <input
                         id={internalId}
                         type="checkbox"
@@ -174,19 +171,20 @@ export const Checkbox = ({
                         checked={internalValue}
                         ref={ref}
                     />
-                    <MagnetIcon
-                        className={checkmarkClasses}
-                        size={22}
-                        disabled={disabled}
-                        onClick={handleChange}
-                    >
-                        check
-                    </MagnetIcon>
+                    <div className={checkmarkClasses}>
+                        <MagnetIcon
+                            size={18}
+                            disabled={disabled}
+                            onClick={handleChange}
+                        >
+                            {internalValue ? "check" : null}
+                        </MagnetIcon>
+                    </div>
                 </div>
                 {label && (
                     <label
                         htmlFor={internalId}
-                        className={"magnet-checkbox--label"}
+                        className={"magnet-switch--label"}
                     >
                         {label}
                     </label>
@@ -197,10 +195,10 @@ export const Checkbox = ({
     );
 };
 
-Checkbox.displayName = "Checkbox";
+Switch.displayName = "Switch";
 
-const MagnetCheckbox = React.memo(Checkbox);
+const MagnetSwitch = React.memo(Switch);
 
-MagnetCheckbox.displayName = "MagnetCheckbox";
+MagnetSwitch.displayName = "MagnetSwitch";
 
-export { MagnetCheckbox };
+export { MagnetSwitch };

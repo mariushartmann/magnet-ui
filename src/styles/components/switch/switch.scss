@@ -1,0 +1,159 @@
+@use "../../lib/design-tokens";
+
+@use './mixins';
+@use './variables';
+
+// Basic Styles
+.magnet-switch {
+    @include mixins.Switch();
+
+    .magnet-switch--inner {
+        @include mixins.SwitchInner();
+
+        .magnet-switch--input {
+            @include mixins.SwitchInput();
+
+            .magnet-switch--checkmark {
+                @include mixins.SwitchCheckmark();
+            }
+        }
+
+        .magnet-switch--label {
+            @include mixins.SwitchLabel();
+        }
+    }
+
+    &.magnet-switch--disabled {
+        @include mixins.SwitchDisabled();
+    }
+}
+
+// Light Theme
+.theme-light.magnet-switch {
+    &:not(.magnet-switch--has-value) {
+        .magnet-switch--input {
+            border-color: design-tokens.getTokenColor(border, light);
+            background-color: transparent;
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(border, light);
+        }
+    }
+    &.magnet-switch--has-value {
+        .magnet-switch--input {
+            border-color: design-tokens.getTokenColor(primary, light);
+            background-color: design-tokens.getTokenColor(primary, light);
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(surface, light);
+            color: design-tokens.getTokenColor(on-surface, light);
+        }
+    }
+
+    &.magnet-switch--error {
+        &:not(.magnet-switch--has-value) {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(error, light);
+            }
+        }
+        &.magnet-switch--has-value {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(error, light);
+                background-color: design-tokens.getTokenColor(error, light);
+            }
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(error, light);
+            color: design-tokens.getTokenColor(on-error, light);
+        }
+    }
+
+    &.magnet-switch--disabled {
+        &:not(.magnet-switch--has-value) {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(disabled, light);
+            }
+        }
+        &.magnet-switch--has-value {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(disabled, light);
+                background-color: design-tokens.getTokenColor(disabled, light);
+            }
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(disabled, light);
+            color: design-tokens.getTokenColor(on-disabled, light);
+        }
+    }
+}
+
+// Dark Theme
+.theme-dark.magnet-switch {
+    &:not(.magnet-switch--has-value) {
+        .magnet-switch--input {
+            border-color: design-tokens.getTokenColor(border, dark);
+            background-color: transparent;
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(border, dark);
+        }
+    }
+    &.magnet-switch--has-value {
+        .magnet-switch--input {
+            border-color: design-tokens.getTokenColor(primary, dark);
+            background-color: design-tokens.getTokenColor(primary, dark);
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(surface, dark);
+            color: design-tokens.getTokenColor(on-surface, dark);
+        }
+    }
+
+    .magnet-switch--checkmark {
+        color: design-tokens.getTokenColor(on-primary, dark);
+    }
+
+    &.magnet-switch--error {
+        &:not(.magnet-switch--has-value) {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(error, dark);
+            }
+        }
+        &.magnet-switch--has-value {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(error, dark);
+                background-color: design-tokens.getTokenColor(error, dark);
+            }
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(error, dark);
+            color: design-tokens.getTokenColor(on-error, dark);
+        }
+    }
+
+    &.magnet-switch--disabled {
+        &:not(.magnet-switch--has-value) {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(disabled, dark);
+            }
+        }
+        &.magnet-switch--has-value {
+            .magnet-switch--input {
+                border-color: design-tokens.getTokenColor(disabled, dark);
+                background-color: design-tokens.getTokenColor(disabled, dark);
+            }
+        }
+
+        .magnet-switch--checkmark {
+            background-color: design-tokens.getTokenColor(disabled, dark);
+            color: design-tokens.getTokenColor(on-disabled, dark);
+        }
+    }
+}

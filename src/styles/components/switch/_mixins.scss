@@ -1,0 +1,68 @@
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+
+@use "./variables";
+
+@mixin Switch() {
+    position: relative;
+    @include spacing.MarginBottom(4);
+}
+
+@mixin SwitchInner() {
+    display: flex;
+}
+
+@mixin SwitchInput() {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    height: variables.$switch-height;
+    width: variables.$switch-width;
+    border: 2px solid;
+    @include shapes.Shape(full);
+    @include transition.Transition((border-color, background-color));
+
+    input {
+        display: none;
+    }
+}
+
+@mixin SwitchLabel() {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    @include spacing.MarginLeft(variables.$switch-space);
+}
+
+@mixin SwitchCheckmark() {
+    position: absolute;
+    min-width: variables.$switch-checkmark-size;
+    max-width: variables.$switch-checkmark-size;
+    min-height: variables.$switch-checkmark-size;
+    max-height: variables.$switch-checkmark-size;
+    top: 0;
+    left: 0;
+    transform: scale(0.8) rotate(-90deg);
+    @include shapes.Shape(full);
+    @include transition.Transition((transform, left));
+
+    &.magnet-switch--checkmark-show {
+        left: 22px;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@mixin SwitchDisabled() {
+    .magnet-switch--input {
+        cursor: not-allowed;
+
+        .magnet-switch--checkmark {
+            cursor: not-allowed;
+        }
+    }
+
+    .magnet-switch--label {
+        cursor: not-allowed;
+    }
+}
