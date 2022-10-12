@@ -177,7 +177,7 @@ export const Switch = ({
                             disabled={disabled}
                             onClick={handleChange}
                         >
-                            {internalValue ? "check" : null}
+                            check
                         </MagnetIcon>
                     </div>
                 </div>

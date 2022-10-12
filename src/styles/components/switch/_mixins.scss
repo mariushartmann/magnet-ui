@@ -47,9 +47,18 @@
     @include shapes.Shape(full);
     @include transition.Transition((transform, left));
 
+    .magnet-icon {
+        opacity: 0;
+        @include transition.Transition((opacity));
+    }
+
     &.magnet-switch--checkmark-show {
         left: 22px;
         transform: scale(1) rotate(0deg);
+
+        .magnet-icon {
+            opacity: 1;
+        }
     }
 }
 
