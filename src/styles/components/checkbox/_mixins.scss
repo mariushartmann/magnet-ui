@@ -6,34 +6,39 @@
 
 @mixin Checkbox() {
     position: relative;
-    padding-left: #{variables.$checkbox-size + variables.$checkbox-space};
     @include spacing.MarginBottom(4);
 }
 
+@mixin CheckboxInner() {
+    display: flex;
+}
+
 @mixin CheckboxInput() {
-    display: none;
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    height: variables.$checkbox-size;
+    width: variables.$checkbox-size;
+    border: 2px solid;
+    @include shapes.Shape(xs);
+    @include transition.Transition((border-color, background-color));
+
+    input {
+        display: none;
+    }
 }
 
 @mixin CheckboxLabel() {
+    position: relative;
+    display: flex;
     cursor: pointer;
-
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: variables.$checkbox-size;
-        width: variables.$checkbox-size;
-        border: 2px solid;
-        @include shapes.Shape(xs);
-        @include transition.Transition((border-color, background-color));
-    }
+    @include spacing.MarginLeft(variables.$checkbox-space);
 }
 
 @mixin CheckboxCheckmark() {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -2px;
     opacity: 0;
     transform: scale(0.5) rotate(-90deg);
     @include transition.Transition((transform, opacity));
@@ -41,5 +46,19 @@
     &.magnet-checkbox--checkmark-show {
         opacity: 1;
         transform: scale(1) rotate(0deg);
+    }
+}
+
+@mixin CheckboxDisabled() {
+    .magnet-checkbox--input {
+        cursor: not-allowed;
+
+        .magnet-checkbox--checkmark {
+            cursor: not-allowed;
+        }
+    }
+
+    .magnet-checkbox--label {
+        cursor: not-allowed;
     }
 }

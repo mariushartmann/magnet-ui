@@ -7,11 +7,11 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 
 // component imports
-import { MagnetCheckbox, ICheckboxProps } from ".";
+import { MagnetHint, IHintProps } from ".";
 
 export default {
-    title: "Checkboxes",
-    component: MagnetCheckbox,
+    title: "Hints",
+    component: MagnetHint,
     argTypes: {
         className: {
             table: {
@@ -30,15 +30,15 @@ export default {
         },
         onChange: { action: "onChange" }
     }
-} as ComponentMeta<typeof MagnetCheckbox>;
+} as ComponentMeta<typeof MagnetHint>;
 
-const DefaultTemplate: ComponentStory<typeof MagnetCheckbox> = (args) => {
+const DefaultTemplate: ComponentStory<typeof MagnetHint> = (args) => {
     return (
         <MagnetMain>
             <MagnetContainer fluid>
                 <MagnetRow>
                     <MagnetColumn>
-                        <MagnetCheckbox {...args} />
+                        <MagnetHint {...args} />
                     </MagnetColumn>
                 </MagnetRow>
             </MagnetContainer>
@@ -48,26 +48,14 @@ const DefaultTemplate: ComponentStory<typeof MagnetCheckbox> = (args) => {
 
 export const Default = DefaultTemplate.bind({});
 Default.args = {
-    disabled: false,
     error: false,
-    hint: "",
-    label: undefined,
-    mode: "lazy",
-    name: "checkbox-story",
-    rules: undefined,
-    value: false,
-    variant: "default"
-} as ICheckboxProps;
+    hints: ["This is a hint text"],
+    theme: "auto"
+} as IHintProps;
 
-export const WithRules = DefaultTemplate.bind({});
-WithRules.args = {
-    disabled: false,
+export const Multiple = DefaultTemplate.bind({});
+Multiple.args = {
     error: false,
-    hint: "",
-    label: undefined,
-    mode: "lazy",
-    name: "checkbox-story",
-    rules: [(v) => !!v || "The checkbox must be checked"],
-    value: false,
-    variant: "default"
-} as ICheckboxProps;
+    hints: ["This is a hint text", "This is another hint text"],
+    theme: "auto"
+} as IHintProps;

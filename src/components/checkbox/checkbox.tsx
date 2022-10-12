@@ -1,5 +1,11 @@
 // system imports
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState
+} from "react";
 import clsx from "clsx";
 import uniqid from "uniqid";
 
@@ -11,14 +17,15 @@ import { useValidation } from "../../utils/useValidation";
 
 // component imports
 import { ICheckboxProps } from "./checkbox.types";
+import { MagnetHint } from "../hint";
 
 export const Checkbox = ({
-    children = undefined,
     className = undefined,
     disabled = false,
     error = false,
     hint = undefined,
     id = undefined,
+    label = undefined,
     mode = "lazy",
     name = undefined,
     onChange = undefined,
@@ -28,7 +35,7 @@ export const Checkbox = ({
     style = undefined,
     theme = "auto",
     value = false
-}: React.PropsWithChildren<ICheckboxProps>): JSX.Element => {
+}: ICheckboxProps): JSX.Element => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
@@ -50,7 +57,7 @@ export const Checkbox = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-checkbox": true,
             "magnet-checkbox--has-value": internalValue,
@@ -74,14 +81,14 @@ export const Checkbox = ({
         theme
     ]);
 
-    const getCheckmarkClasses = useCallback(() => {
+    const checkmarkClasses = useMemo(() => {
         return clsx({
             "magnet-checkbox--checkmark": true,
             "magnet-checkbox--checkmark-show": internalValue
         });
     }, [internalValue]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -136,43 +143,48 @@ export const Checkbox = ({
             return null;
         }
 
-        return (
-            <div className={"magnet-checkbox--hint"}>
-                <span className="d-block-xs">{hint}</span>
-                {(error || isDirty) &&
-                    validationErrors.map((errMsg, index) => {
-                        return (
-                            <span className="d-block-xs" key={errMsg + index}>
-                                {errMsg}
-                            </span>
-                        );
-                    })}
-            </div>
-        );
-    }, [error, hint, isDirty, validationErrors]);
+        const hints = [];
+        if (hint && hint.length > 0) {
+            hints.push(hint);
+        }
+
+        validationErrors.forEach((errMsg) => {
+            hints.push(errMsg);
+        });
+
+        return <MagnetHint hints={hints} error={error} />;
+    }, [hint, validationErrors, error]);
 
     return (
-        <div className={getClasses()} style={getStyles()} onClick={onClick}>
-            <input
-                id={internalId}
-                className={"magnet-checkbox--input"}
-                type="checkbox"
-                onChange={handleChange}
-                disabled={disabled}
-                checked={internalValue}
-                ref={ref}
-            />
-            <label htmlFor={internalId} className={"magnet-checkbox--label"}>
-                {children}
-            </label>
-            <MagnetIcon
-                className={getCheckmarkClasses()}
-                size={22}
-                disabled={disabled}
-                onClick={handleChange}
-            >
-                check
-            </MagnetIcon>
+        <div className={classes} style={styles}>
+            <div className="magnet-checkbox--inner">
+                <div className={"magnet-checkbox--input"} onClick={onClick}>
+                    <input
+                        id={internalId}
+                        type="checkbox"
+                        onChange={handleChange}
+                        disabled={disabled}
+                        checked={internalValue}
+                        ref={ref}
+                    />
+                    <MagnetIcon
+                        className={checkmarkClasses}
+                        size={22}
+                        disabled={disabled}
+                        onClick={handleChange}
+                    >
+                        check
+                    </MagnetIcon>
+                </div>
+                {label && (
+                    <label
+                        htmlFor={internalId}
+                        className={"magnet-checkbox--label"}
+                    >
+                        {label}
+                    </label>
+                )}
+            </div>
             {renderHint()}
         </div>
     );

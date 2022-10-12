@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -21,7 +21,7 @@ export const Row = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-row": true,
             "magnet-row--no-gutters": noGutters
@@ -30,7 +30,7 @@ export const Row = ({
         return clsx([classes, className]);
     }, [className, noGutters]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -42,7 +42,7 @@ export const Row = ({
 
     // Render - START
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             {children}
         </div>
     );

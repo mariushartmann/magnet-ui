@@ -1,5 +1,5 @@
 // system imports
-import React from "react";
+import React, { useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -20,19 +20,19 @@ export const BannerTitle = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = () => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-banner-title": true
         };
 
         return clsx([classes, className]);
-    };
+    }, []);
 
-    const getStyles = (): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
-    };
+    }, []);
     // ClassNames & Styles - END
 
     // Life Cycle Hooks - START
@@ -40,7 +40,7 @@ export const BannerTitle = ({
 
     // Render - START
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             {children}
         </div>
     );

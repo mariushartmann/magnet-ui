@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -20,15 +20,15 @@ export const CardTitle = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = () => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-card-title": true
         };
 
         return clsx([classes, className]);
-    };
+    }, []);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -40,7 +40,7 @@ export const CardTitle = ({
 
     // Render - START
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             {children}
         </div>
     );

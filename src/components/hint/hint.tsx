@@ -6,16 +6,16 @@ import clsx from "clsx";
 import { ThemeContext } from "../app";
 
 // component imports
-import { INavBarProps } from "./navBar.types";
+import { IHintProps } from "./hint.types";
 
-export const NavBar = ({
-    children = undefined,
+const Hint = ({
     className = undefined,
+    error = false,
+    hints = [],
     id = undefined,
     style = undefined,
-    theme = "auto",
-    variant = "flat"
-}: React.PropsWithChildren<INavBarProps>) => {
+    theme = "auto"
+}: IHintProps) => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     // Vars & States - END
@@ -26,10 +26,8 @@ export const NavBar = ({
     // ClassNames & Styles - START
     const classes = useMemo(() => {
         const classes = {
-            "magnet-nav-bar": true,
-            "magnet-nav-bar--flat": variant === "flat",
-            "magnet-nav-bar--elevated": variant === "elevated",
-            "elevation-2": variant === "elevated",
+            "magnet-hint": true,
+            "magnet-hint--error": error,
             "theme-light":
                 theme === "light" ||
                 (theme === "auto" && globalTheme === "light"),
@@ -38,7 +36,7 @@ export const NavBar = ({
         };
 
         return clsx([classes, className]);
-    }, [className, globalTheme, theme, variant]);
+    }, [className, theme, globalTheme, error]);
 
     const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
@@ -48,21 +46,22 @@ export const NavBar = ({
     // ClassNames & Styles - END
 
     // Life Cycle Hooks - START
-    // useRipple(innerRef);
     // Life Cycle Hooks - END
 
     // Render - START
     return (
         <div id={id} className={classes} style={styles}>
-            {children}
+            {hints.map((hint, index) => {
+                return <span key={hint + index}>{hint}</span>;
+            })}
         </div>
     );
 };
 
-NavBar.displayName = "NavBar";
+Hint.displayName = "Hint";
 
-const MagnetNavBar = React.memo(NavBar);
+const MagnetHint = React.memo(Hint);
 
-MagnetNavBar.displayName = "MagnetNavBar";
+MagnetHint.displayName = "MagnetHint";
 
-export { MagnetNavBar };
+export { MagnetHint };

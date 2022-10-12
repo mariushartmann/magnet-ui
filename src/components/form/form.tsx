@@ -1,5 +1,11 @@
 // system imports
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState
+} from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -77,7 +83,7 @@ const Form = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-form": true
         };
@@ -85,7 +91,7 @@ const Form = ({
         return clsx([classes, className]);
     }, [className]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -113,9 +119,9 @@ const Form = ({
         >
             <form
                 id={id}
-                className={getClasses()}
+                className={classes}
                 onSubmit={handleSubmit}
-                style={getStyles()}
+                style={styles}
                 ref={ref}
             >
                 {children}

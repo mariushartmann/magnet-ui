@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -33,7 +33,7 @@ export const NavBarLink = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-nav-bar-link": true,
             "magnet-nav-bar-link--active": active,
@@ -43,7 +43,7 @@ export const NavBarLink = ({
         return clsx([classes, className]);
     }, [active, className, disabled]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -58,8 +58,8 @@ export const NavBarLink = ({
     return (
         <button
             id={id}
-            className={getClasses()}
-            style={getStyles()}
+            className={classes}
+            style={styles}
             onClick={handleClick}
         >
             <MagnetIcon className="magnet-nav-bar-link--icon">

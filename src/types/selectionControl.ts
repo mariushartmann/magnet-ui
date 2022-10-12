@@ -22,6 +22,14 @@ export interface ISelectionControlProps<
     hint?: string;
 
     /**
+     * The label
+     *
+     * @docType string
+     * @defaultValue `undefined`
+     */
+    label?: string;
+
+    /**
      * The validation mode of the input.
      * `Lazy` will only validate after a user took action.
      * `Force` will validate immediatly.

@@ -1,0 +1,11 @@
+@use "../../lib/typography";
+
+@mixin Hint() {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        display: flex;
+        @include typography.Typography(caption);
+    }
+}

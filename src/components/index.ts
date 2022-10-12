@@ -4,6 +4,7 @@ export * from "./card";
 export * from "./checkbox";
 export * from "./form";
 export * from "./grid";
+export * from "./hint";
 export * from "./icon";
 export * from "./image";
 export * from "./navBar";

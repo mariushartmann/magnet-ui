@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -32,7 +32,7 @@ const Icon = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-icon": true,
             "magnet-icon--link": onClick !== undefined
@@ -41,7 +41,7 @@ const Icon = ({
         return clsx([classes, className]);
     }, [className, spin]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {
             minHeight: size,
             maxHeight: size,
@@ -66,12 +66,7 @@ const Icon = ({
 
     // Render - START
     return (
-        <span
-            id={id}
-            className={getClasses()}
-            style={getStyles()}
-            onClick={handleClick}
-        >
+        <span id={id} className={classes} style={styles} onClick={handleClick}>
             <span className="material-symbols-rounded" style={getIconStyles()}>
                 {children}
             </span>

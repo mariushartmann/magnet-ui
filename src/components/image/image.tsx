@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -22,7 +22,7 @@ export const Image = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-image": true,
             "magnet-image--contain": contain
@@ -31,7 +31,7 @@ export const Image = ({
         return clsx([classes, className]);
     }, [className, contain]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
         let tmpStyle = style;
 
@@ -53,7 +53,7 @@ export const Image = ({
 
     // Render - START
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             <div
                 className="magnet-image--inner"
                 style={{

@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -25,7 +25,7 @@ export const Column = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         // eslint-disable-next-line @typescript-eslint/member-delimiter-style
         const classes: { [key: string]: boolean } = {
             "magnet-column": true
@@ -50,7 +50,7 @@ export const Column = ({
         return clsx([classes, className]);
     }, [className, lg, md, sm, xl, xs]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -62,7 +62,7 @@ export const Column = ({
 
     // Render - START
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             {children}
         </div>
     );

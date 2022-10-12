@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -43,7 +43,7 @@ export const Card = React.forwardRef<
         // Methods & Handler - END
 
         // ClassNames & Styles - START
-        const getClasses = useCallback(() => {
+        const classes = useMemo(() => {
             const classes = {
                 "magnet-card": true,
                 "elevation-1": variant === "elevated",
@@ -62,7 +62,7 @@ export const Card = React.forwardRef<
             return clsx([classes, className]);
         }, [className, disabled, globalTheme, theme, variant]);
 
-        const getStyles = useCallback((): React.CSSProperties => {
+        const styles = useMemo((): React.CSSProperties => {
             const styleList: React.CSSProperties = {};
 
             return { ...styleList, ...style };
@@ -77,8 +77,8 @@ export const Card = React.forwardRef<
             tag,
             {
                 id: id,
-                className: getClasses(),
-                style: getStyles(),
+                className: classes,
+                style: styles,
                 onClick: handleClick,
                 href: !disabled ? href : undefined,
                 ref

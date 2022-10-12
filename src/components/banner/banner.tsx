@@ -38,7 +38,7 @@ export const Banner = ({
     // Methods & Handler - END
 
     // ClassNames & Styles - START
-    const getClasses = useCallback(() => {
+    const classes = useMemo(() => {
         const classes = {
             "magnet-banner": true,
             "elevation-1": variant === "elevated",
@@ -58,7 +58,7 @@ export const Banner = ({
         return clsx([classes, className]);
     }, [className, globalTheme, severity, theme, variant]);
 
-    const getStyles = useCallback((): React.CSSProperties => {
+    const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
@@ -97,7 +97,7 @@ export const Banner = ({
     }, [icon, severity]);
 
     return (
-        <div id={id} className={getClasses()} style={getStyles()}>
+        <div id={id} className={classes} style={styles}>
             <div className="magnet-banner--content">
                 {!hideIcon && renderIcon()}
                 <div className="magnet-banner--content-inner">

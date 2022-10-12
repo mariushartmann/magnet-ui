@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback, useContext, useRef } from "react";
+import React, { useCallback, useContext, useMemo, useRef } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -56,7 +56,7 @@ export const Button = React.forwardRef<
         // Methods & Handler - END
 
         // ClassNames & Styles - START
-        const getClasses = useCallback(() => {
+        const classes = useMemo(() => {
             const classes = {
                 "magnet-button": true,
                 "elevation-1": variant === "elevated" && !disabled,
@@ -98,7 +98,7 @@ export const Button = React.forwardRef<
             variant
         ]);
 
-        const getStyles = useCallback((): React.CSSProperties => {
+        const styles = useMemo((): React.CSSProperties => {
             const styleList: React.CSSProperties = {};
 
             return { ...styleList, ...style };
@@ -128,8 +128,8 @@ export const Button = React.forwardRef<
             tag,
             {
                 id: id,
-                className: getClasses(),
-                style: getStyles(),
+                className: classes,
+                style: styles,
                 onClick: handleClick,
                 disabled: disabled,
                 href: href,
