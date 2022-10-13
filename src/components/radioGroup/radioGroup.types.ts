@@ -1,10 +1,6 @@
-import { IClickable, IComponentProps } from ".";
+import { IComponentProps, InputValidationRules, IThemable } from "../../types";
 
-export interface ISelectionControlProps<
-    THtmlElement extends HTMLElement = HTMLElement,
-    THtmlInnerElement extends HTMLElement = HTMLElement
-> extends IComponentProps,
-        IClickable<React.MouseEvent<THtmlInnerElement>> {
+export interface IRadioGroupProps extends IComponentProps, IThemable {
     /**
      * Puts the input in an error state
      *
@@ -22,14 +18,6 @@ export interface ISelectionControlProps<
     hint?: string;
 
     /**
-     * The label
-     *
-     * @docType string
-     * @defaultValue `undefined`
-     */
-    label?: string;
-
-    /**
      * The validation mode of the input.
      * `Lazy` will only validate after a user took action.
      * `Force` will validate immediatly.
@@ -41,12 +29,11 @@ export interface ISelectionControlProps<
     mode?: "lazy" | "force";
 
     /**
-     * The html form name
+     * The name of the radio group
      *
      * @docType string
-     * @defaultValue `undefined`
      */
-    name?: string;
+    name: string;
 
     /**
      * An event that is emitted when the value changed
@@ -54,15 +41,15 @@ export interface ISelectionControlProps<
      * @docType callback
      * @defaultValue `undefined`
      */
-    onChange?: (value: boolean) => void;
+    onChange?: (newValue: string) => void;
 
     /**
-     * A reference to the HTML input
+     * Displays radio buttons in row
      *
-     * @docType React.Ref
-     * @defaultValue `undefined`
+     * @docType boolean
+     * @defaultValue `false`
      */
-    ref?: React.Ref<THtmlElement>;
+    row?: boolean;
 
     /**
      * Accepts a mixed array of types function, boolean and string.
@@ -75,14 +62,10 @@ export interface ISelectionControlProps<
     rules?: InputValidationRules;
 
     /**
-     * A value of the input
+     * The value of the selected radio in the group
      *
-     * @docType any
+     * @docType string
      * @defaultValue `undefined`
      */
-    value?: boolean;
+    value?: string;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type InputValidationRule = (value: boolean) => string | boolean;
-export type InputValidationRules = (InputValidationRule | string)[];

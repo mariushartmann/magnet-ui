@@ -40,7 +40,7 @@ export const Switch = ({
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
     const [internalId, setLazyId] = useState(id ?? uniqid("switch-"));
-    const [internalValue, setLazyValue] = useState(value);
+    const [internalValue, setInternalValue] = useState(value);
     const [isDirty, setIsDirty] = useState(false);
     const [isValid, validationErrors] = useValidation(internalValue, rules);
     // Vars & States - END
@@ -52,7 +52,7 @@ export const Switch = ({
         }
 
         const newValue = !internalValue;
-        setLazyValue(newValue);
+        setInternalValue(newValue);
         setIsDirty(true);
         if (onChange) {
             onChange(newValue);
@@ -118,7 +118,7 @@ export const Switch = ({
     }, [id]);
 
     useEffect(() => {
-        setLazyValue(value);
+        setInternalValue(value);
     }, [value]);
 
     useEffect(() => {

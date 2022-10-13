@@ -9,3 +9,6 @@ export * from "./icon";
 export * from "./image";
 export * from "./navBar";
 export * from "./progressSpinner";
+export * from "./radio";
+export * from "./radioGroup";
+export * from "./switch";

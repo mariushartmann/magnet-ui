@@ -1,0 +1,69 @@
+@use "../../lib/shapes";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+
+@use "./variables";
+
+@mixin Radio() {
+    position: relative;
+    @include spacing.MarginBottom(4);
+}
+
+@mixin RadioInner() {
+    display: flex;
+}
+
+@mixin RadioInput() {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    height: variables.$radio-size;
+    width: variables.$radio-size;
+    border: 2px solid;
+    @include shapes.Shape(full);
+    @include transition.Transition((border-color));
+
+    input {
+        display: none;
+    }
+}
+
+@mixin RadioLabel() {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    @include spacing.MarginLeft(variables.$radio-space);
+}
+
+@mixin RadioCheckmark() {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    min-width: variables.$radio-checkmark-size;
+    max-width: variables.$radio-checkmark-size;
+    min-height: variables.$radio-checkmark-size;
+    max-height: variables.$radio-checkmark-size;
+    opacity: 0;
+    transform: scale(0);
+    @include shapes.Shape(full);
+    @include transition.Transition((transform, opacity, background-color));
+
+    &.magnet-radio--checkmark-show {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@mixin RadioDisabled() {
+    .magnet-radio--input {
+        cursor: not-allowed;
+
+        .magnet-radio--checkmark {
+            cursor: not-allowed;
+        }
+    }
+
+    .magnet-radio--label {
+        cursor: not-allowed;
+    }
+}
