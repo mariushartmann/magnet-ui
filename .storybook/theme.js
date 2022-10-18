@@ -4,5 +4,5 @@ export default create({
     base: "light",
     brandTitle: "Magnet-UI React Framework",
     brandUrl: "https://github.com/mariushartmann/magnet-ui",
-    brandImage: "/Magnet-UI.png"
+    brandImage: "Magnet-UI.png"
 });
