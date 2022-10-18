@@ -11,14 +11,14 @@
   ],
   "scripts": {
     "dev": "npm run storybook:start",
-    "build": "npm run test && npm run storybook:build",
+    "build": "npm run test && npm run css:build && npm run storybook:build",
     "test": "tsc --noEmit && npm run lint",
     "lint": "eslint ./src --ext .ts,.tsx",
     "lint:fix": "eslint --fix ./src --ext .ts,.tsx",
     "css:build": "sass --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
     "css:watch": "sass --watch --style compressed --source-map --embed-sources --no-error-css src/styles/:dist/css",
-    "storybook:start": "start-storybook -p 6006 -s ./assets",
-    "storybook:build": "build-storybook --docs -s ./assets -o ./docs"
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -o ./docs"
   },
   "author": "Marius Hartmann",
   "license": "MIT",
