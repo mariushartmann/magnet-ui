@@ -15,7 +15,7 @@ export const NavRail = ({
     style = undefined,
     theme = "auto",
     variant = "flat"
-}: React.PropsWithChildren<INavRailProps>) => {
+}: React.PropsWithChildren<INavRailProps>): JSX.Element => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     // Vars & States - END

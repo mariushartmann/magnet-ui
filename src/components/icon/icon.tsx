@@ -14,7 +14,6 @@ const Icon = ({
     id = undefined,
     onClick = undefined,
     size = 20,
-    spin = false,
     style = undefined
 }: React.PropsWithChildren<IIconProps>) => {
     // Vars & States - START
@@ -39,7 +38,7 @@ const Icon = ({
         };
 
         return clsx([classes, className]);
-    }, [className, spin]);
+    }, [className, onClick]);
 
     const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {

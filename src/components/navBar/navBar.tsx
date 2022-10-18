@@ -15,7 +15,7 @@ export const NavBar = ({
     style = undefined,
     theme = "auto",
     variant = "flat"
-}: React.PropsWithChildren<INavBarProps>) => {
+}: React.PropsWithChildren<INavBarProps>): JSX.Element => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     // Vars & States - END

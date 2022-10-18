@@ -10,12 +10,4 @@ export interface IIconProps
      * @defaultValue `20`
      */
     size?: number;
-
-    /**
-     * Makes an icon spin 360° clockwise
-     *
-     * @docType boolean
-     * @defaultValue `false`
-     */
-    spin?: boolean;
 }

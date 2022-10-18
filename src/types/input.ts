@@ -1,7 +1,8 @@
 import { IClickable, IComponentProps } from ".";
-import { InputValidationRules } from "./input";
 
-export interface ISelectionControlProps<
+export interface IInputProps<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    TValue extends any = any,
     THtmlElement extends HTMLElement = HTMLElement,
     THtmlInnerElement extends HTMLElement = HTMLElement
 > extends IComponentProps,
@@ -21,14 +22,6 @@ export interface ISelectionControlProps<
      * @defaultValue `undefined`
      */
     hint?: string;
-
-    /**
-     * The label
-     *
-     * @docType string
-     * @defaultValue `undefined`
-     */
-    label?: string;
 
     /**
      * The validation mode of the input.
@@ -55,7 +48,15 @@ export interface ISelectionControlProps<
      * @docType callback
      * @defaultValue `undefined`
      */
-    onChange?: (value: boolean) => void;
+    onChange?: (value: TValue) => void;
+
+    /**
+     * Puts input in readonly state
+     *
+     * @docType boolean
+     * @defaultValue `false`
+     */
+    readOnly?: boolean;
 
     /**
      * A reference to the HTML input
@@ -81,5 +82,9 @@ export interface ISelectionControlProps<
      * @docType any
      * @defaultValue `undefined`
      */
-    value?: boolean;
+    value?: TValue;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type InputValidationRule = (value: any) => string | boolean;
+export type InputValidationRules = (InputValidationRule | string)[];

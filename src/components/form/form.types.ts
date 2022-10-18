@@ -36,14 +36,6 @@ export interface IFormProps extends IComponentProps {
      * @defaultValue `undefined`
      */
     onValidityChange?: (validity: boolean) => void;
-
-    /**
-     * The form reference
-     *
-     * @docType React.LegacyRef
-     * @defaultValue `undefined`
-     */
-    ref?: React.LegacyRef<HTMLFormElement>;
 }
 
 export interface IFormData {

@@ -49,10 +49,9 @@ const DefaultTemplate: ComponentStory<typeof MagnetForm> = (args) => {
                         <MagnetForm {...args} onSubmit={setResult}>
                             <MagnetCheckbox
                                 name="checkbox"
+                                label="Checkbox"
                                 rules={[(v) => !!v || "Required field"]}
-                            >
-                                Checkbox
-                            </MagnetCheckbox>
+                            ></MagnetCheckbox>
                             <MagnetButton type="submit">Submit</MagnetButton>
                         </MagnetForm>
                         <br></br>
@@ -71,5 +70,7 @@ export const Default = DefaultTemplate.bind({});
 Default.args = {
     isDirty: false,
     mode: "lazy",
-    onSubmit: () => {}
+    onSubmit: (data) => {
+        console.log(data);
+    }
 } as IFormProps;

@@ -26,7 +26,7 @@ export const CardTitle = ({
         };
 
         return clsx([classes, className]);
-    }, []);
+    }, [className]);
 
     const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};

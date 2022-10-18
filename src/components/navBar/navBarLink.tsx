@@ -17,7 +17,7 @@ export const NavBarLink = ({
     id = undefined,
     onClick = undefined,
     style = undefined
-}: React.PropsWithChildren<INavBarLinkProps>) => {
+}: React.PropsWithChildren<INavBarLinkProps>): JSX.Element => {
     // Vars & States - START
     // Vars & States - END
 

@@ -17,7 +17,7 @@ export const NavRailLink = ({
     id = undefined,
     onClick = undefined,
     style = undefined
-}: React.PropsWithChildren<INavRailLinkProps>) => {
+}: React.PropsWithChildren<INavRailLinkProps>): JSX.Element => {
     // Vars & States - START
     // Vars & States - END
 

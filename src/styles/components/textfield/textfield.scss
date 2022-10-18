@@ -1,0 +1,112 @@
+@use "../../lib/design-tokens";
+@use "../input/input";
+
+@use './mixins';
+@use './variables';
+
+// Basic Styles
+.magnet-textfield {
+    @include input.Input();
+
+    .magnet-textfield--container {
+        @include input.InputContainer();
+
+        .magnet-textfield--prepend-icon {
+            @include input.InputPrependIcon();
+        }
+
+        .magnet-textfield--inner-container {
+            @include input.InputInnerContainer();
+
+            label {
+                @include input.InputLabel();
+            }
+
+            input {
+                @include input.InputElement();
+            }
+        }
+
+        .magnet-textfield--append-icon {
+            @include input.InputAppendIcon();
+        }
+    }
+
+    &.magnet-textfield--focus {
+        .magnet-textfield--container {
+            @include input.InputContainerWithFocus();
+        }
+    }
+
+    &.magnet-textfield--value,
+    &.magnet-textfield--focus {
+        .magnet-textfield--container {
+            label {
+                @include input.InputLabelWithValueOrFocus();
+            }
+        }
+    }
+
+    &.magnet-textfield--disabled {
+        .magnet-textfield--container {
+            cursor: not-allowed;
+            background-color: transparent;
+
+            input {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+// Light Theme
+.theme-light.magnet-textfield {
+    .magnet-textfield--container {
+        border-color: design-tokens.getTokenColor(border, light);
+        background-color: design-tokens.getTokenColor(primary-container, light);
+        color: design-tokens.getTokenColor(on-primary-container, light);
+
+        &:before {
+            background-color: design-tokens.getTokenColor(primary, light);
+        }
+    }
+
+    &.magnet-textfield--focus {
+        label {
+            color: design-tokens.getTokenColor(primary, light);
+        }
+    }
+
+    &.magnet-textfield--error {
+        .magnet-textfield--container {
+            border-color: design-tokens.getTokenColor(error, light);
+            background-color: design-tokens.getTokenColor(
+                error-container,
+                light
+            );
+            color: design-tokens.getTokenColor(on-error-container, light);
+
+            &:before {
+                background-color: design-tokens.getTokenColor(error, light);
+            }
+        }
+
+        &.magnet-textfield--focus {
+            label {
+                color: design-tokens.getTokenColor(error, light);
+            }
+        }
+    }
+
+    &.magnet-textfield--disabled {
+        .magnet-textfield--container {
+            border-color: design-tokens.getTokenColor(on-disabled, light);
+            background-color: design-tokens.getTokenColor(disabled, light);
+            color: design-tokens.getTokenColor(on-disabled, light);
+        }
+    }
+}
+
+// Dark Theme
+.theme-dark.magnet-textfield {
+}

@@ -26,13 +26,13 @@ export const BannerTitle = ({
         };
 
         return clsx([classes, className]);
-    }, []);
+    }, [className]);
 
     const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
 
         return { ...styleList, ...style };
-    }, []);
+    }, [style]);
     // ClassNames & Styles - END
 
     // Life Cycle Hooks - START

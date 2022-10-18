@@ -33,7 +33,6 @@ const Form = ({
     mode = "lazy",
     onSubmit,
     onValidityChange = undefined,
-    ref,
     style = undefined
 }: React.PropsWithChildren<IFormProps>) => {
     // Vars & States - START
@@ -122,7 +121,6 @@ const Form = ({
                 className={classes}
                 onSubmit={handleSubmit}
                 style={styles}
-                ref={ref}
             >
                 {children}
             </form>

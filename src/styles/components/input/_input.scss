@@ -1,0 +1,101 @@
+@use '../../lib/shapes';
+@use '../../lib/spacing';
+@use '../../lib/transition';
+@use '../../lib/typography';
+
+@use './variables';
+
+@mixin Input() {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include shapes.ShapeTop(sm);
+    @include spacing.MarginBottom(variables.$input-margin-bottom);
+}
+
+@mixin InputContainer() {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: inherit;
+    border-bottom: 1px solid;
+    @include spacing.PaddingHorizontal(variables.$input-padding-horizontal);
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        @include transition.Transition((width));
+    }
+}
+
+@mixin InputContainerWithFocus() {
+    &:before {
+        width: 100%;
+    }
+}
+
+@mixin InputInnerContainer() {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    min-height: variables.$input-height;
+}
+
+@mixin InputLabel() {
+    position: absolute;
+    left: 0;
+    letter-spacing: normal;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+    min-height: 8px;
+    right: auto;
+    color: currentColor;
+    @include transition.Transition((transform, font-size, font-weight, color));
+    @include typography.Typography("body");
+}
+
+@mixin InputLabelWithValueOrFocus() {
+    transform: translateY(-60%);
+    @include typography.Typography("label");
+}
+
+@mixin InputElement() {
+    flex: 1 1 auto;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    font-family: inherit;
+    color: inherit;
+    @include typography.Typography("body");
+    @include spacing.PaddingTop(variables.$input-padding-top);
+    @include spacing.PaddingBottom(variables.$input-padding-bottom);
+}
+
+@mixin InputPrependIcon() {
+    @include spacing.MarginRight(variables.$input-icon-margin);
+}
+
+@mixin InputAppendIcon() {
+    @include spacing.MarginLeft(variables.$input-icon-margin);
+}
+
+@mixin InputContainerOutlined() {
+    border: 1px solid;
+    background-color: transparent;
+}
