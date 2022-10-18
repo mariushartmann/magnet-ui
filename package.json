@@ -1,11 +1,15 @@
 {
   "name": "magnet-ui",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "author": "Marius Hartmann",
   "license": "MIT",
   "homepage": "https://mariushartmann.github.io/magnet-ui",
   "bugs": "https://github.com/mariushartmann/magnet-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mariushartmann/magnet-ui"
+  },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
