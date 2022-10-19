@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["../../../../src/styles/components/icon/icon.scss","../../../../src/styles/components/icon/_mixins.scss"],"names":[],"mappings":"AAGI,+BCFA","file":"icon.css","sourcesContent":["@use \"./mixins\";\n\n.magnet-icon {\n    &.magnet-icon--link {\n        @include mixins.IconLink();\n    }\n}\n","@mixin IconLink() {\n    cursor: pointer;\n}\n"]}

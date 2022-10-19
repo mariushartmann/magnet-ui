@@ -287,8 +287,13 @@ export const Colors = (): JSX.Element => {
 
                             <div className="my-10">
                                 <h3 className="mb-5">
-                                    Examples with primary & secondary color
+                                    Auto generated color tones
                                 </h3>
+
+                                <p>
+                                    You can find all generated colors in the{" "}
+                                    <code>:root</code> of the stylesheet
+                                </p>
 
                                 <div>
                                     {[
