@@ -19,6 +19,7 @@ import { IRadioGroupProps } from "./radioGroup.types";
 export const RadioGroup = ({
     children = undefined,
     className = undefined,
+    disabled = false,
     error = false,
     hint = undefined,
     id = undefined,
@@ -41,13 +42,17 @@ export const RadioGroup = ({
     // Methods & Handler - START
     const handleChange = useCallback(
         (ev) => {
+            if (disabled) {
+                return;
+            }
+
             const newValue = ev.target.value;
             setInternalValue(newValue);
             if (onChange) {
                 onChange(newValue);
             }
         },
-        [onChange]
+        [disabled, onChange]
     );
     // Methods & Handler - END
 
@@ -91,6 +96,7 @@ export const RadioGroup = ({
             return React.cloneElement(child, {
                 name: name,
                 checked: child.props.value === internalValue,
+                disabled,
                 error: (isDirty && !isValid) || error,
                 theme
             });

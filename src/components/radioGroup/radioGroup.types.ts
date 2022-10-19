@@ -2,6 +2,14 @@ import { IComponentProps, InputValidationRules, IThemable } from "../../types";
 
 export interface IRadioGroupProps extends IComponentProps, IThemable {
     /**
+     * Set the component to disabled
+     *
+     * @docType boolean
+     * @defaultValue `false`
+     */
+    disabled?: boolean;
+
+    /**
      * Puts the input in an error state
      *
      * @docType boolean

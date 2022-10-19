@@ -10,7 +10,7 @@ import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 import { MagnetSwitch, ISwitchProps } from ".";
 
 export default {
-    title: "Switches",
+    title: "Components/Switches",
     component: MagnetSwitch,
     argTypes: {
         className: {

@@ -10,7 +10,7 @@ import { MagnetMain } from "../app";
 import { MagnetContainer, MagnetRow, MagnetColumn } from ".";
 
 export default {
-    title: "Grid System",
+    title: "Components/Grid System",
     component: MagnetContainer,
     argTypes: {
         className: {

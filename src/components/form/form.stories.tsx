@@ -17,7 +17,7 @@ import {
 import { MagnetForm, IFormProps } from ".";
 
 export default {
-    title: "Forms",
+    title: "Components/Forms",
     component: MagnetForm,
     argTypes: {
         className: {

@@ -10,7 +10,7 @@ import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 import { MagnetCheckbox, ICheckboxProps } from ".";
 
 export default {
-    title: "Checkboxes",
+    title: "Components/Checkboxes",
     component: MagnetCheckbox,
     argTypes: {
         className: {

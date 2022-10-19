@@ -19,7 +19,7 @@ import {
 } from ".";
 
 export default {
-    title: "Cards",
+    title: "Components/Cards",
     component: MagnetCard,
     argTypes: {
         className: {

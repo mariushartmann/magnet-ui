@@ -10,7 +10,7 @@ import { MagnetColumn, MagnetContainer, MagnetRow } from "../grid";
 import { MagnetImage, IImageProps } from ".";
 
 export default {
-    title: "Images",
+    title: "Components/Images",
     component: MagnetImage,
     argTypes: {
         className: {

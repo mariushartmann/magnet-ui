@@ -10,7 +10,7 @@ import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 import { MagnetHint, IHintProps } from ".";
 
 export default {
-    title: "Hints",
+    title: "Components/Hints",
     component: MagnetHint,
     argTypes: {
         className: {

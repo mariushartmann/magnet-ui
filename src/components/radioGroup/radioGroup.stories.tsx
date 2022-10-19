@@ -15,7 +15,7 @@ import {
 import { MagnetRadioGroup, IRadioGroupProps } from ".";
 
 export default {
-    title: "Radio Groups",
+    title: "Components/Radio Groups",
     component: MagnetRadioGroup,
     argTypes: {
         className: {

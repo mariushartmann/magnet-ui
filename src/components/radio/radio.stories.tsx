@@ -10,7 +10,7 @@ import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 import { MagnetRadio, IRadioProps } from ".";
 
 export default {
-    title: "Radios",
+    title: "Components/Radios",
     component: MagnetRadio,
     argTypes: {
         className: {

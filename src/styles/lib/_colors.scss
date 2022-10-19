@@ -4,6 +4,7 @@
 @use "sass:string";
 
 @mixin createColor($prefix, $color) {
+    --#{$prefix}-original: #{$color};
     @each $key, $value in color-to-tone-map($color) {
         --#{$prefix}-#{$key}: #{$value};
     }

@@ -9,7 +9,7 @@ import { MagnetMain } from "../..";
 import { MagnetBanner, IBannerProps } from ".";
 
 export default {
-    title: "Banner",
+    title: "Components/Banner",
     component: MagnetBanner,
     argTypes: {
         className: {

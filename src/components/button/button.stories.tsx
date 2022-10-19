@@ -11,7 +11,7 @@ import { MagnetIcon } from "../icon";
 import { MagnetButton, IButtonProps } from ".";
 
 export default {
-    title: "Buttons",
+    title: "Components/Buttons",
     component: MagnetButton,
     argTypes: {
         className: {

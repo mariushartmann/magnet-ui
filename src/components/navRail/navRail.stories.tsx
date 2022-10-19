@@ -8,7 +8,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MagnetNavRail, MagnetNavRailLink, INavRailProps } from ".";
 
 export default {
-    title: "Nav Rails",
+    title: "Components/Nav Rails",
     component: MagnetNavRail,
     argTypes: {
         className: {

@@ -8,7 +8,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MagnetNavBar, MagnetNavBarLink, INavBarProps } from ".";
 
 export default {
-    title: "Nav Bars",
+    title: "Components/Nav Bars",
     component: MagnetNavBar,
     argTypes: {
         className: {

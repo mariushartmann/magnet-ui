@@ -9,7 +9,7 @@ import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 import { ETextField, IETextFieldProps } from ".";
 
 export default {
-    title: "Textfields",
+    title: "Components/Textfields",
     component: ETextField,
     argTypes: {
         className: {

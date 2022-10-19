@@ -10,7 +10,7 @@ import { MagnetContainer } from "../grid";
 import { MagnetIcon, IIconProps } from ".";
 
 export default {
-    title: "Icons",
+    title: "Components/Icons",
     component: MagnetIcon,
     argTypes: {
         className: {

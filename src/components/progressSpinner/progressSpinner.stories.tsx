@@ -10,7 +10,7 @@ import { MagnetContainer } from "../grid";
 import { MagnetProgressSpinner, IProgressSpinnerProps } from ".";
 
 export default {
-    title: "Progress Spinner",
+    title: "Components/Progress Spinner",
     component: MagnetProgressSpinner,
     argTypes: {
         className: {

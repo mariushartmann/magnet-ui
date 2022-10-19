@@ -138,7 +138,7 @@ export const Button = React.forwardRef<
             },
             <>
                 {renderInner()}
-                {loading && <MagnetProgressSpinner />}
+                {<MagnetProgressSpinner />}
             </>
         );
     }
