@@ -1,10 +1,13 @@
 module.exports = {
+    root: true,
+    parser: "@typescript-eslint/parser",
     parserOptions: {
         project: "tsconfig.json",
+        tsconfigRootDir: __dirname,
         sourceType: "module"
     },
     ignorePatterns: [".eslintrc.js", "*.d.ts"],
-    plugins: ["@typescript-eslint", "unused-imports"],
+    plugins: ["@typescript-eslint"],
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -119,8 +122,6 @@ module.exports = {
         "brace-style": ["error", "1tbs"],
         "quote-props": ["off"],
         "@typescript-eslint/no-inferrable-types": ["off"],
-        "unused-imports/no-unused-imports": ["error"],
-        "unused-imports/no-unused-vars": ["warn"],
         "prefer-destructuring": [
             "error",
             {
