@@ -1,7 +1,4 @@
-@use "../../lib/design-tokens";
-
 @use './mixins';
-@use './variables';
 
 // Basic Styles
 .magnet-radio {
@@ -29,81 +26,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-radio {
-    &:not(.magnet-radio--has-value) {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(border, light);
-            background-color: transparent;
-        }
-    }
-    &.magnet-radio--has-value {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(primary, light);
-            background-color: transparent;
-        }
-    }
-
-    .magnet-radio--checkmark {
-        background-color: design-tokens.getTokenColor(primary, light);
-    }
-
-    &.magnet-radio--error {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(error, light);
-        }
-
-        .magnet-radio--checkmark {
-            background-color: design-tokens.getTokenColor(error, light);
-        }
-    }
-
-    &.magnet-radio--disabled {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(disabled, light);
-        }
-
-        .magnet-radio--checkmark {
-            background-color: design-tokens.getTokenColor(disabled, light);
-        }
-    }
+.theme-light {
+    @include mixins.RadioTheme(light);
 }
 
 // Dark Theme
-.theme-dark.magnet-radio {
-    &:not(.magnet-radio--has-value) {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(border, dark);
-            background-color: transparent;
-        }
-    }
-    &.magnet-radio--has-value {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(primary, dark);
-            background-color: transparent;
-        }
-    }
-
-    .magnet-radio--checkmark {
-        background-color: design-tokens.getTokenColor(primary, dark);
-    }
-
-    &.magnet-radio--error {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(error, dark);
-        }
-
-        .magnet-radio--checkmark {
-            background-color: design-tokens.getTokenColor(error, dark);
-        }
-    }
-
-    &.magnet-radio--disabled {
-        .magnet-radio--input {
-            border-color: design-tokens.getTokenColor(disabled, dark);
-        }
-
-        .magnet-radio--checkmark {
-            background-color: design-tokens.getTokenColor(disabled, dark);
-        }
-    }
+.theme-dark {
+    @include mixins.RadioTheme(dark);
 }

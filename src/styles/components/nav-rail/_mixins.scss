@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/shapes";
 @use "../../lib/spacing";
 @use "../../lib/transition";
@@ -59,5 +60,33 @@
 
     &:before {
         content: none;
+    }
+}
+
+@mixin NavRailTheme($colorMode) {
+    &.magnet-nav-rail {
+        background-color: design-tokens.getTokenColor(surface, $colorMode);
+        color: design-tokens.getTokenColor(on-surface, $colorMode);
+    }
+}
+
+@mixin NavRailLinkTheme($colorMode) {
+    .magnet-nav-rail-link {
+        color: design-tokens.getTokenColor(primary, $colorMode);
+
+        &.magnet-nav-rail-link--active {
+            background-color: design-tokens.getTokenColor(
+                primary-container,
+                $colorMode
+            );
+            color: design-tokens.getTokenColor(
+                on-primary-container,
+                $colorMode
+            );
+        }
+
+        &.magnet-nav-rail-link--disabled {
+            color: design-tokens.getTokenColor(disabled, $colorMode);
+        }
     }
 }

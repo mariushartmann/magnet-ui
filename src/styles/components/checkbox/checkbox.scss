@@ -1,7 +1,4 @@
-@use "../../lib/design-tokens";
-
 @use './mixins';
-@use './variables';
 
 // Basic Styles
 .magnet-checkbox {
@@ -29,97 +26,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-checkbox {
-    &:not(.magnet-checkbox--has-value) {
-        .magnet-checkbox--input {
-            border-color: design-tokens.getTokenColor(border, light);
-            background-color: transparent;
-        }
-    }
-    &.magnet-checkbox--has-value {
-        .magnet-checkbox--input {
-            border-color: design-tokens.getTokenColor(primary, light);
-            background-color: design-tokens.getTokenColor(primary, light);
-        }
-    }
-
-    .magnet-checkbox--checkmark {
-        color: design-tokens.getTokenColor(on-primary, light);
-    }
-
-    &.magnet-checkbox--error {
-        &:not(.magnet-checkbox--has-value) {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(error, light);
-            }
-        }
-        &.magnet-checkbox--has-value {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(error, light);
-                background-color: design-tokens.getTokenColor(error, light);
-            }
-        }
-    }
-
-    &.magnet-checkbox--disabled {
-        &:not(.magnet-checkbox--has-value) {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(disabled, light);
-            }
-        }
-        &.magnet-checkbox--has-value {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(disabled, light);
-                background-color: design-tokens.getTokenColor(disabled, light);
-            }
-        }
-    }
+.theme-light {
+    @include mixins.CheckboxTheme(light);
 }
 
 // Dark Theme
-.theme-dark.magnet-checkbox {
-    &:not(.magnet-checkbox--has-value) {
-        .magnet-checkbox--input {
-            border-color: design-tokens.getTokenColor(border, dark);
-            background-color: transparent;
-        }
-    }
-    &.magnet-checkbox--has-value {
-        .magnet-checkbox--input {
-            border-color: design-tokens.getTokenColor(primary, dark);
-            background-color: design-tokens.getTokenColor(primary, dark);
-        }
-    }
-
-    .magnet-checkbox--checkmark {
-        color: design-tokens.getTokenColor(on-primary, dark);
-    }
-
-    &.magnet-checkbox--error {
-        &:not(.magnet-checkbox--has-value) {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(error, dark);
-            }
-        }
-        &.magnet-checkbox--has-value {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(error, dark);
-                background-color: design-tokens.getTokenColor(error, dark);
-            }
-        }
-    }
-
-    &.magnet-checkbox--disabled {
-        &:not(.magnet-checkbox--has-value) {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(disabled, dark);
-            }
-        }
-        &.magnet-checkbox--has-value {
-            .magnet-checkbox--input {
-                border-color: design-tokens.getTokenColor(disabled, dark);
-                background-color: design-tokens.getTokenColor(disabled, dark);
-            }
-        }
-    }
+.theme-dark {
+    @include mixins.CheckboxTheme(dark);
 }

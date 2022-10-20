@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/typography";
 
 @mixin Hint() {
@@ -7,5 +8,15 @@
     span {
         display: flex;
         @include typography.Typography(caption);
+    }
+}
+
+@mixin HintTheme($colorMode) {
+    &.magnet-hint {
+        color: design-tokens.getTokenColor(on-background, $colorMode);
+
+        &.magnet-hint--error {
+            color: design-tokens.getTokenColor(error, $colorMode);
+        }
     }
 }

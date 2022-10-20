@@ -23,8 +23,7 @@ export default {
             "storybook/addons/panel": {
                 hidden: true
             }
-        },
-        options: { showPanel: false }
+        }
     }
 };
 

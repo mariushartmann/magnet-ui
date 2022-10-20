@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/shapes";
 @use "../../lib/spacing";
 @use "../../lib/transition";
@@ -65,5 +66,52 @@
 
     .magnet-radio--label {
         cursor: not-allowed;
+    }
+}
+
+@mixin RadioTheme($colorMode) {
+    &.magnet-radio {
+        &:not(.magnet-radio--has-value) {
+            .magnet-radio--input {
+                border-color: design-tokens.getTokenColor(border, $colorMode);
+                background-color: transparent;
+            }
+        }
+        &.magnet-radio--has-value {
+            .magnet-radio--input {
+                border-color: design-tokens.getTokenColor(primary, $colorMode);
+                background-color: transparent;
+            }
+        }
+
+        .magnet-radio--checkmark {
+            background-color: design-tokens.getTokenColor(primary, $colorMode);
+        }
+
+        &.magnet-radio--error {
+            .magnet-radio--input {
+                border-color: design-tokens.getTokenColor(error, $colorMode);
+            }
+
+            .magnet-radio--checkmark {
+                background-color: design-tokens.getTokenColor(
+                    error,
+                    $colorMode
+                );
+            }
+        }
+
+        &.magnet-radio--disabled {
+            .magnet-radio--input {
+                border-color: design-tokens.getTokenColor(disabled, $colorMode);
+            }
+
+            .magnet-radio--checkmark {
+                background-color: design-tokens.getTokenColor(
+                    disabled,
+                    $colorMode
+                );
+            }
+        }
     }
 }

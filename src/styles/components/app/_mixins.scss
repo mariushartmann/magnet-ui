@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/transition";
 
 @mixin App() {
@@ -20,4 +21,11 @@
     flex: 1 1 auto;
     max-width: 100%;
     @include transition.Transition((width, height));
+}
+
+@mixin AppTheme($colorMode) {
+    &.magnet-app {
+        background-color: design-tokens.getTokenColor(background, $colorMode);
+        color: design-tokens.getTokenColor(on-background, $colorMode);
+    }
 }

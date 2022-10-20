@@ -1,8 +1,6 @@
-@use "../../lib/design-tokens";
 @use "../input/input";
 
 @use './mixins';
-@use './variables';
 
 // Basic Styles
 .magnet-textfield {
@@ -60,53 +58,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-textfield {
-    .magnet-textfield--container {
-        border-color: design-tokens.getTokenColor(border, light);
-        background-color: design-tokens.getTokenColor(primary-container, light);
-        color: design-tokens.getTokenColor(on-primary-container, light);
-
-        &:before {
-            background-color: design-tokens.getTokenColor(primary, light);
-        }
-    }
-
-    &.magnet-textfield--focus {
-        label {
-            color: design-tokens.getTokenColor(primary, light);
-        }
-    }
-
-    &.magnet-textfield--error {
-        .magnet-textfield--container {
-            border-color: design-tokens.getTokenColor(error, light);
-            background-color: design-tokens.getTokenColor(
-                error-container,
-                light
-            );
-            color: design-tokens.getTokenColor(on-error-container, light);
-
-            &:before {
-                background-color: design-tokens.getTokenColor(error, light);
-            }
-        }
-
-        &.magnet-textfield--focus {
-            label {
-                color: design-tokens.getTokenColor(error, light);
-            }
-        }
-    }
-
-    &.magnet-textfield--disabled {
-        .magnet-textfield--container {
-            border-color: design-tokens.getTokenColor(on-disabled, light);
-            background-color: design-tokens.getTokenColor(disabled, light);
-            color: design-tokens.getTokenColor(on-disabled, light);
-        }
-    }
+.theme-light {
+    @include mixins.TextfieldTheme(light);
 }
 
 // Dark Theme
 .theme-dark.magnet-textfield {
+    @include mixins.TextfieldTheme(dark);
 }

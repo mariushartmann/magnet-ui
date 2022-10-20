@@ -1,5 +1,3 @@
-@use "../../lib/design-tokens";
-
 @use './mixins';
 
 // Basic Styles
@@ -8,19 +6,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-hint {
-    color: design-tokens.getTokenColor(disabled, light);
-
-    &.magnet-hint--error {
-        color: design-tokens.getTokenColor(error, light);
-    }
+.theme-light {
+    @include mixins.HintTheme(light);
 }
 
 // Dark Theme
-.theme-dark.magnet-hint {
-    color: design-tokens.getTokenColor(disabled, dark);
-
-    &.magnet-hint--error {
-        color: design-tokens.getTokenColor(error, dark);
-    }
+.theme-dark {
+    @include mixins.HintTheme(dark);
 }

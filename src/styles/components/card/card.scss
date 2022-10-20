@@ -1,42 +1,16 @@
-@use "../../lib/design-tokens";
-
 @use 'mixins';
-@use 'variables';
 
 // Basic Styles
 .magnet-card {
     @include mixins.Card();
-
-    > * {
-        &:first-child {
-            border-top-left-radius: inherit;
-            border-top-right-radius: inherit;
-        }
-        &:last-child {
-            border-bottom-left-radius: inherit;
-            border-bottom-right-radius: inherit;
-        }
-    }
 }
 
 // Light Theme
-.theme-light.magnet-card {
-    border-color: design-tokens.getTokenColor(border, light);
-    color: design-tokens.getTokenColor(on-surface, light);
-
-    &.magnet-card--filled {
-        background-color: design-tokens.getTokenColor(primary-container, light);
-        color: design-tokens.getTokenColor(on-primary-container, light);
-    }
+.theme-light {
+    @include mixins.CardTheme(light);
 }
 
 // Dark Theme
-.theme-dark.magnet-card {
-    border-color: design-tokens.getTokenColor(border, dark);
-    color: design-tokens.getTokenColor(on-surface, dark);
-
-    &.magnet-card--filled {
-        background-color: design-tokens.getTokenColor(primary-container, dark);
-        color: design-tokens.getTokenColor(on-primary-container, dark);
-    }
+.theme-dark {
+    @include mixins.CardTheme(dark);
 }

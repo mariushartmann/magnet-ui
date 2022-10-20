@@ -1,9 +1,4 @@
-@use "../../lib/design-tokens";
-@use "../../lib/elevation";
-@use "../../lib/typography";
-
 @use "./mixins";
-@use "./variables";
 
 // Basic styles
 .magnet-banner {
@@ -17,7 +12,7 @@
         }
 
         .magnet-banner-title {
-            @include typography.Typography("h5");
+            @include mixins.BannerTitle();
         }
     }
 
@@ -27,83 +22,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-banner {
-    background-color: design-tokens.getTokenColor(surface, light);
-    color: design-tokens.getTokenColor(on-surface, light);
-
-    &.magnet-banner--info {
-        .magnet-banner--icon {
-            color: design-tokens.getTokenColor(primary, light);
-        }
-    }
-    @each $color in variables.$available-colors {
-        &.magnet-banner--#{$color} {
-            .magnet-banner--icon {
-                color: design-tokens.getTokenColor($color, light);
-            }
-        }
-    }
-
-    &.magnet-banner--filled {
-        &.magnet-banner--info {
-            background-color: design-tokens.getTokenColor(
-                primary-container,
-                light
-            );
-            color: design-tokens.getTokenColor(on-primary-container, light);
-        }
-        @each $color in variables.$available-colors {
-            &.magnet-banner--#{$color} {
-                background-color: design-tokens.getTokenColor(
-                    #{$color}-container,
-                    light
-                );
-                color: design-tokens.getTokenColor(
-                    on-#{$color}-container,
-                    light
-                );
-            }
-        }
-    }
+.theme-light {
+    @include mixins.BannerTheme(light);
 }
 
 // Dark theme
-.theme-dark.magnet-banner {
-    background-color: design-tokens.getTokenColor(surface, dark);
-    color: design-tokens.getTokenColor(on-surface, dark);
-
-    &.magnet-banner--info {
-        .magnet-banner--icon {
-            color: design-tokens.getTokenColor(primary, dark);
-        }
-    }
-    @each $color in variables.$available-colors {
-        &.magnet-banner--#{$color} {
-            .magnet-banner--icon {
-                color: design-tokens.getTokenColor($color, dark);
-            }
-        }
-    }
-
-    &.magnet-banner--filled {
-        &.magnet-banner--info {
-            background-color: design-tokens.getTokenColor(
-                primary-container,
-                dark
-            );
-            color: design-tokens.getTokenColor(on-primary-container, dark);
-        }
-        @each $color in variables.$available-colors {
-            &.magnet-banner--#{$color} {
-                background-color: design-tokens.getTokenColor(
-                    #{$color}-container,
-                    dark
-                );
-                color: design-tokens.getTokenColor(
-                    on-#{$color}-container,
-                    dark
-                );
-            }
-        }
-    }
+.theme-dark {
+    @include mixins.BannerTheme(dark);
 }

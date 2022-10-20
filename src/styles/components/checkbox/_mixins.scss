@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/shapes";
 @use "../../lib/spacing";
 @use "../../lib/transition";
@@ -60,5 +61,75 @@
 
     .magnet-checkbox--label {
         cursor: not-allowed;
+    }
+}
+
+@mixin CheckboxTheme($colorMode) {
+    &.magnet-checkbox {
+        &:not(.magnet-checkbox--has-value) {
+            .magnet-checkbox--input {
+                border-color: design-tokens.getTokenColor(border, $colorMode);
+                background-color: transparent;
+            }
+        }
+        &.magnet-checkbox--has-value {
+            .magnet-checkbox--input {
+                border-color: design-tokens.getTokenColor(primary, $colorMode);
+                background-color: design-tokens.getTokenColor(
+                    primary,
+                    $colorMode
+                );
+            }
+        }
+
+        .magnet-checkbox--checkmark {
+            color: design-tokens.getTokenColor(on-primary, $colorMode);
+        }
+
+        &.magnet-checkbox--error {
+            &:not(.magnet-checkbox--has-value) {
+                .magnet-checkbox--input {
+                    border-color: design-tokens.getTokenColor(
+                        error,
+                        $colorMode
+                    );
+                }
+            }
+            &.magnet-checkbox--has-value {
+                .magnet-checkbox--input {
+                    border-color: design-tokens.getTokenColor(
+                        error,
+                        $colorMode
+                    );
+                    background-color: design-tokens.getTokenColor(
+                        error,
+                        $colorMode
+                    );
+                }
+            }
+        }
+
+        &.magnet-checkbox--disabled {
+            &:not(.magnet-checkbox--has-value) {
+                .magnet-checkbox--input {
+                    border-color: design-tokens.getTokenColor(
+                        disabled,
+                        $colorMode
+                    );
+                }
+            }
+            &.magnet-checkbox--has-value {
+                .magnet-checkbox--input {
+                    border-color: design-tokens.getTokenColor(
+                        disabled,
+                        $colorMode
+                    );
+                    background-color: design-tokens.getTokenColor(
+                        disabled,
+                        $colorMode
+                    );
+                }
+            }
+        }
     }
 }

@@ -1,9 +1,4 @@
-@use "sass:map";
-
-@use "../../lib/design-tokens";
-
 @use "./mixins";
-@use "./variables";
 
 .magnet-button {
     @include mixins.Button();
@@ -41,110 +36,10 @@
     }
 }
 
-.theme-light.magnet-button {
-    &.magnet-button--elevated {
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonElevated($color, light);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonFilled(disabled, light);
-        }
-    }
-
-    &.magnet-button--filled {
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonFilled($color, light);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonFilled(disabled, light);
-        }
-    }
-
-    &.magnet-button--outlined {
-        background-color: transparent;
-
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonOutlined($color, light);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonOutlined(disabled, light);
-        }
-    }
-
-    &.magnet-button--text {
-        background-color: transparent;
-
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonText($color, light);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonText(disabled, light);
-        }
-    }
+.theme-light {
+    @include mixins.ButtonTheme(light);
 }
 
-.theme-dark.magnet-button {
-    &.magnet-button--elevated {
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonElevated($color, dark);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonFilled(disabled, dark);
-        }
-    }
-
-    &.magnet-button--filled {
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonFilled($color, dark);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonFilled(disabled, dark);
-        }
-    }
-
-    &.magnet-button--outlined {
-        background-color: transparent;
-
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonOutlined($color, dark);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonOutlined(disabled, dark);
-        }
-    }
-
-    &.magnet-button--text {
-        background-color: transparent;
-
-        @each $color in variables.$available-colors {
-            &.magnet-button--#{$color} {
-                @include mixins.ColoredButtonText($color, dark);
-            }
-        }
-
-        &.magnet-button--disabled {
-            @include mixins.ColoredButtonText(disabled, dark);
-        }
-    }
+.theme-dark {
+    @include mixins.ButtonTheme(dark);
 }

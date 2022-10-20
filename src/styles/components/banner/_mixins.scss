@@ -1,5 +1,7 @@
+@use "../../lib/design-tokens";
 @use "../../lib/elevation";
 @use "../../lib/spacing";
+@use "../../lib/typography";
 
 @use "./variables";
 
@@ -26,6 +28,10 @@
     @include spacing.MarginRight(4);
 }
 
+@mixin BannerTitle() {
+    @include typography.Typography("h5");
+}
+
 @mixin BannerActions() {
     display: flex;
     flex-direction: row-reverse;
@@ -34,4 +40,49 @@
     @include spacing.PaddingHorizontal(
         variables.$banner-actions-padding-horizontal
     );
+}
+
+@mixin BannerTheme($colorMode) {
+    &.magnet-banner {
+        background-color: design-tokens.getTokenColor(surface, $colorMode);
+        color: design-tokens.getTokenColor(on-surface, $colorMode);
+
+        &.magnet-banner--info {
+            .magnet-banner--icon {
+                color: design-tokens.getTokenColor(primary, $colorMode);
+            }
+        }
+        @each $color in variables.$available-colors {
+            &.magnet-banner--#{$color} {
+                .magnet-banner--icon {
+                    color: design-tokens.getTokenColor($color, $colorMode);
+                }
+            }
+        }
+
+        &.magnet-banner--filled {
+            &.magnet-banner--info {
+                background-color: design-tokens.getTokenColor(
+                    primary-container,
+                    $colorMode
+                );
+                color: design-tokens.getTokenColor(
+                    on-primary-container,
+                    $colorMode
+                );
+            }
+            @each $color in variables.$available-colors {
+                &.magnet-banner--#{$color} {
+                    background-color: design-tokens.getTokenColor(
+                        #{$color}-container,
+                        $colorMode
+                    );
+                    color: design-tokens.getTokenColor(
+                        on-#{$color}-container,
+                        $colorMode
+                    );
+                }
+            }
+        }
+    }
 }

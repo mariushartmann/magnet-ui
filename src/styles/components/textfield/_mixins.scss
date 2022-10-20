@@ -1,3 +1,4 @@
+@use "../../lib/design-tokens";
 @use "../../lib/spacing";
 
 @use "./variables";
@@ -5,4 +6,74 @@
 @mixin Textfield() {
     position: relative;
     @include spacing.MarginBottom(4);
+}
+
+@mixin TextfieldTheme($colorMode) {
+    &.magnet-textfield {
+        .magnet-textfield--container {
+            border-color: design-tokens.getTokenColor(border, $colorMode);
+            background-color: design-tokens.getTokenColor(
+                primary-container,
+                $colorMode
+            );
+            color: design-tokens.getTokenColor(
+                on-primary-container,
+                $colorMode
+            );
+
+            &:before {
+                background-color: design-tokens.getTokenColor(
+                    primary,
+                    $colorMode
+                );
+            }
+        }
+
+        &.magnet-textfield--focus {
+            label {
+                color: design-tokens.getTokenColor(primary, $colorMode);
+            }
+        }
+
+        &.magnet-textfield--error {
+            .magnet-textfield--container {
+                border-color: design-tokens.getTokenColor(error, $colorMode);
+                background-color: design-tokens.getTokenColor(
+                    error-container,
+                    $colorMode
+                );
+                color: design-tokens.getTokenColor(
+                    on-error-container,
+                    $colorMode
+                );
+
+                &:before {
+                    background-color: design-tokens.getTokenColor(
+                        error,
+                        $colorMode
+                    );
+                }
+            }
+
+            &.magnet-textfield--focus {
+                label {
+                    color: design-tokens.getTokenColor(error, $colorMode);
+                }
+            }
+        }
+
+        &.magnet-textfield--disabled {
+            .magnet-textfield--container {
+                border-color: design-tokens.getTokenColor(
+                    on-disabled,
+                    $colorMode
+                );
+                background-color: design-tokens.getTokenColor(
+                    disabled,
+                    $colorMode
+                );
+                color: design-tokens.getTokenColor(on-disabled, $colorMode);
+            }
+        }
+    }
 }

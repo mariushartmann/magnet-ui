@@ -1,5 +1,3 @@
-@use "../../lib/design-tokens";
-
 @use './mixins';
 
 // Basic Styles
@@ -16,13 +14,11 @@
 }
 
 // Light Theme
-.theme-light.magnet-app {
-    background-color: design-tokens.getTokenColor(background, light);
-    color: design-tokens.getTokenColor(on-background, light);
+.theme-light {
+    @include mixins.AppTheme(light);
 }
 
 // Dark Theme
-.theme-dark.magnet-app {
-    background-color: design-tokens.getTokenColor(background, dark);
-    color: design-tokens.getTokenColor(on-background, dark);
+.theme-dark {
+    @include mixins.AppTheme(dark);
 }

@@ -147,3 +147,59 @@
 @mixin ColoredButtonText($design-token, $color-mode) {
     color: design-tokens.getTokenColor($design-token, $color-mode);
 }
+
+@mixin ButtonTheme($colorMode) {
+    &.magnet-button {
+        &.magnet-button--elevated {
+            @each $color in variables.$available-colors {
+                &.magnet-button--#{$color} {
+                    @include ColoredButtonElevated($color, $colorMode);
+                }
+            }
+
+            &.magnet-button--disabled {
+                @include ColoredButtonFilled(disabled, $colorMode);
+            }
+        }
+
+        &.magnet-button--filled {
+            @each $color in variables.$available-colors {
+                &.magnet-button--#{$color} {
+                    @include ColoredButtonFilled($color, $colorMode);
+                }
+            }
+
+            &.magnet-button--disabled {
+                @include ColoredButtonFilled(disabled, $colorMode);
+            }
+        }
+
+        &.magnet-button--outlined {
+            background-color: transparent;
+
+            @each $color in variables.$available-colors {
+                &.magnet-button--#{$color} {
+                    @include ColoredButtonOutlined($color, $colorMode);
+                }
+            }
+
+            &.magnet-button--disabled {
+                @include ColoredButtonOutlined(disabled, $colorMode);
+            }
+        }
+
+        &.magnet-button--text {
+            background-color: transparent;
+
+            @each $color in variables.$available-colors {
+                &.magnet-button--#{$color} {
+                    @include ColoredButtonText($color, $colorMode);
+                }
+            }
+
+            &.magnet-button--disabled {
+                @include ColoredButtonText(disabled, $colorMode);
+            }
+        }
+    }
+}
