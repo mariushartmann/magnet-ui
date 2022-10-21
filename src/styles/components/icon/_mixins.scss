@@ -1,3 +1,7 @@
+@mixin Icon() {
+    display: flex;
+}
+
 @mixin IconLink() {
     cursor: pointer;
 }

@@ -76,4 +76,4 @@ export interface ITextfieldProps
     type?: TextfieldType;
 }
 
-export type TextfieldType = "date" | "number" | "password" | "phone" | "text";
+export type TextfieldType = "password" | "text";

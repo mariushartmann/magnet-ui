@@ -167,14 +167,14 @@ export const Textfield = ({
 
     useEffect(() => {
         if (error) {
-            setInternalAppendIcon("exclamation-triangle");
+            setInternalAppendIcon("warning");
             return;
         }
         if (type === "password") {
             if (showPassword) {
-                setInternalAppendIcon("eye-slash");
+                setInternalAppendIcon("visibility_off");
             } else {
-                setInternalAppendIcon("eye");
+                setInternalAppendIcon("visibility");
             }
             return;
         }
@@ -214,8 +214,10 @@ export const Textfield = ({
         return (
             <MagnetIcon
                 className="magnet-textfield--append-icon"
-                onClick={onAppendIconClick ? onClickEvent : undefined}
-            ></MagnetIcon>
+                onClick={onClickEvent}
+            >
+                {internalAppendIcon}
+            </MagnetIcon>
         );
     }, [
         error,
@@ -290,8 +292,8 @@ export const Textfield = ({
 
 Textfield.displayName = "Textfield";
 
-const ETextfield = React.memo(Textfield);
+const MagnetTextfield = React.memo(Textfield);
 
-ETextfield.displayName = "ETextfield";
+MagnetTextfield.displayName = "MagnetTextfield";
 
-export { ETextfield };
+export { MagnetTextfield };

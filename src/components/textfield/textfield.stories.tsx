@@ -6,11 +6,11 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 
 // component imports
-import { ETextField, IETextFieldProps } from ".";
+import { MagnetTextfield, ITextfieldProps } from ".";
 
 export default {
     title: "Components/Textfields",
-    component: ETextField,
+    component: MagnetTextfield,
     argTypes: {
         className: {
             table: {
@@ -29,15 +29,15 @@ export default {
         },
         onChange: { action: "onChange" }
     }
-} as ComponentMeta<typeof ETextField>;
+} as ComponentMeta<typeof MagnetTextfield>;
 
-const DefaultTemplate: ComponentStory<typeof ETextField> = (args) => {
+const DefaultTemplate: ComponentStory<typeof MagnetTextfield> = (args) => {
     return (
         <MagnetMain>
             <MagnetContainer fluid>
                 <MagnetRow>
                     <MagnetColumn>
-                        <ETextField {...args} />
+                        <MagnetTextfield {...args} />
                     </MagnetColumn>
                 </MagnetRow>
             </MagnetContainer>
@@ -67,7 +67,7 @@ Default.args = {
     theme: "auto",
     type: "text",
     value: undefined
-} as IETextFieldProps;
+} as ITextfieldProps;
 
 export const WithRules = DefaultTemplate.bind({});
 WithRules.args = {
@@ -102,4 +102,4 @@ WithRules.args = {
     theme: "auto",
     type: "text",
     value: undefined
-} as IETextFieldProps;
+} as ITextfieldProps;

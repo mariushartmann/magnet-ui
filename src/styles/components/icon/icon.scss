@@ -1,6 +1,8 @@
 @use "./mixins";
 
 .magnet-icon {
+    @include mixins.Icon();
+
     &.magnet-icon--link {
         @include mixins.IconLink();
     }
