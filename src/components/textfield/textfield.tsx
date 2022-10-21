@@ -11,9 +11,9 @@ import { MagnetHint } from "../hint";
 import { useValidation } from "../../utils/useValidation";
 
 // Component imports
-import { IETextFieldProps } from "./textfield.types";
+import { ITextfieldProps } from "./textfield.types";
 
-export const TextField = ({
+export const Textfield = ({
     appendIcon = undefined,
     className = undefined,
     clearable = false,
@@ -38,18 +38,18 @@ export const TextField = ({
     theme = "auto",
     type = "text",
     value = ""
-}: IETextFieldProps): JSX.Element => {
+}: ITextfieldProps): JSX.Element => {
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
-    const [lazyAppendIcon, setLazyAppendIcon] =
+    const [internalAppendIcon, setInternalAppendIcon] =
         useState<string | undefined>(undefined);
-    const [lazyId, setLazyId] = useState(id ?? uniqid("textfield-"));
+    const [internalId, setInternalId] = useState(id ?? uniqid("textfield-"));
     const [showPassword, setShowPassword] = useState(false);
-    const [lazyValue, setLazyValue] = useState(value);
+    const [internalValue, setInternalValue] = useState(value);
     const [hasFocus, setHasFocus] = useState(false);
     const [isDirty, setIsDirty] = useState(false);
-    const [isValid, validationErrors] = useValidation(lazyValue, rules);
+    const [isValid, validationErrors] = useValidation(internalValue, rules);
     // Vars & States - END
 
     // Methods & Handler - START
@@ -65,7 +65,7 @@ export const TextField = ({
     const handleChange = useCallback(
         (ev: React.ChangeEvent<HTMLInputElement>) => {
             const newValue = ev.target.value;
-            setLazyValue(newValue);
+            setInternalValue(newValue);
             if (onChange) {
                 onChange(newValue);
             }
@@ -74,7 +74,7 @@ export const TextField = ({
     );
 
     const handleClear = useCallback(() => {
-        setLazyValue("");
+        setInternalValue("");
         if (onChange) {
             onChange("");
         }
@@ -93,7 +93,7 @@ export const TextField = ({
         const classes = {
             "magnet-textfield": true,
             "magnet-textfield--value":
-                lazyValue !== undefined && lazyValue !== "",
+                internalValue !== undefined && internalValue !== "",
             "magnet-textfield--focus": hasFocus,
             "magnet-textfield--disabled": disabled,
             "magnet-textfield--error": error || (isDirty && !isValid),
@@ -113,7 +113,7 @@ export const TextField = ({
         hasFocus,
         isDirty,
         isValid,
-        lazyValue,
+        internalValue,
         theme
     ]);
 
@@ -139,11 +139,11 @@ export const TextField = ({
     }, [formContext, mode]);
 
     useEffect(() => {
-        setLazyId(id ?? uniqid("textfield-"));
+        setInternalId(id ?? uniqid("textfield-"));
     }, [id]);
 
     useEffect(() => {
-        setLazyValue(value);
+        setInternalValue(value);
     }, [value]);
 
     useEffect(() => {
@@ -153,32 +153,32 @@ export const TextField = ({
 
         if (!name) {
             console.error(
-                `You have to define a name to ${lazyId} if used inside an EForm.`
+                `You have to define a name to ${internalId} if used inside an EForm.`
             );
             return;
         }
 
         formContext.handlePublish({
             name,
-            value: lazyValue,
+            value: internalValue,
             isValid
         });
-    }, [lazyValue, isValid, formContext, name, lazyId]);
+    }, [internalValue, isValid, formContext, name, internalId]);
 
     useEffect(() => {
         if (error) {
-            setLazyAppendIcon("exclamation-triangle");
+            setInternalAppendIcon("exclamation-triangle");
             return;
         }
         if (type === "password") {
             if (showPassword) {
-                setLazyAppendIcon("eye-slash");
+                setInternalAppendIcon("eye-slash");
             } else {
-                setLazyAppendIcon("eye");
+                setInternalAppendIcon("eye");
             }
             return;
         }
-        setLazyAppendIcon(appendIcon);
+        setInternalAppendIcon(appendIcon);
     }, [appendIcon, error, type, showPassword]);
     // Life Cycle Hooks - END
 
@@ -199,7 +199,7 @@ export const TextField = ({
     }, [onPrependIconClick, prependIcon]);
 
     const renderAppendIcon = useCallback(() => {
-        if (!lazyAppendIcon) {
+        if (!internalAppendIcon) {
             return null;
         }
 
@@ -217,7 +217,13 @@ export const TextField = ({
                 onClick={onAppendIconClick ? onClickEvent : undefined}
             ></MagnetIcon>
         );
-    }, [error, handlePasswordToggle, lazyAppendIcon, onAppendIconClick, type]);
+    }, [
+        error,
+        handlePasswordToggle,
+        internalAppendIcon,
+        onAppendIconClick,
+        type
+    ]);
 
     const renderHint = useCallback(() => {
         if (!hint && validationErrors.length < 1) {
@@ -248,11 +254,11 @@ export const TextField = ({
                     className={"magnet-textfield--inner-container"}
                     onClick={onClick}
                 >
-                    <label htmlFor={lazyId}>{label}</label>
+                    <label htmlFor={internalId}>{label}</label>
                     <input
-                        id={lazyId}
+                        id={internalId}
                         type={showPassword && !error ? "text" : type}
-                        value={lazyValue}
+                        value={internalValue}
                         placeholder={
                             !label || hasFocus ? placeholder : undefined
                         }
@@ -266,7 +272,7 @@ export const TextField = ({
                         name={name}
                     />
                 </div>
-                {clearable && lazyValue && (
+                {clearable && internalValue && (
                     <div
                         className="magnet-textfield--append-icon"
                         onClick={handleClear}
@@ -282,10 +288,10 @@ export const TextField = ({
     );
 };
 
-TextField.displayName = "TextField";
+Textfield.displayName = "Textfield";
 
-const ETextField = React.memo(TextField);
+const ETextfield = React.memo(Textfield);
 
-ETextField.displayName = "ETextField";
+ETextfield.displayName = "ETextfield";
 
-export { ETextField };
+export { ETextfield };

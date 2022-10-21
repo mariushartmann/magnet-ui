@@ -28,7 +28,7 @@ export const Radio = ({
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
-    const [internalId, setLazyId] = useState(id ?? uniqid("radio-"));
+    const [internalId, setInternalId] = useState(id ?? uniqid("radio-"));
     const [internalChecked, setInternalChecked] = useState(checked);
     // Vars & States - END
 
@@ -81,7 +81,7 @@ export const Radio = ({
 
     // Life Cycle Hooks - START
     useEffect(() => {
-        setLazyId(id ?? uniqid("radio-"));
+        setInternalId(id ?? uniqid("radio-"));
     }, [id]);
 
     useEffect(() => {

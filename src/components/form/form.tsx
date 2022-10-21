@@ -37,7 +37,7 @@ const Form = ({
 }: React.PropsWithChildren<IFormProps>) => {
     // Vars & States - START
     const [isValid, setIsValid] = useState(true);
-    const [lazyIsDirty, setLazyIsDirty] = useState(isDirty);
+    const [internalIsDirty, setInternalIsDirty] = useState(isDirty);
     const formData = useRef<IFormData>({});
     // Vars & States - END
 
@@ -67,7 +67,7 @@ const Form = ({
 
     const handleSubmit = useCallback(
         (ev: React.FormEvent<HTMLFormElement>) => {
-            setLazyIsDirty(true);
+            setInternalIsDirty(true);
             if (onSubmit && isValid) {
                 onSubmit(
                     Object.entries(formData.current).map(([key, value]) => {
@@ -100,7 +100,7 @@ const Form = ({
     // Life Cycle Hooks - START
     useEffect(() => {
         if (isDirty) {
-            setLazyIsDirty(isDirty);
+            setInternalIsDirty(isDirty);
         }
     }, [isDirty]);
 
@@ -114,7 +114,7 @@ const Form = ({
     // Render - START
     return (
         <FormContext.Provider
-            value={{ isDirty: lazyIsDirty, mode, handlePublish }}
+            value={{ isDirty: internalIsDirty, mode, handlePublish }}
         >
             <form
                 id={id}

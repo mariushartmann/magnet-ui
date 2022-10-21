@@ -39,7 +39,7 @@ export const Switch = ({
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
-    const [internalId, setLazyId] = useState(id ?? uniqid("switch-"));
+    const [internalId, setInternalId] = useState(id ?? uniqid("switch-"));
     const [internalValue, setInternalValue] = useState(value);
     const [isDirty, setIsDirty] = useState(false);
     const [isValid, validationErrors] = useValidation(internalValue, rules);
@@ -114,7 +114,7 @@ export const Switch = ({
     }, [formContext, mode]);
 
     useEffect(() => {
-        setLazyId(id ?? uniqid("switch-"));
+        setInternalId(id ?? uniqid("switch-"));
     }, [id]);
 
     useEffect(() => {

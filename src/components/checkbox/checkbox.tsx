@@ -39,7 +39,7 @@ export const Checkbox = ({
     // Vars & States - START
     const globalTheme = useContext(ThemeContext);
     const formContext = useContext(FormContext);
-    const [internalId, setLazyId] = useState(id ?? uniqid("checkbox-"));
+    const [internalId, setInternalId] = useState(id ?? uniqid("checkbox-"));
     const [internalValue, setInternalValue] = useState(value);
     const [isDirty, setIsDirty] = useState(false);
     const [isValid, validationErrors] = useValidation(internalValue, rules);
@@ -114,7 +114,7 @@ export const Checkbox = ({
     }, [formContext, mode]);
 
     useEffect(() => {
-        setLazyId(id ?? uniqid("checkbox-"));
+        setInternalId(id ?? uniqid("checkbox-"));
     }, [id]);
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 import { IThemable, IInputProps } from "../../types";
 
-export interface IETextFieldProps
+export interface ITextfieldProps
     extends IInputProps<string, HTMLInputElement, HTMLDivElement>,
         IThemable {
     /**
@@ -73,7 +73,7 @@ export interface IETextFieldProps
      * @docType string
      * @defaultValue `"text"`
      */
-    type?: TextFieldType;
+    type?: TextfieldType;
 }
 
-export type TextFieldType = "date" | "number" | "password" | "phone" | "text";
+export type TextfieldType = "date" | "number" | "password" | "phone" | "text";
