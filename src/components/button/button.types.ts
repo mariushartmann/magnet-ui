@@ -58,9 +58,17 @@ export interface IButtonProps
      *
      * @docType string
      * @values small | medium | large
-     * @defaultValue `medium`
+     * @defaultValue `"medium"`
      */
     size?: BtnSize;
+
+    /**
+     * The anchor link target prop. It's applied if the href prop is set.
+     *
+     * @docType string
+     * @defaultValue `undefined`
+     */
+    target?: React.HTMLAttributeAnchorTarget;
 
     /**
      * Button type

@@ -31,6 +31,7 @@ export const Button = React.forwardRef<
             prependIcon = undefined,
             size = "medium",
             style = undefined,
+            target = undefined,
             theme = "auto",
             type = "button",
             variant = "filled"
@@ -134,7 +135,9 @@ export const Button = React.forwardRef<
                 disabled: disabled,
                 href: href,
                 ref: combinedRefs,
-                type: tag === "button" ? type : undefined
+                type: tag === "button" ? type : undefined,
+                target: target,
+                rel: target ? "noreferrer" : undefined
             },
             <>
                 {renderInner()}
