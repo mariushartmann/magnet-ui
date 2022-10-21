@@ -6,11 +6,11 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MagnetMain, MagnetColumn, MagnetContainer, MagnetRow } from "..";
 
 // component imports
-import { MagnetTextfield, ITextfieldProps } from ".";
+import { MagnetTextarea, ITextareaProps } from ".";
 
 export default {
-    title: "Components/Textfields",
-    component: MagnetTextfield,
+    title: "Components/Textareas",
+    component: MagnetTextarea,
     argTypes: {
         className: {
             table: {
@@ -29,15 +29,15 @@ export default {
         },
         onChange: { action: "onChange" }
     }
-} as ComponentMeta<typeof MagnetTextfield>;
+} as ComponentMeta<typeof MagnetTextarea>;
 
-const DefaultTemplate: ComponentStory<typeof MagnetTextfield> = (args) => {
+const DefaultTemplate: ComponentStory<typeof MagnetTextarea> = (args) => {
     return (
         <MagnetMain>
             <MagnetContainer fluid>
                 <MagnetRow>
                     <MagnetColumn>
-                        <MagnetTextfield {...args} />
+                        <MagnetTextarea {...args} />
                     </MagnetColumn>
                 </MagnetRow>
             </MagnetContainer>
@@ -52,9 +52,9 @@ Default.args = {
     disabled: false,
     error: false,
     hint: "",
-    label: "Textfield",
+    label: "Textarea",
     mode: "lazy",
-    name: "textfield-story",
+    name: "textarea-story",
     onAppendIconClick: undefined,
     onChange: undefined,
     onClick: undefined,
@@ -63,11 +63,11 @@ Default.args = {
     prependIcon: undefined,
     readOnly: false,
     ref: undefined,
+    rows: 5,
     rules: undefined,
     theme: "auto",
-    type: "text",
     value: undefined
-} as ITextfieldProps;
+} as ITextareaProps;
 
 export const WithRules = DefaultTemplate.bind({});
 WithRules.args = {
@@ -76,9 +76,9 @@ WithRules.args = {
     disabled: false,
     error: false,
     hint: "",
-    label: "Textfield",
+    label: "Textarea",
     mode: "lazy",
-    name: "textfield-story",
+    name: "textarea-story",
     onAppendIconClick: undefined,
     onChange: undefined,
     onClick: undefined,
@@ -87,6 +87,7 @@ WithRules.args = {
     prependIcon: undefined,
     readOnly: false,
     ref: undefined,
+    rows: 5,
     rules: [
         (v) => {
             return !!v || "The textarea should not be empty";
@@ -99,6 +100,5 @@ WithRules.args = {
         }
     ],
     theme: "auto",
-    type: "text",
     value: undefined
-} as ITextfieldProps;
+} as ITextareaProps;

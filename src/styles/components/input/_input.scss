@@ -18,7 +18,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     border-radius: inherit;
     border-bottom: 1px solid;
     @include spacing.PaddingHorizontal(variables.$input-padding-horizontal);
@@ -51,6 +51,7 @@
 
 @mixin InputLabel() {
     position: absolute;
+    top: spacing.spacing(4);
     left: 0;
     letter-spacing: normal;
     max-width: 90%;
@@ -67,7 +68,7 @@
 }
 
 @mixin InputLabelWithValueOrFocus() {
-    transform: translateY(-60%);
+    transform: translateY(-40%);
     @include typography.Typography("label");
 }
 
@@ -88,10 +89,12 @@
 }
 
 @mixin InputPrependIcon() {
+    @include spacing.MarginTop(4.5);
     @include spacing.MarginRight(variables.$input-icon-margin);
 }
 
 @mixin InputAppendIcon() {
+    @include spacing.MarginTop(4.5);
     @include spacing.MarginLeft(variables.$input-icon-margin);
 }
 

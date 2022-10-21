@@ -1,0 +1,69 @@
+@use "../input/input";
+
+@use './mixins';
+
+// Basic Styles
+.magnet-textarea {
+    @include input.Input();
+
+    .magnet-textarea--container {
+        @include input.InputContainer();
+
+        .magnet-textarea--prepend-icon {
+            @include input.InputPrependIcon();
+        }
+
+        .magnet-textarea--inner-container {
+            @include input.InputInnerContainer();
+
+            label {
+                @include input.InputLabel();
+            }
+
+            textarea {
+                @include input.InputElement();
+                @include mixins.TextareaInput();
+            }
+        }
+
+        .magnet-textarea--append-icon {
+            @include input.InputAppendIcon();
+        }
+    }
+
+    &.magnet-textarea--focus {
+        .magnet-textarea--container {
+            @include input.InputContainerWithFocus();
+        }
+    }
+
+    &.magnet-textarea--value,
+    &.magnet-textarea--focus {
+        .magnet-textarea--container {
+            label {
+                @include input.InputLabelWithValueOrFocus();
+            }
+        }
+    }
+
+    &.magnet-textarea--disabled {
+        .magnet-textarea--container {
+            cursor: not-allowed;
+            background-color: transparent;
+
+            input {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+// Light Theme
+.theme-light {
+    @include mixins.TextareaTheme(light);
+}
+
+// Dark Theme
+.theme-dark.magnet-textarea {
+    @include mixins.TextareaTheme(dark);
+}

@@ -2,10 +2,16 @@
 @use "../../lib/spacing";
 
 @use "./variables";
+@use "../input/variables" as inputVariables;
 
-@mixin TextfieldTheme($colorMode) {
-    &.magnet-textfield {
-        .magnet-textfield--container {
+@mixin TextareaInput() {
+    @include spacing.PaddingTop(0);
+    @include spacing.MarginTop(inputVariables.$input-padding-top);
+}
+
+@mixin TextareaTheme($colorMode) {
+    &.magnet-textarea {
+        .magnet-textarea--container {
             border-color: design-tokens.getTokenColor(border, $colorMode);
             background-color: design-tokens.getTokenColor(
                 primary-container,
@@ -24,14 +30,14 @@
             }
         }
 
-        &.magnet-textfield--focus {
+        &.magnet-textarea--focus {
             label {
                 color: design-tokens.getTokenColor(primary, $colorMode);
             }
         }
 
-        &.magnet-textfield--error {
-            .magnet-textfield--container {
+        &.magnet-textarea--error {
+            .magnet-textarea--container {
                 border-color: design-tokens.getTokenColor(error, $colorMode);
                 background-color: design-tokens.getTokenColor(
                     error-container,
@@ -50,15 +56,15 @@
                 }
             }
 
-            &.magnet-textfield--focus {
+            &.magnet-textarea--focus {
                 label {
                     color: design-tokens.getTokenColor(error, $colorMode);
                 }
             }
         }
 
-        &.magnet-textfield--disabled {
-            .magnet-textfield--container {
+        &.magnet-textarea--disabled {
+            .magnet-textarea--container {
                 border-color: design-tokens.getTokenColor(
                     on-disabled,
                     $colorMode
