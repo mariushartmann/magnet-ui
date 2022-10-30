@@ -9,7 +9,8 @@ import { MagnetProgressSpinner } from "../progressSpinner";
 
 // component imports
 import { IButtonProps } from "./button.types";
-import { useCombinedRefs } from "../../utils/useCombinedRefs";
+import { useCombinedRefs } from "../../hooks/useCombinedRefs";
+import { useRipple } from "../../hooks/useRipple";
 
 export const Button = React.forwardRef<
     HTMLAnchorElement | HTMLButtonElement,
@@ -107,7 +108,7 @@ export const Button = React.forwardRef<
         // ClassNames & Styles - END
 
         // Life Cycle Hooks - START
-        // useRipple(innerRef);
+        useRipple(innerRef, { disabled });
         // Life Cycle Hooks - END
 
         // Render - START

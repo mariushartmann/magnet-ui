@@ -13,7 +13,7 @@ import uniqid from "uniqid";
 import { FormContext } from "../form/form";
 import { ThemeContext } from "../app";
 import { MagnetIcon } from "../icon";
-import { useValidation } from "../../utils/useValidation";
+import { useValidation } from "../../hooks/useValidation";
 
 // component imports
 import { ISwitchProps } from "./switch.types";

@@ -1,5 +1,5 @@
 // system imports
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import clsx from "clsx";
 
 // internal imports
@@ -7,6 +7,7 @@ import { MagnetIcon } from "../icon";
 
 // component imports
 import { INavRailLinkProps } from "./navRail.types";
+import { useRipple } from "../../hooks/useRipple";
 
 export const NavRailLink = ({
     active = false,
@@ -19,6 +20,7 @@ export const NavRailLink = ({
     style = undefined
 }: React.PropsWithChildren<INavRailLinkProps>): JSX.Element => {
     // Vars & States - START
+    const innerRef = useRef(null);
     // Vars & States - END
 
     // Methods & Handler - START
@@ -51,7 +53,7 @@ export const NavRailLink = ({
     // ClassNames & Styles - END
 
     // Life Cycle Hooks - START
-    // useRipple(innerRef);
+    useRipple(innerRef, { disabled });
     // Life Cycle Hooks - END
 
     // Render - START
@@ -61,6 +63,7 @@ export const NavRailLink = ({
             className={classes}
             style={styles}
             onClick={handleClick}
+            ref={innerRef}
         >
             <MagnetIcon className="magnet-nav-rail-link--icon">
                 {icon}

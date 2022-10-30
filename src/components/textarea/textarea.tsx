@@ -8,7 +8,7 @@ import { MagnetIcon } from "../icon";
 import { ThemeContext } from "../app";
 import { FormContext } from "../form";
 import { MagnetHint } from "../hint";
-import { useValidation } from "../../utils/useValidation";
+import { useValidation } from "../../hooks/useValidation";
 
 // Component imports
 import { ITextareaProps } from "./textarea.types";

@@ -72,6 +72,7 @@
 
 @mixin CardTheme($colorMode) {
     &.magnet-card {
+        background-color: design-tokens.getTokenColor(surface, $colorMode);
         border-color: design-tokens.getTokenColor(border, $colorMode);
         color: design-tokens.getTokenColor(on-surface, $colorMode);
 

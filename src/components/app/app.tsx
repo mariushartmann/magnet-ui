@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
 // internal imports
+import { isBrowser } from "../../utils/window";
 
 // component imports
 import { IAppProps } from "./app.types";
@@ -49,7 +50,7 @@ const App = ({
                 return setInternalTheme("light");
             };
 
-            if (typeof window !== "undefined") {
+            if (isBrowser) {
                 if (
                     window.matchMedia &&
                     window.matchMedia("(prefers-color-scheme: dark)").matches

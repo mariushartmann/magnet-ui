@@ -1,0 +1,5 @@
+@use './mixins';
+
+.magnet-popover {
+    @include mixins.Popover();
+}

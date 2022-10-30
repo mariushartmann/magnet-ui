@@ -11,7 +11,7 @@ import clsx from "clsx";
 // internal imports
 import { FormContext } from "../form";
 import { MagnetHint } from "../hint";
-import { useValidation } from "../../utils/useValidation";
+import { useValidation } from "../../hooks/useValidation";
 
 // component imports
 import { IRadioGroupProps } from "./radioGroup.types";
