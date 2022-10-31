@@ -1,0 +1,21 @@
+@use "./mixins";
+
+.magnet-list-item {
+    @include mixins.ListItem();
+
+    &.magnet-list-item--clickable {
+        @include mixins.ListItemClickable();
+    }
+
+    &.magnet-list-item--disabled {
+        @include mixins.ListItemDisabled();
+    }
+}
+
+.theme-light.magnet-list {
+    @include mixins.ListItemTheme(light);
+}
+
+.theme-dark.magnet-list {
+    @include mixins.ListItemTheme(dark);
+}

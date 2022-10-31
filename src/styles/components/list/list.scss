@@ -1,0 +1,9 @@
+@use "./mixins";
+
+.magnet-list {
+    @include mixins.List();
+
+    &.magnet-list--dividers {
+        @include mixins.ListShowDividers();
+    }
+}

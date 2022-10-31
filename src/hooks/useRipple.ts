@@ -59,8 +59,7 @@ const createRipple = (element: HTMLElement, options: IRippleOptions) => {
             top: ${positionTop}px;
             left: ${positionLeft}px;
             position: absolute;
-            border-radius: 50%;
-            border: 10px solid ${options.rippleColor};
+            background-color: ${options.rippleColor};
             pointer-events: none;
             width: ${rippleSize}px;
             height: ${rippleSize}px;

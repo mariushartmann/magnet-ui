@@ -1,0 +1,85 @@
+@use "../../lib/design-tokens";
+@use "../../lib/spacing";
+@use "../../lib/transition";
+
+@use "./variables";
+
+@mixin List() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin ListShowDividers() {
+    .magnet-list-item {
+        .magnet-list-item--inner {
+            border-bottom: 1px solid;
+        }
+    }
+}
+
+@mixin ListItem() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: variables.$height;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: inherit;
+        background-color: currentColor;
+        opacity: 0;
+        @include transition.Transition((opacity));
+    }
+
+    .magnet-list-item--inner {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        min-height: variables.$height;
+        @include spacing.PaddingHorizontal(4);
+        @include spacing.PaddingVertical(3);
+    }
+}
+
+@mixin ListItemClickable() {
+    cursor: pointer;
+
+    &:hover:before {
+        opacity: 0.1;
+    }
+
+    &:active:before {
+        opacity: 0.2;
+    }
+}
+
+@mixin ListItemDisabled {
+    cursor: not-allowed;
+}
+
+@mixin ListItemTheme($colorMode) {
+    .magnet-list-item {
+        color: design-tokens.getTokenColor(on-surface, $colorMode);
+
+        @each $color in variables.$available-colors {
+            &.magnet-list-item--#{$color} {
+                color: design-tokens.getTokenColor($color, $colorMode);
+            }
+        }
+
+        &.magnet-list-item--active {
+            &:before {
+                opacity: 0.1;
+            }
+        }
+
+        .magnet-list-item--inner {
+            border-color: design-tokens.getTokenColor(border, $colorMode);
+        }
+    }
+}
