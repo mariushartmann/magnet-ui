@@ -916,248 +916,6 @@ Checkbox.displayName = "Checkbox";
 var MagnetCheckbox = React.memo(Checkbox);
 MagnetCheckbox.displayName = "MagnetCheckbox";
 
-var Container = function (_a) {
-    // Vars & States - START
-    // Vars & States - END
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.fluid, fluid = _e === void 0 ? false : _e, _f = _a.style, style = _f === void 0 ? undefined : _f;
-    // Methods & Handler - START
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        var classes = {
-            "magnet-container": true,
-            "magnet-container--fluid": fluid
-        };
-        return clsx([classes, className]);
-    }, [className, fluid]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    // Life Cycle Hooks - END
-    // Render - START
-    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
-};
-Container.displayName = "Container";
-var MagnetContainer = React.memo(Container);
-MagnetContainer.displayName = "MagnetContainer";
-
-var Row = function (_a) {
-    // Vars & States - START
-    // Vars & States - END
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.noGutters, noGutters = _e === void 0 ? false : _e, _f = _a.style, style = _f === void 0 ? undefined : _f;
-    // Methods & Handler - START
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        var classes = {
-            "magnet-row": true,
-            "magnet-row--no-gutters": noGutters
-        };
-        return clsx([classes, className]);
-    }, [className, noGutters]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    // Life Cycle Hooks - END
-    // Render - START
-    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
-};
-Row.displayName = "Row";
-var MagnetRow = React.memo(Row);
-MagnetRow.displayName = "MagnetRow";
-
-var Column = function (_a) {
-    // Vars & States - START
-    // Vars & States - END
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.lg, lg = _e === void 0 ? undefined : _e, _f = _a.md, md = _f === void 0 ? undefined : _f, _g = _a.sm, sm = _g === void 0 ? undefined : _g, _h = _a.style, style = _h === void 0 ? undefined : _h, _j = _a.xl, xl = _j === void 0 ? undefined : _j, _k = _a.xs, xs = _k === void 0 ? undefined : _k;
-    // Methods & Handler - START
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        // eslint-disable-next-line @typescript-eslint/member-delimiter-style
-        var classes = {
-            "magnet-column": true
-        };
-        if (xs) {
-            classes["magnet-column--xs-" + xs] = true;
-        }
-        if (sm) {
-            classes["magnet-column--sm-" + sm] = true;
-        }
-        if (md) {
-            classes["magnet-column--md-" + md] = true;
-        }
-        if (lg) {
-            classes["magnet-column--lg-" + lg] = true;
-        }
-        if (xl) {
-            classes["magnet-column--xl-" + xl] = true;
-        }
-        return clsx([classes, className]);
-    }, [className, lg, md, sm, xl, xs]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    // Life Cycle Hooks - END
-    // Render - START
-    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
-};
-Column.displayName = "Column";
-var MagnetColumn = React.memo(Column);
-MagnetColumn.displayName = "MagnetColumn";
-
-var Image = function (_a) {
-    // Vars & States - START
-    // Vars & States - END
-    var _b = _a.aspectRatio, aspectRatio = _b === void 0 ? 1 : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.contain, contain = _d === void 0 ? false : _d, _e = _a.id, id = _e === void 0 ? undefined : _e, src = _a.src, _f = _a.style, style = _f === void 0 ? undefined : _f;
-    // Methods & Handler - START
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        var classes = {
-            "magnet-image": true,
-            "magnet-image--contain": contain
-        };
-        return clsx([classes, className]);
-    }, [className, contain]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        var tmpStyle = style;
-        if (aspectRatio) {
-            tmpStyle = __assign(__assign({}, style), {
-                paddingTop: 100 / aspectRatio + "%"
-            });
-        }
-        return __assign(__assign({}, styleList), tmpStyle);
-    }, [aspectRatio, style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    // Life Cycle Hooks - END
-    // Render - START
-    return (React.createElement("div", { id: id, className: classes, style: styles },
-        React.createElement("div", { className: "magnet-image--inner", style: {
-                backgroundImage: "url(" + src + ")"
-            } })));
-};
-Image.displayName = "Image";
-var MagnetImage = React.memo(Image);
-MagnetImage.displayName = "MagnetImage";
-
-var List = function (_a) {
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.showDividers, showDividers = _d === void 0 ? false : _d, _e = _a.id, id = _e === void 0 ? undefined : _e, _f = _a.style, style = _f === void 0 ? undefined : _f, _g = _a.theme, theme = _g === void 0 ? "auto" : _g;
-    // Vars & States - START
-    var globalTheme = useContext(ThemeContext);
-    // Vars & States - END
-    // Methods & Handler - START
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        var classes = {
-            "magnet-list": true,
-            "magnet-list--dividers": showDividers,
-            "theme-light": theme === "light" ||
-                (theme === "auto" && globalTheme === "light"),
-            "theme-dark": theme === "dark" || (theme === "auto" && globalTheme === "dark")
-        };
-        return clsx([classes, className]);
-    }, [className, globalTheme, showDividers, theme]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    // Life Cycle Hooks - END
-    // Render - START
-    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
-};
-List.displayName = "List";
-var MagnetList = React.memo(List);
-MagnetList.displayName = "MagnetList";
-
-var ListItem = React.forwardRef(function (_a, forwardRef) {
-    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.appendIcon, appendIcon = _c === void 0 ? undefined : _c, _d = _a.children, children = _d === void 0 ? undefined : _d, _e = _a.className, className = _e === void 0 ? undefined : _e, _f = _a.color, color = _f === void 0 ? undefined : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, _h = _a.href, href = _h === void 0 ? undefined : _h, _j = _a.id, id = _j === void 0 ? undefined : _j, _k = _a.onClick, onClick = _k === void 0 ? undefined : _k, _l = _a.prependIcon, prependIcon = _l === void 0 ? undefined : _l, _m = _a.style, style = _m === void 0 ? undefined : _m, _o = _a.target, target = _o === void 0 ? undefined : _o, _p = _a.theme, theme = _p === void 0 ? "auto" : _p;
-    // Vars & States - START
-    var tag = href ? "a" : "div";
-    var globalTheme = useContext(ThemeContext);
-    var innerRef = useRef(null);
-    var combinedRefs = useCombinedRefs(forwardRef, innerRef);
-    // Vars & States - END
-    // Methods & Handler - START
-    var handleClick = useCallback(function (ev) {
-        if (!disabled && onClick) {
-            onClick(ev);
-        }
-    }, [disabled, onClick]);
-    // Methods & Handler - END
-    // ClassNames & Styles - START
-    var classes = useMemo(function () {
-        var classes = {
-            "magnet-list-item": true,
-            "magnet-list-item--active": active,
-            "magnet-list-item--clickable": href || onClick,
-            "magnet-list-item--disabled": disabled,
-            "magnet-list-item--primary": color && color === "primary",
-            "magnet-list-item--secondary": color && color === "secondary",
-            "magnet-list-item--success": color && color === "success",
-            "magnet-list-item--warning": color && color === "warning",
-            "magnet-list-item--error": color && color === "error",
-            "theme-light": theme === "light" ||
-                (theme === "auto" && globalTheme === "light"),
-            "theme-dark": theme === "dark" ||
-                (theme === "auto" && globalTheme === "dark")
-        };
-        return clsx([classes, className]);
-    }, [
-        active,
-        className,
-        color,
-        disabled,
-        globalTheme,
-        href,
-        onClick,
-        theme
-    ]);
-    var styles = useMemo(function () {
-        var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
-    // ClassNames & Styles - END
-    // Life Cycle Hooks - START
-    useRipple(innerRef, { disabled: disabled || (!href && !onClick) });
-    // Life Cycle Hooks - END
-    // Render - START
-    var renderInner = useCallback(function () {
-        return React.createElement("div", { className: "magnet-list-item--inner" }, children);
-    }, [children]);
-    return React.createElement(tag, {
-        id: id,
-        className: classes,
-        style: styles,
-        onClick: handleClick,
-        disabled: disabled,
-        href: href,
-        ref: combinedRefs,
-        target: target,
-        rel: target ? "noreferrer" : undefined
-    }, React.createElement(React.Fragment, null,
-        prependIcon && (React.createElement(MagnetIcon, { className: "ml-4" }, prependIcon)),
-        renderInner(),
-        appendIcon && (React.createElement(MagnetIcon, { className: "mr-4" }, appendIcon))));
-});
-ListItem.displayName = "ListItem";
-var MagnetListItem = React.memo(ListItem);
-MagnetListItem.displayName = "MagnetListItem";
-
 /** @license React v16.13.1
  * react-is.production.min.js
  *
@@ -2419,6 +2177,374 @@ if (ReactDOM.createPortal) {
 }
 
 var Portal$1 = Portal;
+
+var Overlay = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.absolute, absolute = _b === void 0 ? false : _b, className = _a.className, _c = _a.color, color = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.onClick, onClick = _e === void 0 ? undefined : _e, _f = _a.opacity, opacity = _f === void 0 ? 0.5 : _f, style = _a.style, _g = _a.value, value = _g === void 0 ? false : _g, _h = _a.zIndex, zIndex = _h === void 0 ? 5 : _h;
+    // Methods & Handler - START
+    var handleClick = useCallback(function (ev) {
+        if (onClick) {
+            onClick(ev);
+        }
+    }, [onClick]);
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    var getClasses = useCallback(function () {
+        var classes = {
+            "magnet-overlay": true,
+            "magnet-overlay--absolute": absolute,
+            "magnet-overlay--show": value
+        };
+        return clsx([classes, className]);
+    }, [absolute, className, value]);
+    var getStyles = useCallback(function () {
+        var styleList = {};
+        styleList.backgroundColor = color;
+        styleList.opacity = value ? opacity : undefined;
+        styleList.zIndex = zIndex;
+        return __assign(__assign({}, styleList), style);
+    }, [color, opacity, style, value, zIndex]);
+    // Life Cycle Hooks - END
+    // Render - START
+    var renderOverlay = useCallback(function () {
+        return (React.createElement("div", { id: id, className: getClasses(), style: getStyles(), onClick: handleClick }));
+    }, [getClasses, getStyles, handleClick, id]);
+    return absolute ? (renderOverlay()) : (React.createElement(Portal$1, { node: typeof document !== "undefined" &&
+            document.getElementById("magnet-app") }, renderOverlay()));
+};
+Overlay.displayName = "Overlay";
+var MagnetOverlay = React.memo(Overlay);
+MagnetOverlay.displayName = "MagnetOverlay";
+
+var Spacer = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.className, className = _b === void 0 ? undefined : _b, _c = _a.id, id = _c === void 0 ? undefined : _c, _d = _a.style, style = _d === void 0 ? undefined : _d;
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var getClasses = useCallback(function () {
+        var classes = {
+            "magnet-spacer": true
+        };
+        return clsx([classes, className]);
+    }, [className]);
+    var getStyles = useCallback(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return React.createElement("div", { id: id, className: getClasses(), style: getStyles() });
+};
+Spacer.displayName = "Spacer";
+var MagnetSpacer = React.memo(Spacer);
+MagnetSpacer.displayName = "MagnetSpacer";
+
+var Dialog = function (_a) {
+    var _b = _a.actions, actions = _b === void 0 ? [] : _b, children = _a.children, className = _a.className, _c = _a.onClose, onClose = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, style = _a.style, _e = _a.theme, theme = _e === void 0 ? "auto" : _e, title = _a.title, _f = _a.value, value = _f === void 0 ? false : _f, _g = _a.width, width = _g === void 0 ? "auto" : _g;
+    // Vars & States - START
+    var _h = useState(value), internalValue = _h[0], setInternalValue = _h[1];
+    // Vars & States - END
+    // Methods & Handler - START
+    var handleClose = useCallback(function () {
+        if (onClose) {
+            setInternalValue(false);
+            onClose();
+        }
+    }, [onClose]);
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var getClasses = useCallback(function () {
+        var classes = {
+            "magnet-dialog": true,
+            "magnet-dialog--show": internalValue
+        };
+        return clsx([classes, className]);
+    }, [className, internalValue]);
+    var getStyles = useCallback(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    var getCardStyles = useCallback(function () {
+        var styleList = {
+            zIndex: 201,
+            width: width
+        };
+        return __assign(__assign({}, styleList), style);
+    }, [style, width]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    useEffect(function () {
+        setInternalValue(value);
+    }, [value]);
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement(Portal$1, { node: typeof document !== "undefined" &&
+            document.getElementById("magnet-app") },
+        React.createElement("div", { id: id, className: getClasses(), style: getStyles() },
+            React.createElement(MagnetOverlay, { zIndex: 200, value: internalValue, onClick: handleClose }),
+            React.createElement(MagnetCard, { variant: "elevated", style: getCardStyles(), theme: theme },
+                React.createElement(MagnetCardTitle, null,
+                    React.createElement("span", null, title),
+                    React.createElement(MagnetSpacer, null),
+                    onClose && (React.createElement(MagnetButton, { icon: true, variant: "text", onClick: handleClose, theme: theme },
+                        React.createElement(MagnetIcon, null, "close")))),
+                React.createElement(MagnetCardBody, null, children),
+                actions && actions.length > 0 && (React.createElement(MagnetCardActions, null, actions.map(function (action, index) {
+                    return (React.createElement(MagnetButton, __assign({ key: action.label + index, theme: theme }, action), action.label));
+                })))))));
+};
+Dialog.displayName = "Dialog";
+var MagnetDialog = React.memo(Dialog);
+MagnetDialog.displayName = "MagnetDialog";
+
+var Container = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.fluid, fluid = _e === void 0 ? false : _e, _f = _a.style, style = _f === void 0 ? undefined : _f;
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        var classes = {
+            "magnet-container": true,
+            "magnet-container--fluid": fluid
+        };
+        return clsx([classes, className]);
+    }, [className, fluid]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
+};
+Container.displayName = "Container";
+var MagnetContainer = React.memo(Container);
+MagnetContainer.displayName = "MagnetContainer";
+
+var Row = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.noGutters, noGutters = _e === void 0 ? false : _e, _f = _a.style, style = _f === void 0 ? undefined : _f;
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        var classes = {
+            "magnet-row": true,
+            "magnet-row--no-gutters": noGutters
+        };
+        return clsx([classes, className]);
+    }, [className, noGutters]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
+};
+Row.displayName = "Row";
+var MagnetRow = React.memo(Row);
+MagnetRow.displayName = "MagnetRow";
+
+var Column = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? undefined : _d, _e = _a.lg, lg = _e === void 0 ? undefined : _e, _f = _a.md, md = _f === void 0 ? undefined : _f, _g = _a.sm, sm = _g === void 0 ? undefined : _g, _h = _a.style, style = _h === void 0 ? undefined : _h, _j = _a.xl, xl = _j === void 0 ? undefined : _j, _k = _a.xs, xs = _k === void 0 ? undefined : _k;
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        // eslint-disable-next-line @typescript-eslint/member-delimiter-style
+        var classes = {
+            "magnet-column": true
+        };
+        if (xs) {
+            classes["magnet-column--xs-" + xs] = true;
+        }
+        if (sm) {
+            classes["magnet-column--sm-" + sm] = true;
+        }
+        if (md) {
+            classes["magnet-column--md-" + md] = true;
+        }
+        if (lg) {
+            classes["magnet-column--lg-" + lg] = true;
+        }
+        if (xl) {
+            classes["magnet-column--xl-" + xl] = true;
+        }
+        return clsx([classes, className]);
+    }, [className, lg, md, sm, xl, xs]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
+};
+Column.displayName = "Column";
+var MagnetColumn = React.memo(Column);
+MagnetColumn.displayName = "MagnetColumn";
+
+var Image = function (_a) {
+    // Vars & States - START
+    // Vars & States - END
+    var _b = _a.aspectRatio, aspectRatio = _b === void 0 ? 1 : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.contain, contain = _d === void 0 ? false : _d, _e = _a.id, id = _e === void 0 ? undefined : _e, src = _a.src, _f = _a.style, style = _f === void 0 ? undefined : _f;
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        var classes = {
+            "magnet-image": true,
+            "magnet-image--contain": contain
+        };
+        return clsx([classes, className]);
+    }, [className, contain]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        var tmpStyle = style;
+        if (aspectRatio) {
+            tmpStyle = __assign(__assign({}, style), {
+                paddingTop: 100 / aspectRatio + "%"
+            });
+        }
+        return __assign(__assign({}, styleList), tmpStyle);
+    }, [aspectRatio, style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement("div", { id: id, className: classes, style: styles },
+        React.createElement("div", { className: "magnet-image--inner", style: {
+                backgroundImage: "url(" + src + ")"
+            } })));
+};
+Image.displayName = "Image";
+var MagnetImage = React.memo(Image);
+MagnetImage.displayName = "MagnetImage";
+
+var List = function (_a) {
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.showDividers, showDividers = _d === void 0 ? false : _d, _e = _a.id, id = _e === void 0 ? undefined : _e, _f = _a.style, style = _f === void 0 ? undefined : _f, _g = _a.theme, theme = _g === void 0 ? "auto" : _g;
+    // Vars & States - START
+    var globalTheme = useContext(ThemeContext);
+    // Vars & States - END
+    // Methods & Handler - START
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        var classes = {
+            "magnet-list": true,
+            "magnet-list--dividers": showDividers,
+            "theme-light": theme === "light" ||
+                (theme === "auto" && globalTheme === "light"),
+            "theme-dark": theme === "dark" || (theme === "auto" && globalTheme === "dark")
+        };
+        return clsx([classes, className]);
+    }, [className, globalTheme, showDividers, theme]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    // Life Cycle Hooks - END
+    // Render - START
+    return (React.createElement("div", { id: id, className: classes, style: styles }, children));
+};
+List.displayName = "List";
+var MagnetList = React.memo(List);
+MagnetList.displayName = "MagnetList";
+
+var ListItem = React.forwardRef(function (_a, forwardRef) {
+    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.appendIcon, appendIcon = _c === void 0 ? undefined : _c, _d = _a.children, children = _d === void 0 ? undefined : _d, _e = _a.className, className = _e === void 0 ? undefined : _e, _f = _a.color, color = _f === void 0 ? undefined : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, _h = _a.href, href = _h === void 0 ? undefined : _h, _j = _a.id, id = _j === void 0 ? undefined : _j, _k = _a.onClick, onClick = _k === void 0 ? undefined : _k, _l = _a.prependIcon, prependIcon = _l === void 0 ? undefined : _l, _m = _a.style, style = _m === void 0 ? undefined : _m, _o = _a.target, target = _o === void 0 ? undefined : _o, _p = _a.theme, theme = _p === void 0 ? "auto" : _p;
+    // Vars & States - START
+    var tag = href ? "a" : "div";
+    var globalTheme = useContext(ThemeContext);
+    var innerRef = useRef(null);
+    var combinedRefs = useCombinedRefs(forwardRef, innerRef);
+    // Vars & States - END
+    // Methods & Handler - START
+    var handleClick = useCallback(function (ev) {
+        if (!disabled && onClick) {
+            onClick(ev);
+        }
+    }, [disabled, onClick]);
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var classes = useMemo(function () {
+        var classes = {
+            "magnet-list-item": true,
+            "magnet-list-item--active": active,
+            "magnet-list-item--clickable": href || onClick,
+            "magnet-list-item--disabled": disabled,
+            "magnet-list-item--primary": color && color === "primary",
+            "magnet-list-item--secondary": color && color === "secondary",
+            "magnet-list-item--success": color && color === "success",
+            "magnet-list-item--warning": color && color === "warning",
+            "magnet-list-item--error": color && color === "error",
+            "theme-light": theme === "light" ||
+                (theme === "auto" && globalTheme === "light"),
+            "theme-dark": theme === "dark" ||
+                (theme === "auto" && globalTheme === "dark")
+        };
+        return clsx([classes, className]);
+    }, [
+        active,
+        className,
+        color,
+        disabled,
+        globalTheme,
+        href,
+        onClick,
+        theme
+    ]);
+    var styles = useMemo(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    useRipple(innerRef, { disabled: disabled || (!href && !onClick) });
+    // Life Cycle Hooks - END
+    // Render - START
+    var renderInner = useCallback(function () {
+        return React.createElement("div", { className: "magnet-list-item--inner" }, children);
+    }, [children]);
+    return React.createElement(tag, {
+        id: id,
+        className: classes,
+        style: styles,
+        onClick: handleClick,
+        disabled: disabled,
+        href: href,
+        ref: combinedRefs,
+        target: target,
+        rel: target ? "noreferrer" : undefined
+    }, React.createElement(React.Fragment, null,
+        prependIcon && (React.createElement(MagnetIcon, { className: "ml-4" }, prependIcon)),
+        renderInner(),
+        appendIcon && (React.createElement(MagnetIcon, { className: "mr-4" }, appendIcon))));
+});
+ListItem.displayName = "ListItem";
+var MagnetListItem = React.memo(ListItem);
+MagnetListItem.displayName = "MagnetListItem";
 
 /**
  * Simple ponyfill for Object.fromEntries
@@ -5145,6 +5271,177 @@ RadioGroup.displayName = "RadioGroup";
 var MagnetRadioGroup = React.memo(RadioGroup);
 MagnetRadioGroup.displayName = "MagnetRadioGroup";
 
+var Select = function (_a) {
+    var _b = _a.appendIcon, appendIcon = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.clearable, clearable = _d === void 0 ? false : _d, _e = _a.disabled, disabled = _e === void 0 ? false : _e, _f = _a.error, error = _f === void 0 ? false : _f, _g = _a.hint, hint = _g === void 0 ? undefined : _g, _h = _a.id, id = _h === void 0 ? undefined : _h, label = _a.label, _j = _a.mode, mode = _j === void 0 ? "lazy" : _j, _k = _a.name, name = _k === void 0 ? undefined : _k, _l = _a.onAppendIconClick, onAppendIconClick = _l === void 0 ? undefined : _l, _m = _a.onChange, onChange = _m === void 0 ? undefined : _m, _o = _a.onClear, onClear = _o === void 0 ? undefined : _o, _p = _a.onClick, onClick = _p === void 0 ? undefined : _p, _q = _a.onPrependIconClick, onPrependIconClick = _q === void 0 ? undefined : _q, _r = _a.options, options = _r === void 0 ? [] : _r, _s = _a.placeholder, placeholder = _s === void 0 ? undefined : _s, _t = _a.prependIcon, prependIcon = _t === void 0 ? undefined : _t, _u = _a.readOnly, readOnly = _u === void 0 ? false : _u, _v = _a.ref, ref = _v === void 0 ? undefined : _v, _w = _a.rules, rules = _w === void 0 ? [] : _w, _x = _a.style, style = _x === void 0 ? undefined : _x, _y = _a.theme, theme = _y === void 0 ? "auto" : _y, _z = _a.value, value = _z === void 0 ? undefined : _z;
+    // Vars & States - START
+    var globalTheme = useContext(ThemeContext);
+    var formContext = useContext(FormContext);
+    var anchorRef = useRef(null);
+    var _0 = useState(undefined), internalAppendIcon = _0[0], setInternalAppendIcon = _0[1];
+    var _1 = useState(id !== null && id !== void 0 ? id : uniqid("select-")), internalId = _1[0], setInternalId = _1[1];
+    var _2 = useState(value), internalValue = _2[0], setInternalValue = _2[1];
+    var _3 = useState(false), hasFocus = _3[0], setHasFocus = _3[1];
+    var _4 = useState(false), isDirty = _4[0], setIsDirty = _4[1];
+    var _5 = useValidation(internalValue, rules), isValid = _5[0], validationErrors = _5[1];
+    // Vars & States - END
+    // Methods & Handler - START
+    var handleFocus = useCallback(function () {
+        var _a;
+        if (!disabled || readOnly) {
+            (_a = document.getElementById(id)) === null || _a === void 0 ? void 0 : _a.focus();
+            setTimeout(function () {
+                return setHasFocus(true);
+            }, 100);
+        }
+    }, [disabled, id, readOnly]);
+    var handleBlur = useCallback(function () {
+        setTimeout(function () {
+            setIsDirty(true);
+            setHasFocus(false);
+        }, 100);
+    }, []);
+    var handleChange = useCallback(function (newValue) {
+        setInternalValue(newValue);
+        if (onChange) {
+            onChange(newValue);
+        }
+        setHasFocus(false);
+    }, [onChange]);
+    var handleClear = useCallback(function () {
+        setInternalValue(undefined);
+        if (onChange) {
+            onChange(undefined);
+        }
+        if (onClear) {
+            onClear();
+        }
+    }, [onChange, onClear]);
+    // Methods & Handler - END
+    // ClassNames & Styles - START
+    var getClasses = useCallback(function () {
+        var classes = {
+            "magnet-select": true,
+            "magnet-select--value": internalValue !== undefined,
+            "magnet-select--focus": hasFocus,
+            "magnet-select--disabled": disabled,
+            "magnet-select--error": error || (isDirty && !isValid),
+            "theme-light": theme === "light" ||
+                (theme === "auto" && globalTheme === "light"),
+            "theme-dark": theme === "dark" || (theme === "auto" && globalTheme === "dark")
+        };
+        return clsx([classes, className]);
+    }, [
+        className,
+        disabled,
+        error,
+        globalTheme,
+        hasFocus,
+        isDirty,
+        isValid,
+        internalValue,
+        theme
+    ]);
+    var getStyles = useCallback(function () {
+        var styleList = {};
+        return __assign(__assign({}, styleList), style);
+    }, [style]);
+    // ClassNames & Styles - END
+    // Life Cycle Hooks - START
+    useEffect(function () {
+        setIsDirty((formContext && formContext.mode === "force") || mode === "force");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    useEffect(function () {
+        if ((formContext && formContext.isDirty) || mode === "force") {
+            setIsDirty(true);
+        }
+    }, [formContext, mode]);
+    useEffect(function () {
+        setInternalId(id !== null && id !== void 0 ? id : uniqid("select-"));
+    }, [id]);
+    useEffect(function () {
+        setInternalValue(value);
+    }, [value]);
+    useEffect(function () {
+        if (!formContext) {
+            return;
+        }
+        if (!name) {
+            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+            return;
+        }
+        formContext.handlePublish({
+            name: name,
+            value: internalValue,
+            isValid: isValid
+        });
+    }, [internalValue, isValid, formContext, name, internalId]);
+    useEffect(function () {
+        if (error) {
+            setInternalAppendIcon("warning");
+            return;
+        }
+        setInternalAppendIcon(appendIcon);
+    }, [appendIcon, error]);
+    // Life Cycle Hooks - END
+    // Render - START
+    var renderPrependIcon = useCallback(function () {
+        if (!prependIcon) {
+            return null;
+        }
+        return (React.createElement(MagnetIcon, { className: "magnet-select--prepend-icon", onClick: onPrependIconClick }, prependIcon));
+    }, [onPrependIconClick, prependIcon]);
+    var renderAppendIcon = useCallback(function () {
+        if (!internalAppendIcon) {
+            return null;
+        }
+        var onClickEvent = onAppendIconClick;
+        if (error) {
+            onClickEvent = undefined;
+        }
+        return (React.createElement(MagnetIcon, { className: "magnet-select--append-icon", onClick: onClickEvent }, internalAppendIcon));
+    }, [error, internalAppendIcon, onAppendIconClick]);
+    var renderHint = useCallback(function () {
+        if (!hint && validationErrors.length < 1) {
+            return null;
+        }
+        var hints = [];
+        if (hint && hint.length > 0) {
+            hints.push(hint);
+        }
+        validationErrors.forEach(function (errMsg) {
+            hints.push(errMsg);
+        });
+        return React.createElement(MagnetHint, { hints: hints, error: error });
+    }, [hint, validationErrors, error]);
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", { "data-testid": "magnet-select", className: getClasses(), style: getStyles(), ref: anchorRef },
+            React.createElement("div", { className: "magnet-select--container" },
+                renderPrependIcon(),
+                React.createElement("div", { className: "magnet-select--inner-container", onClick: onClick },
+                    React.createElement("label", { htmlFor: internalId }, label),
+                    React.createElement("input", { id: internalId, type: "text", value: internalValue
+                            ? internalValue.text
+                                ? internalValue === null || internalValue === void 0 ? void 0 : internalValue.text
+                                : String(internalValue === null || internalValue === void 0 ? void 0 : internalValue.value)
+                            : "", placeholder: !label || hasFocus ? placeholder : undefined, onFocus: handleFocus, onClick: onClick, disabled: disabled, readOnly: true, ref: ref, name: name })),
+                clearable && internalValue && (React.createElement("div", { className: "magnet-select--append-icon", onClick: handleClear, style: { cursor: "pointer" } },
+                    React.createElement(MagnetIcon, null, "close"))),
+                renderAppendIcon()),
+            renderHint()),
+        React.createElement(MagnetMenu, { anchorEl: anchorRef, width: "match-parent", value: hasFocus, onOutsideClick: handleBlur, theme: theme, options: options.map(function (o) {
+                return {
+                    title: o.text ? o.text : o.value,
+                    onClick: function () {
+                        handleChange(o);
+                    }
+                };
+            }) })));
+};
+Select.displayName = "Select";
+var MagnetSelect = React.memo(Select);
+MagnetSelect.displayName = "MagnetSelect";
+
 var Switch = function (_a) {
     var _b = _a.className, className = _b === void 0 ? undefined : _b, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.error, error = _d === void 0 ? false : _d, _e = _a.hint, hint = _e === void 0 ? undefined : _e, _f = _a.id, id = _f === void 0 ? undefined : _f, _g = _a.label, label = _g === void 0 ? undefined : _g, _h = _a.mode, mode = _h === void 0 ? "lazy" : _h, _j = _a.name, name = _j === void 0 ? undefined : _j, _k = _a.onChange, onChange = _k === void 0 ? undefined : _k, _l = _a.onClick, onClick = _l === void 0 ? undefined : _l, _m = _a.ref, ref = _m === void 0 ? undefined : _m, _o = _a.rules, rules = _o === void 0 ? [] : _o, _p = _a.style, style = _p === void 0 ? undefined : _p, _q = _a.theme, theme = _q === void 0 ? "auto" : _q, _r = _a.value, value = _r === void 0 ? false : _r;
     // Vars & States - START
@@ -5579,5 +5876,5 @@ Textfield.displayName = "Textfield";
 var MagnetTextfield = React.memo(Textfield);
 MagnetTextfield.displayName = "MagnetTextfield";
 
-export { Banner, Button, Card, CardActions, CardBody, CardTitle, Checkbox, Column, Container, FormContext, Image, MagnetApp, MagnetBanner, MagnetButton, MagnetCard, MagnetCardActions, MagnetCardBody, MagnetCardTitle, MagnetCheckbox, MagnetColumn, MagnetContainer, MagnetForm, MagnetHint, MagnetIcon, MagnetImage, MagnetMain, MagnetMenu, MagnetNavBar, MagnetNavBarLink, MagnetNavRail, MagnetNavRailLink, MagnetPopover, MagnetProgressSpinner, MagnetRadio, MagnetRadioGroup, MagnetRow, MagnetSwitch, MagnetTextarea, MagnetTextfield, NavBar, NavBarLink, NavRail, NavRailLink, Radio, RadioGroup, Row, Switch, Textarea, Textfield, ThemeContext };
+export { Banner, Button, Card, CardActions, CardBody, CardTitle, Checkbox, Column, Container, Dialog, FormContext, Image, MagnetApp, MagnetBanner, MagnetButton, MagnetCard, MagnetCardActions, MagnetCardBody, MagnetCardTitle, MagnetCheckbox, MagnetColumn, MagnetContainer, MagnetDialog, MagnetForm, MagnetHint, MagnetIcon, MagnetImage, MagnetMain, MagnetMenu, MagnetNavBar, MagnetNavBarLink, MagnetNavRail, MagnetNavRailLink, MagnetOverlay, MagnetPopover, MagnetProgressSpinner, MagnetRadio, MagnetRadioGroup, MagnetRow, MagnetSelect, MagnetSpacer, MagnetSwitch, MagnetTextarea, MagnetTextfield, NavBar, NavBarLink, NavRail, NavRailLink, Overlay, Radio, RadioGroup, Row, Select, Spacer, Switch, Textarea, Textfield, ThemeContext };
 //# sourceMappingURL=index.esm.js.map

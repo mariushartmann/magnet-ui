@@ -12,6 +12,7 @@ export * from "./image";
 export * from "./menu";
 export * from "./navBar";
 export * from "./navRail";
+export * from "./overlay";
 export * from "./popover";
 export * from "./progressSpinner";
 export * from "./radio";

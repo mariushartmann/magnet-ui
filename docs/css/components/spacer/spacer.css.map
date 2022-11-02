@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["../../../../src/styles/components/spacer/spacer.scss"],"names":[],"mappings":"AAAA,eACI","file":"spacer.css","sourcesContent":[".magnet-spacer {\n    flex-grow: 1;\n}\n"]}
