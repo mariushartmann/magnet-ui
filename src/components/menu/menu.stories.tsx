@@ -2,6 +2,7 @@
 // system imports
 import React, { useRef, useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 // internal imports
 import {
@@ -43,7 +44,8 @@ const DefaultTemplate: ComponentStory<typeof MagnetMenu> = (args) => {
     const anchorRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
     const [internalValue, setInternalValue] = useState(args.value);
 
-    const handleClick = () => {
+    const handleClick = (option) => {
+        action(option + " clicked")();
         setInternalValue(false);
     };
 
@@ -66,11 +68,32 @@ const DefaultTemplate: ComponentStory<typeof MagnetMenu> = (args) => {
                             value={internalValue}
                             onOutsideClick={() => setInternalValue(false)}
                             options={[
-                                { title: "Option 1", onClick: handleClick },
-                                { title: "Option 2", onClick: handleClick },
-                                { title: "Option 3", onClick: handleClick },
-                                { title: "Option 4", onClick: handleClick },
-                                { title: "Option 5", onClick: handleClick }
+                                {
+                                    prependIcon: "person",
+                                    title: "Profile",
+                                    onClick: () => handleClick("Profile")
+                                },
+                                {
+                                    prependIcon: "person",
+                                    title: "My account",
+                                    onClick: () => handleClick("My account")
+                                },
+                                {
+                                    prependIcon: "person_add",
+                                    title: "Add another account",
+                                    onClick: () =>
+                                        handleClick("Add another account")
+                                },
+                                {
+                                    prependIcon: "Settings",
+                                    title: "Settings",
+                                    onClick: () => handleClick("Settings")
+                                },
+                                {
+                                    prependIcon: "logout",
+                                    title: "Logout",
+                                    onClick: () => handleClick("Logout")
+                                }
                             ]}
                         />
                     </MagnetColumn>
