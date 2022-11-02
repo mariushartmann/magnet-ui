@@ -1,0 +1,74 @@
+@use "../../lib/design-tokens";
+@use "../../lib/spacing";
+
+@use "./variables";
+
+@mixin SelectTheme($colorMode) {
+    &.magnet-select {
+        .magnet-select--container {
+            border-color: design-tokens.getTokenColor(border, $colorMode);
+            background-color: design-tokens.getTokenColor(
+                primary-container,
+                $colorMode
+            );
+            color: design-tokens.getTokenColor(
+                on-primary-container,
+                $colorMode
+            );
+
+            &:before {
+                background-color: design-tokens.getTokenColor(
+                    primary,
+                    $colorMode
+                );
+            }
+        }
+
+        &.magnet-select--focus {
+            label {
+                color: design-tokens.getTokenColor(primary, $colorMode);
+            }
+        }
+
+        &.magnet-select--error {
+            .magnet-select--container {
+                border-color: design-tokens.getTokenColor(error, $colorMode);
+                background-color: design-tokens.getTokenColor(
+                    error-container,
+                    $colorMode
+                );
+                color: design-tokens.getTokenColor(
+                    on-error-container,
+                    $colorMode
+                );
+
+                &:before {
+                    background-color: design-tokens.getTokenColor(
+                        error,
+                        $colorMode
+                    );
+                }
+            }
+
+            &.magnet-select--focus {
+                label {
+                    color: design-tokens.getTokenColor(error, $colorMode);
+                }
+            }
+        }
+
+        &.magnet-select--disabled {
+            .magnet-select--container {
+                border-color: design-tokens.getTokenColor(
+                    on-disabled,
+                    $colorMode
+                );
+                background-color: design-tokens.getTokenColor(
+                    disabled,
+                    $colorMode
+                );
+                color: design-tokens.getTokenColor(on-disabled, $colorMode);
+            }
+        }
+    }
+}
