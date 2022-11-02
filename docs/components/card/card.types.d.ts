@@ -5,7 +5,7 @@ export interface ICardProps extends IComponentProps, IThemable, ILinkable, IClic
      * The display style of the component
      *
      * @docType string
-     * @defaultValue `"default"`
+     * @defaultValue `"elevated"`
      */
     variant?: CardVariant;
 }

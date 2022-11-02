@@ -1,5 +1,5 @@
 // System imports
-import React, { PropsWithChildren, useCallback } from "react";
+import React, { useCallback } from "react";
 import clsx from "clsx";
 
 // Internal imports

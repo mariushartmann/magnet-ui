@@ -1,5 +1,5 @@
 import { IThemable, IInputProps } from "../../types";
-export interface IETextFieldProps extends IInputProps<string, HTMLInputElement, HTMLDivElement>, IThemable {
+export interface ITextfieldProps extends IInputProps<string, HTMLInputElement, HTMLDivElement>, IThemable {
     /**
      * The icon name of appending icon
      *
@@ -62,6 +62,6 @@ export interface IETextFieldProps extends IInputProps<string, HTMLInputElement, 
      * @docType string
      * @defaultValue `"text"`
      */
-    type?: TextFieldType;
+    type?: TextfieldType;
 }
-export declare type TextFieldType = "date" | "number" | "password" | "phone" | "text";
+export declare type TextfieldType = "password" | "text";
