@@ -7,7 +7,7 @@ export interface IPopoverProps extends IComponentProps, IThemable {
      * @docType string
      * @defaultValue `"left"`
      */
-    align?: MenuAlignment;
+    align?: PopoverAlignment;
 
     /**
      * The element that the menu attach to
@@ -30,7 +30,7 @@ export interface IPopoverProps extends IComponentProps, IThemable {
      * @docType string
      * @defaultValue `"auto"`
      */
-    width?: MenuWidth;
+    width?: PopoverWidth;
 
     /**
      * Controls whether the component is visible or hidden
@@ -41,5 +41,5 @@ export interface IPopoverProps extends IComponentProps, IThemable {
     value?: boolean;
 }
 
-export type MenuAlignment = "left" | "right";
-export type MenuWidth = "auto" | "match-parent";
+export type PopoverAlignment = "left" | "right";
+export type PopoverWidth = "auto" | "match-parent";

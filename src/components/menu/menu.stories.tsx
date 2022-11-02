@@ -13,11 +13,12 @@ import {
 } from "../..";
 
 // component imports
-import { MagnetPopover, IPopoverProps } from "./";
+import { MagnetMenu, IMenuProps } from ".";
+import { MagnetListItem } from "../list";
 
 export default {
-    title: "Components/Popovers",
-    component: MagnetPopover,
+    title: "Components/Menus",
+    component: MagnetMenu,
     argTypes: {
         className: {
             table: {
@@ -36,11 +37,15 @@ export default {
         },
         onChange: { action: "onChange" }
     }
-} as ComponentMeta<typeof MagnetPopover>;
+} as ComponentMeta<typeof MagnetMenu>;
 
-const DefaultTemplate: ComponentStory<typeof MagnetPopover> = (args) => {
+const DefaultTemplate: ComponentStory<typeof MagnetMenu> = (args) => {
     const anchorRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
     const [internalValue, setInternalValue] = useState(args.value);
+
+    const handleClick = () => {
+        setInternalValue(false);
+    };
 
     return (
         <MagnetMain>
@@ -53,16 +58,21 @@ const DefaultTemplate: ComponentStory<typeof MagnetPopover> = (args) => {
                                 setInternalValue(!internalValue);
                             }}
                         >
-                            Toggle Popover
+                            Toggle Menu
                         </MagnetButton>
-                        <MagnetPopover
+                        <MagnetMenu
                             {...args}
                             anchorEl={anchorRef}
                             value={internalValue}
                             onOutsideClick={() => setInternalValue(false)}
-                        >
-                            This is an example content
-                        </MagnetPopover>
+                            options={[
+                                { title: "Option 1", onClick: handleClick },
+                                { title: "Option 2", onClick: handleClick },
+                                { title: "Option 3", onClick: handleClick },
+                                { title: "Option 4", onClick: handleClick },
+                                { title: "Option 5", onClick: handleClick }
+                            ]}
+                        />
                     </MagnetColumn>
                 </MagnetRow>
             </MagnetContainer>
@@ -77,4 +87,4 @@ Default.args = {
     theme: "auto",
     width: "auto",
     value: false
-} as IPopoverProps;
+} as IMenuProps;

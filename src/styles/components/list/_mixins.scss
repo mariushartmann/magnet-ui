@@ -30,7 +30,6 @@
         bottom: 0;
         left: 0;
         right: 0;
-        border-radius: inherit;
         background-color: currentColor;
         opacity: 0;
         @include transition.Transition((opacity));

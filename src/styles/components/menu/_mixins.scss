@@ -1,0 +1,9 @@
+@use "../../lib/spacing";
+
+@mixin Menu() {
+    .magnet-list {
+        max-height: 250px;
+        overflow-y: auto;
+        @include spacing.MarginVertical(3);
+    }
+}
