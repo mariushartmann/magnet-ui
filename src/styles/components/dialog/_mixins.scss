@@ -1,0 +1,39 @@
+@use "../../lib/transition";
+
+@use "./variables";
+
+@mixin Dialog() {
+    pointer-events: none;
+    visibility: hidden;
+    @include transition.Transition(visibility);
+
+    .magnet-card {
+        position: fixed;
+        width: variables.$width;
+        max-width: variables.$max-width;
+        max-height: variables.$max-height;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-40%);
+        opacity: 0;
+        z-index: 201;
+        @include transition.Transition(
+            (width, height, transform, top, left, right, opacity)
+        );
+
+        .magnet-card-body {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+    }
+}
+
+@mixin DialogShow() {
+    pointer-events: all;
+    visibility: visible;
+
+    .magnet-card {
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 1;
+    }
+}

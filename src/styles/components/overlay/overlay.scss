@@ -1,0 +1,24 @@
+@use './mixins';
+
+// Basic Styling
+.magnet-overlay {
+    @include mixins.Overlay();
+
+    &.magnet-overlay--absolute {
+        @include mixins.OverlayAbsolute();
+    }
+
+    &.magnet-overlay--show {
+        @include mixins.OverlayShow();
+    }
+}
+
+// Light Theme
+.theme-light {
+    @include mixins.OverlayTheme(light);
+}
+
+// Dark Theme
+.theme-dark {
+    @include mixins.OverlayTheme(dark);
+}

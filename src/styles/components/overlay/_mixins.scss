@@ -1,0 +1,30 @@
+@use "../../lib/design-tokens";
+@use "../../lib/transition";
+
+@mixin Overlay() {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    @include transition.Transition((opacity, visibility));
+}
+
+@mixin OverlayAbsolute() {
+    position: absolute;
+}
+
+@mixin OverlayShow() {
+    visibility: visible;
+}
+
+@mixin OverlayTheme($colorMode) {
+    .magnet-overlay {
+        background-color: design-tokens.getTokenColor(
+            on-background,
+            $colorMode
+        );
+    }
+}
