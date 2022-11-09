@@ -61,11 +61,65 @@ function off(obj) {
 }
 var isBrowser = typeof window !== "undefined";
 
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+        ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        }
+        : null;
+}
+function rgbToHsl(r, g, b) {
+    var tmpR = (r /= 255);
+    var tmpG = (g /= 255);
+    var tmpB = (b /= 255);
+    var max = Math.max(tmpR, tmpG, tmpB), min = Math.min(tmpR, tmpG, tmpB);
+    var h, s;
+    var l = (max + min) / 2;
+    if (max === min) {
+        h = s = 0; // achromatic
+    }
+    else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case tmpR:
+                h = (tmpG - tmpB) / d + (tmpG < tmpB ? 6 : 0);
+                break;
+            case tmpG:
+                h = (tmpB - tmpR) / d + 2;
+                break;
+            case tmpB:
+                h = (tmpR - tmpG) / d + 4;
+                break;
+        }
+        h /= 6;
+    }
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+    return [h, s, l];
+}
+function hslToHex(h, s, l) {
+    l /= 100;
+    var a = (s * Math.min(l, 1 - l)) / 100;
+    var f = function (n) {
+        var k = (n + h / 30) % 12;
+        var color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color)
+            .toString(16)
+            .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+    };
+    return "#" + f(0) + f(8) + f(4);
+}
+
 var ThemeContext = React__default['default'].createContext("light");
 var App = function (_a) {
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.hasNavBar, hasNavBar = _d === void 0 ? false : _d, _e = _a.hasNavRail, hasNavRail = _e === void 0 ? false : _e, _f = _a.id, id = _f === void 0 ? "magnet-app" : _f, _g = _a.style, style = _g === void 0 ? undefined : _g, _h = _a.theme, theme = _h === void 0 ? "auto" : _h;
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.customTheme, customTheme = _d === void 0 ? undefined : _d, _e = _a.hasNavBar, hasNavBar = _e === void 0 ? false : _e, _f = _a.hasNavRail, hasNavRail = _f === void 0 ? false : _f, _g = _a.id, id = _g === void 0 ? "magnet-app" : _g, _h = _a.style, style = _h === void 0 ? undefined : _h, _j = _a.theme, theme = _j === void 0 ? "auto" : _j;
     // Vars & States - START
-    var _j = React.useState("light"), internalTheme = _j[0], setInternalTheme = _j[1];
+    var _k = React.useState("light"), internalTheme = _k[0], setInternalTheme = _k[1];
     // Vars & States - END
     // Methods & Handler - START
     // Methods & Handler - END
@@ -80,10 +134,28 @@ var App = function (_a) {
         };
         return clsx([classes, className]);
     }, [className, hasNavBar, hasNavRail, internalTheme]);
+    var customThemeStyle = React.useMemo(function () {
+        var styleList = {};
+        var valuesToGenerate = [
+            0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 100
+        ];
+        if (customTheme) {
+            Object.entries(customTheme).forEach(function (_a) {
+                var key = _a[0], value = _a[1];
+                var rgb = hexToRgb(value);
+                var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+                styleList["--" + key + "-original"] = value;
+                valuesToGenerate.forEach(function (gen) {
+                    styleList["--" + key + "-" + gen] = hslToHex(hsl[0], hsl[1], gen);
+                });
+            });
+        }
+        return styleList;
+    }, [customTheme]);
     var styles = React.useMemo(function () {
         var styleList = {};
-        return __assign(__assign({}, styleList), style);
-    }, [style]);
+        return __assign(__assign(__assign({}, styleList), customThemeStyle), style);
+    }, [customThemeStyle, style]);
     // ClassNames & Styles - END
     // Life Cycle Hooks - START
     React.useEffect(function () {

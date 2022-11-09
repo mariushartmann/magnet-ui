@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.8
+
+### App
+
+-   Added a "customTheme" property to allow customization of colors
+
 ## 0.0.7
 
 ### Checkbox
