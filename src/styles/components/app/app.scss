@@ -11,6 +11,18 @@
             @include mixins.AppMain();
         }
     }
+
+    &.magnet-app--has-nav-bar {
+        .magnet-main {
+            @include mixins.AppMainWithNavBar();
+        }
+    }
+
+    &.magnet-app--has-nav-rail {
+        .magnet-main {
+            @include mixins.AppMainWithNavRail();
+        }
+    }
 }
 
 // Light Theme

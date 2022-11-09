@@ -7,6 +7,10 @@
 @use "./variables";
 
 @mixin NavRail() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: bottom;
     display: flex;
     flex-direction: column;
     width: variables.$nav-rail-width;

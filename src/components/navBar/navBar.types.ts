@@ -1,4 +1,4 @@
-import { IClickable, IComponentProps, IThemable } from "../../types";
+import { IClickable, IComponentProps, ILinkable, IThemable } from "../../types";
 
 export interface INavBarProps extends IComponentProps, IThemable {
     /**
@@ -14,6 +14,7 @@ export type NavBarVariant = "flat" | "elevated";
 
 export interface INavBarLinkProps
     extends IComponentProps,
+        ILinkable,
         IClickable<React.MouseEvent<HTMLElement>> {
     /**
      * Indicated the link as active

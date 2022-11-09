@@ -7,6 +7,10 @@
 @use "./variables";
 
 @mixin NavBar() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: row;
     height: variables.$nav-bar-height;

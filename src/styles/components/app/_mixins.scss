@@ -1,6 +1,9 @@
 @use "../../lib/design-tokens";
 @use "../../lib/transition";
 
+@use "../nav-bar/variables" as navBarVariables;
+@use "../nav-rail/variables" as navRailVariables;
+
 @mixin App() {
     position: relative;
     display: flex;
@@ -21,6 +24,14 @@
     flex: 1 1 auto;
     max-width: 100%;
     @include transition.Transition((width, height));
+}
+
+@mixin AppMainWithNavBar() {
+    padding-top: navBarVariables.$nav-bar-height;
+}
+
+@mixin AppMainWithNavRail() {
+    padding-left: navRailVariables.$nav-rail-width;
 }
 
 @mixin AppTheme($colorMode) {

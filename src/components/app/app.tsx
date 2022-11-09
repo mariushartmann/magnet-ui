@@ -13,6 +13,8 @@ export const ThemeContext = React.createContext<"light" | "dark">("light");
 const App = ({
     children = undefined,
     className = undefined,
+    hasNavBar = false,
+    hasNavRail = false,
     id = "magnet-app",
     style = undefined,
     theme = "auto"
@@ -29,12 +31,14 @@ const App = ({
     const classes = useMemo(() => {
         const classes = {
             "magnet-app": true,
+            "magnet-app--has-nav-bar": hasNavBar,
+            "magnet-app--has-nav-rail": hasNavRail,
             "theme-light": internalTheme === "light",
             "theme-dark": internalTheme === "dark"
         };
 
         return clsx([classes, className]);
-    }, [className, internalTheme]);
+    }, [className, hasNavBar, hasNavRail, internalTheme]);
 
     const styles = useMemo((): React.CSSProperties => {
         const styleList: React.CSSProperties = {};
