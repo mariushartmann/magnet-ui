@@ -126,9 +126,9 @@ export const Switch = ({
             return;
         }
 
-        if (!name) {
+        if (formContext && !name) {
             console.error(
-                `You have to define a name to ${internalId} if used inside an EForm.`
+                `You have to define a name to ${internalId} if used inside an MagnetForm.`
             );
             return;
         }

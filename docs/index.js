@@ -891,8 +891,8 @@ var Checkbox = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
@@ -5187,8 +5187,8 @@ var Radio = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
@@ -5398,8 +5398,8 @@ var Select = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
@@ -5550,8 +5550,8 @@ var Switch = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
@@ -5674,8 +5674,8 @@ var Textarea = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
@@ -5827,8 +5827,8 @@ var Textfield = function (_a) {
         if (!formContext) {
             return;
         }
-        if (!name) {
-            console.error("You have to define a name to " + internalId + " if used inside an EForm.");
+        if (formContext && !name) {
+            console.error("You have to define a name to " + internalId + " if used inside an MagnetForm.");
             return;
         }
         formContext.handlePublish({
