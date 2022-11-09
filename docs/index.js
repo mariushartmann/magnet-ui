@@ -63,9 +63,9 @@ var isBrowser = typeof window !== "undefined";
 
 var ThemeContext = React__default['default'].createContext("light");
 var App = function (_a) {
-    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.id, id = _d === void 0 ? "magnet-app" : _d, _e = _a.style, style = _e === void 0 ? undefined : _e, _f = _a.theme, theme = _f === void 0 ? "auto" : _f;
+    var _b = _a.children, children = _b === void 0 ? undefined : _b, _c = _a.className, className = _c === void 0 ? undefined : _c, _d = _a.hasNavBar, hasNavBar = _d === void 0 ? false : _d, _e = _a.hasNavRail, hasNavRail = _e === void 0 ? false : _e, _f = _a.id, id = _f === void 0 ? "magnet-app" : _f, _g = _a.style, style = _g === void 0 ? undefined : _g, _h = _a.theme, theme = _h === void 0 ? "auto" : _h;
     // Vars & States - START
-    var _g = React.useState("light"), internalTheme = _g[0], setInternalTheme = _g[1];
+    var _j = React.useState("light"), internalTheme = _j[0], setInternalTheme = _j[1];
     // Vars & States - END
     // Methods & Handler - START
     // Methods & Handler - END
@@ -73,11 +73,13 @@ var App = function (_a) {
     var classes = React.useMemo(function () {
         var classes = {
             "magnet-app": true,
+            "magnet-app--has-nav-bar": hasNavBar,
+            "magnet-app--has-nav-rail": hasNavRail,
             "theme-light": internalTheme === "light",
             "theme-dark": internalTheme === "dark"
         };
         return clsx([classes, className]);
-    }, [className, internalTheme]);
+    }, [className, hasNavBar, hasNavRail, internalTheme]);
     var styles = React.useMemo(function () {
         var styleList = {};
         return __assign(__assign({}, styleList), style);
@@ -4997,10 +4999,12 @@ NavBar.displayName = "NavBar";
 var MagnetNavBar = React__default['default'].memo(NavBar);
 MagnetNavBar.displayName = "MagnetNavBar";
 
-var NavBarLink = function (_a) {
-    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.children, children = _c === void 0 ? undefined : _c, _d = _a.className, className = _d === void 0 ? undefined : _d, _e = _a.disabled, disabled = _e === void 0 ? false : _e, icon = _a.icon, _f = _a.id, id = _f === void 0 ? undefined : _f, _g = _a.onClick, onClick = _g === void 0 ? undefined : _g, _h = _a.style, style = _h === void 0 ? undefined : _h;
+var NavBarLink = React__default['default'].forwardRef(function (_a, forwardRef) {
+    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.children, children = _c === void 0 ? undefined : _c, _d = _a.className, className = _d === void 0 ? undefined : _d, _e = _a.disabled, disabled = _e === void 0 ? false : _e, _f = _a.href, href = _f === void 0 ? undefined : _f, icon = _a.icon, _g = _a.id, id = _g === void 0 ? undefined : _g, _h = _a.onClick, onClick = _h === void 0 ? undefined : _h, _j = _a.style, style = _j === void 0 ? undefined : _j;
     // Vars & States - START
+    var tag = href ? "a" : "button";
     var innerRef = React.useRef(null);
+    var combinedRefs = useCombinedRefs(forwardRef, innerRef);
     // Vars & States - END
     // Methods & Handler - START
     var handleClick = React.useCallback(function (ev) {
@@ -5027,10 +5031,18 @@ var NavBarLink = function (_a) {
     useRipple(innerRef, { disabled: disabled });
     // Life Cycle Hooks - END
     // Render - START
-    return (React__default['default'].createElement("button", { id: id, className: classes, style: styles, onClick: handleClick, ref: innerRef },
+    return React__default['default'].createElement(tag, {
+        id: id,
+        className: classes,
+        style: styles,
+        onClick: handleClick,
+        disabled: disabled,
+        href: href,
+        ref: combinedRefs
+    }, React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement(MagnetIcon, { className: "magnet-nav-bar-link--icon" }, icon),
         React__default['default'].createElement("span", { className: "magnet-nav-bar-link--label" }, children)));
-};
+});
 NavBarLink.displayName = "NavBarLink";
 var MagnetNavBarLink = React__default['default'].memo(NavBarLink);
 MagnetNavBarLink.displayName = "MagnetNavBarLink";
@@ -5070,10 +5082,12 @@ NavRail.displayName = "NavRail";
 var MagnetNavRail = React__default['default'].memo(NavRail);
 MagnetNavRail.displayName = "MagnetNavRail";
 
-var NavRailLink = function (_a) {
-    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.children, children = _c === void 0 ? undefined : _c, _d = _a.className, className = _d === void 0 ? undefined : _d, _e = _a.disabled, disabled = _e === void 0 ? false : _e, icon = _a.icon, _f = _a.id, id = _f === void 0 ? undefined : _f, _g = _a.onClick, onClick = _g === void 0 ? undefined : _g, _h = _a.style, style = _h === void 0 ? undefined : _h;
+var NavRailLink = React__default['default'].forwardRef(function (_a, forwardRef) {
+    var _b = _a.active, active = _b === void 0 ? false : _b, _c = _a.children, children = _c === void 0 ? undefined : _c, _d = _a.className, className = _d === void 0 ? undefined : _d, _e = _a.disabled, disabled = _e === void 0 ? false : _e, _f = _a.href, href = _f === void 0 ? undefined : _f, icon = _a.icon, _g = _a.id, id = _g === void 0 ? undefined : _g, _h = _a.onClick, onClick = _h === void 0 ? undefined : _h, _j = _a.style, style = _j === void 0 ? undefined : _j;
     // Vars & States - START
+    var tag = href ? "a" : "button";
     var innerRef = React.useRef(null);
+    var combinedRefs = useCombinedRefs(forwardRef, innerRef);
     // Vars & States - END
     // Methods & Handler - START
     var handleClick = React.useCallback(function (ev) {
@@ -5100,10 +5114,18 @@ var NavRailLink = function (_a) {
     useRipple(innerRef, { disabled: disabled });
     // Life Cycle Hooks - END
     // Render - START
-    return (React__default['default'].createElement("button", { id: id, className: classes, style: styles, onClick: handleClick, ref: innerRef },
+    return React__default['default'].createElement(tag, {
+        id: id,
+        className: classes,
+        style: styles,
+        onClick: handleClick,
+        disabled: disabled,
+        href: href,
+        ref: combinedRefs
+    }, React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement(MagnetIcon, { className: "magnet-nav-rail-link--icon" }, icon),
         React__default['default'].createElement("span", { className: "magnet-nav-rail-link--label" }, children)));
-};
+});
 NavRailLink.displayName = "NavRailLink";
 var MagnetNavRailLink = React__default['default'].memo(NavRailLink);
 MagnetNavRailLink.displayName = "MagnetNavRailLink";
